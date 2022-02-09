@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ResumeBuilder.DataSet;
 
 namespace ResumeBuilder.Controllers
 {
@@ -12,10 +13,14 @@ namespace ResumeBuilder.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ResumeData _resumeData;
+        private readonly SkillTypes _skillTypes;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ResumeData resumeData, SkillTypes skillTypes)
         {
             _logger = logger;
+            _resumeData = resumeData;
+            _skillTypes = skillTypes;
         }
 
         [HttpGet]

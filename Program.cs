@@ -1,8 +1,12 @@
+using ResumeBuilder.DataSet;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ResumeData>(service => ResumeData.Load());
+builder.Services.AddSingleton<SkillTypes>(builder.Configuration.GetSection(SkillTypes.SectionName).Get<SkillTypes>());
 
 var app = builder.Build();
 
@@ -19,6 +23,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html"); 
 
 app.Run();

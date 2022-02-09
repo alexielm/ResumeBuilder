@@ -1,0 +1,47 @@
+{
+  "firstName": "Alexiel",
+  "lastName": "Mejias",
+  "contact": {
+    "phone": "289-200-2428",
+    "email": "alexielm@rogers.com",
+    "links": {
+      "Web": "http://nexus-solutions.org/",
+      "Linkedin": "https://www.linkedin.com/in/alexiel-mejias-106782174/",
+      "GitHub": "https://github.com/alexielm"
+    }
+  },
+  "timeline": [
+    {
+      "eventType": "Job",
+      "where": "Radicalogic",
+      "title": "Think Client Reports",
+      "description": "Blah blah",
+      "startDate": "2001-04-09T00:00:00",
+      "endDate": "2001-05-10T00:00:00",
+      "disciplines": {
+        "Delphi": 100,
+        "Interbase": 100
+      }
+    },
+    {
+      "eventType": "Job",
+      "where": "Radicalogic",
+      "title": "Web Reports",
+      "description": "Bleh bleh",
+      "startDate": "2002-10-12T00:00:00",
+      "endDate": "2003-02-01T00:00:00",
+      "disciplines": {
+        "C#": 100,
+        "JavaScript": 100
+      }
+    },
+    {
+      "eventType": "Education",
+      "where": "CUJAE",
+      "title": "Software Engineering",
+      "description": "University X",
+      "startDate": "1990-01-01T00:00:00",
+      "endDate": "1996-01-01T00:00:00"
+    }
+  ]
+}
