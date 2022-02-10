@@ -4,8 +4,7 @@
     {
         public override TimeLineEventTypes EventType => TimeLineEventTypes.Job;
 
-        public string Title { get; set; }
-        public List<string> Responsibilities { get; set; }
-        public Dictionary<String, string> Disciplines { get; set; }
+        public List<JobCareer> Career { get; set; }
+
     }
 }

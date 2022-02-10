@@ -1,3 +1,12 @@
+body {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -9,26 +18,56 @@ html {
     font-size: 14px;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
 .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .5);
 }
 
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #E01A76;
+    color: #E01A76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.MainContainer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.MainContent {
+    position: relative;
+    margin: 20px 20px 20px 20px;
+    background-color: white;
+    box-shadow: 0px 0px 16px 8px #00000040;
+}
+
+.MainBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: white;
+    z-index: -1;
+}
+
+.BackgroundSVG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    stroke: black;
+    fill: black;
+    filter: blur(4px);
 }

@@ -33,6 +33,14 @@ namespace ResumeBuilder.Controllers
         }
 
         [HttpGet]
+        [Route("api/refreshResumeData")]
+        public object RefreshResumeData()
+        {
+            _resumeData.Refresh();
+            return Ok();
+        }
+
+        [HttpGet]
         [Route("api/frontEndParameters")]
         public object FrontEndParameters()
         {

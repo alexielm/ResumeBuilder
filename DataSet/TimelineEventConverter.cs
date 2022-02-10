@@ -4,7 +4,7 @@ using ResumeBuilder.GeneralUtils;
 
 namespace ResumeBuilder.DataSet
 {
-    public class TimelineEventConverter : JsonConverter<BasicTimeLineEvent>
+    public class TimeLineEventConverter : JsonConverter<BasicTimeLineEvent>
     {
         public override BasicTimeLineEvent? ReadJson(JsonReader reader, Type objectType, BasicTimeLineEvent? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {

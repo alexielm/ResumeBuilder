@@ -10,37 +10,60 @@
       "GitHub": "https://github.com/alexielm"
     }
   },
-  "timeline": [
+  "timeLine": [
     {
       "eventType": "Job",
-      "institution": "Radicalogic",
-      "title": "Think Client Reports",
-      "responsibilities": ["Did the thing","Did the other thing"],
-      "startDate": "2001-04-09T00:00:00",
-      "endDate": "2001-05-10T00:00:00",
-      "disciplines": {
-        "Delphi": 100,
-        "Interbase": 100
-      }
+      "institution": "Radicalogic Inc.",
+      "location": "Toronto, Canada",
+      "web": "https://rldatix.com/",
+      "career": [
+        {
+          "title": "Thick Client Reports",
+          "responsibilities": [ "Did the thing", "Did the other thing" ],
+          "startDate": "2001-04-09T00:00:00",
+          "endDate": "2001-05-10T00:00:00",
+          "disciplines": {
+            "Delphi": 100,
+            "Interbase": 100
+          }
+        },
+        {
+          "title": "Dashboard",
+          "responsibilities": [ "Worked on the code", "Did the thing", "Did the other thing" ],
+          "startDate": "2001-04-09T00:00:00",
+          "endDate": "2001-05-10T00:00:00",
+          "disciplines": {
+            "C#": 100,
+            "Microsoft SQL": 100,
+            "JQuery": 100
+          }
+        }
+      ]
     },
     {
       "eventType": "Job",
-      "institution": "Radicalogic",
-      "title": "Web Reports",
-      "Responsibilities": [ "Worked on the job", "Did the work" ],
-      "startDate": "2002-10-12T00:00:00",
-      "endDate": "2003-02-01T00:00:00",
-      "disciplines": {
-        "C#": 100,
-        "JavaScript": 100
-      }
+      "institution": "RLDatix",
+      "location_": "Toronto, Canada",
+      "web_": "https://rldatix.com/",
+      "career": [
+        {
+          "title": "Web Reports",
+          "responsibilities": [ "Worked on the job", "Did the work" ],
+          "startDate": "2002-10-12T00:00:00",
+          "endDate": null,
+          "disciplines": {
+            "C#": 100,
+            "JavaScript": 100
+          }
+        }
+      ]
     },
     {
       "eventType": "Education",
       "institution": "CUJAE",
       "location": "Havana, Cuba",
       "program": "Software Engineering",
-      "description": "Let to do bunch of stuff",
+      "description": "Learn to do bunch of stuff",
       "startDate": "1990-01-01T00:00:00",
       "endDate": "1996-01-01T00:00:00"
     }

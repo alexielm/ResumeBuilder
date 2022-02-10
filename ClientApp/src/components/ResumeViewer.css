@@ -1,14 +1,17 @@
-﻿
-.ResumeViewerBody {
-    margin: 0px 10px 0px 10px;
+﻿.ResumeViewerBody {
+    padding: 10px 20px 10px 20px;
+    width: 1000px;
+    border: 1px solid #888;
+    position: absolute;
+    left: calc(50% - 500px);
 }
 
-.ResumeViewerBody a {
-    text-decoration: none;
-}
+    .ResumeViewerBody a {
+        text-decoration: none;
+    }
 
 .FullName {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: bold;
 }
 
@@ -19,6 +22,7 @@
 }
 
 .Links .WebLink {
+    font-size: 16px;
 }
 
     .Links .WebLink:not(:first-child) {
@@ -28,9 +32,87 @@
     }
 
 .TopicHeader {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    margin-top: 14px;
+    margin-top: 16px;
     width: 100%;
     border-bottom: 1px solid #888;
+}
+
+.JobTimeLineEvent {
+    margin-bottom: 20px;
+}
+
+    .JobTimeLineEvent .InstitutionHeader {
+        margin-top: 5px;
+    }
+
+    .JobTimeLineEvent .Institution {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .JobTimeLineEvent .InstitutionWeb {
+        margin-left: 5px;
+    }
+
+    .JobTimeLineEvent .Location {
+        font-size: 16px;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 2px solid #888;
+    }
+
+    .JobTimeLineEvent .Career {
+        margin-left: 10px;
+    }
+
+    .JobTimeLineEvent .Title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .JobTimeLineEvent .Period {
+        float: right;
+    }
+
+.EducationTimeLineEvent {
+    margin-bottom: 20px;
+}
+
+    .EducationTimeLineEvent .Program {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .EducationTimeLineEvent .Period {
+        float: right;
+    }
+
+    .EducationTimeLineEvent .InstitutionHeader {
+        margin-top: 5px;
+    }
+
+    .EducationTimeLineEvent .Institution {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .EducationTimeLineEvent .InstitutionWeb {
+        margin-left: 5px;
+    }
+
+    .EducationTimeLineEvent .Location {
+        font-size: 16px;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 2px solid #888;
+    }
+
+.SkillsList .SkillName {
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.SkillsList .SkillMembers {
 }

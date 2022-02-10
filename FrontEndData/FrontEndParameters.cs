@@ -4,6 +4,6 @@
     {
         public const string SectionName = "frontEndParameters";
 
-        public Dictionary<string, List<string>> SkillTypes { get; set; }
+        public List<SkillType> SkillTypes { get; set; }
     }
 }

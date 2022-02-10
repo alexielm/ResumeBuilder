@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
 
 import './custom.css'
@@ -6,12 +7,7 @@ import './custom.css'
 export default class App extends Component {
     static displayName = App.name;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            frontEndParameters: null
-        };
-    }
+    static FrontEndParameters = null;
 
     componentDidMount() {
         this.populateFrontEndParameters();
@@ -19,16 +15,22 @@ export default class App extends Component {
 
     async populateFrontEndParameters() {
         const response = await fetch('api/frontEndParameters');
-        const frontEndParameters = await response.json();
-        this.setState({ frontEndParameters });
+        App.FrontEndParameters = await response.json();
+        this.forceUpdate();
     }
 
     render() {
-        if (this.state.frontEndParameters === null) {
-            return (<div>
-                Loading configuration...
-            </div>);
-        }
-        return <ResumeViewer />;
+        return (
+            <div className="MainContainer">
+                {
+                    App.FrontEndParameters === null ?
+                        (<div>
+                            Loading configuration...
+                        </div>) :
+                        <ResumeViewer />
+                }
+                <MainBackground />
+            </div>
+        );
     }
 }

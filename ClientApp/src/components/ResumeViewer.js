@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { RemoveHttp } from "../generalUtils/UrlUtils";
-import { Topic } from './Topic';
-import { EventsList } from './EventsList';
 import "./ResumeViewer.css";
+
+import { RemoveHttp } from "../generalUtils/Utils";
+import { Topic } from './Topic';
+import { TechnicalSkillsList } from './TechnicalSkillsList';
+import { JobsEventsList } from './JobsEventsList';
+import { EducationEventsList } from './EducationEventsList';
 
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
@@ -33,7 +36,7 @@ export class ResumeViewer extends Component {
         }
         let contact = resumeData.contact;
         return (
-            <div className="ResumeViewerBody">
+            <div className="ResumeViewerBody MainContent">
                 <div className="Personal">
                     <span className="FullName">{resumeData.firstName} {resumeData.lastName}</span>
                     <div className="ContactInfo">
@@ -43,17 +46,19 @@ export class ResumeViewer extends Component {
                 </div>
                 <div className="Links">
                     {
-                        //Object.entries(contact.links).map((name, link) => <span className="WebLink">{name}: <a href={link}>{RemoveHttp(link)}</a></span>)
-                        Object.entries(contact.links)
-                            .map(link => ({
-                                name: link[0],
-                                url: link[1]
-                            }))
-                            .map(link => <span key={link.name} className="WebLink">{link.name}: <a href={link.url}>{RemoveHttp(link.url)}</a></span> )
+                        Object
+                            .entries(contact.links)
+                            .map(([name, url]) => <span key={name} className="WebLink">{name}: <a href={url} rel="noreferrer" target="_blank">{RemoveHttp(url)}</a></span> )
                     }
                 </div>
+                <Topic title="TECHNICAL SKILLS">
+                    <TechnicalSkillsList timeLine={resumeData.timeLine} />
+                </Topic>
                 <Topic title="WORK EXPERIENCE">
-                    <EventsList source={resumeData.timeLine} />
+                    <JobsEventsList timeLine={resumeData.timeLine} />
+                </Topic>
+                <Topic title="EDUCATION">
+                    <EducationEventsList timeLine={resumeData.timeLine} />
                 </Topic>
 
             </div>
