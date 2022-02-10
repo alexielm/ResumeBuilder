@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { Chart } from './components/Chart';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import { ResumeViewer } from './components/ResumeViewer';
 
 import './custom.css'
 
 export default class App extends Component {
     static displayName = App.name;
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            frontEndParameters: null
+        };
+    }
+
+    componentDidMount() {
+        this.populateFrontEndParameters();
+    }
+
+    async populateFrontEndParameters() {
+        const response = await fetch('api/frontEndParameters');
+        const frontEndParameters = await response.json();
+        this.setState({ frontEndParameters });
+    }
+
     render() {
-        return (
-            <Layout>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/chart' component={Chart} />
-                <Route path='/counter' component={Counter} />
-                <Route path='/fetch-data' component={FetchData} />
-            </Layout>
-        );
+        if (this.state.frontEndParameters === null) {
+            return (<div>
+                Loading configuration...
+            </div>);
+        }
+        return <ResumeViewer />;
     }
 }

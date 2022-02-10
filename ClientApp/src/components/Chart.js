@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
 import {
-    ResponsiveContainer, LineChart, Line, XAxis, YAxis, ReferenceLine, ReferenceArea,
-    ReferenceDot, Tooltip, CartesianGrid, Legend, Brush, ErrorBar, AreaChart, Area,
-    Label, LabelList
+    LineChart, Line, XAxis,
+    Tooltip, CartesianGrid
+//    ResponsiveContainer,  YAxis, ReferenceLine, ReferenceArea,
+//    ReferenceDot, Legend, Brush, ErrorBar, AreaChart, Area,
+//    Label, LabelList
 } from 'recharts';
-import { scalePow, scaleLog } from 'd3-scale';
-import * as _ from 'lodash';
+
 
 export class Chart extends Component {
     static displayName = Chart.name;
@@ -39,7 +41,8 @@ export class Chart extends Component {
                     <Line type="monotone" dataKey="pv" stroke="green" yAxisId={1} />
                     <Line type="monotone" dataKey="amt" stroke="blue" yAxisId={2} />
                     <Line type="monotone" dataKey="uvError" stroke="yellow" yAxisId={3} />
-                </LineChart>      </div>
+                </LineChart>
+            </div>
         );
     }
 }

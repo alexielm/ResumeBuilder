@@ -11,10 +11,10 @@ namespace ResumeBuilder.DataSet
             var Object = JObject.ReadFrom(reader);
             return (BasicTimeLineEvent)Object.ToObject(Function.Evaluate(() =>
             {
-                switch (Object.Value<string>("eventType"))
+                switch (Enum.Parse<BasicTimeLineEvent.TimeLineEventTypes>(Object.Value<string>("eventType")))
                 {
-                    case "Job": return typeof(JobTimeLineEvent);
-                    case "Education": return typeof(EducationTimeLineEvent);
+                    case BasicTimeLineEvent.TimeLineEventTypes.Job: return typeof(JobTimeLineEvent);
+                    case BasicTimeLineEvent.TimeLineEventTypes.Education: return typeof(EducationTimeLineEvent);
                     default: return typeof(BasicTimeLineEvent);
                 }
             }));

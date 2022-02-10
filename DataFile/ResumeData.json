@@ -5,7 +5,7 @@
     "phone": "289-200-2428",
     "email": "alexielm@rogers.com",
     "links": {
-      "Web": "http://nexus-solutions.org/",
+      "Web": "http://nexus-solutions.org/resume",
       "Linkedin": "https://www.linkedin.com/in/alexiel-mejias-106782174/",
       "GitHub": "https://github.com/alexielm"
     }
@@ -13,9 +13,9 @@
   "timeline": [
     {
       "eventType": "Job",
-      "where": "Radicalogic",
+      "institution": "Radicalogic",
       "title": "Think Client Reports",
-      "description": "Blah blah",
+      "responsibilities": ["Did the thing","Did the other thing"],
       "startDate": "2001-04-09T00:00:00",
       "endDate": "2001-05-10T00:00:00",
       "disciplines": {
@@ -25,9 +25,9 @@
     },
     {
       "eventType": "Job",
-      "where": "Radicalogic",
+      "institution": "Radicalogic",
       "title": "Web Reports",
-      "description": "Bleh bleh",
+      "Responsibilities": [ "Worked on the job", "Did the work" ],
       "startDate": "2002-10-12T00:00:00",
       "endDate": "2003-02-01T00:00:00",
       "disciplines": {
@@ -37,9 +37,10 @@
     },
     {
       "eventType": "Education",
-      "where": "CUJAE",
-      "title": "Software Engineering",
-      "description": "University X",
+      "institution": "CUJAE",
+      "location": "Havana, Cuba",
+      "program": "Software Engineering",
+      "description": "Let to do bunch of stuff",
       "startDate": "1990-01-01T00:00:00",
       "endDate": "1996-01-01T00:00:00"
     }

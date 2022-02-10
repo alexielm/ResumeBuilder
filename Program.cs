@@ -1,12 +1,16 @@
 using ResumeBuilder.DataSet;
+using ResumeBuilder.FrontEndData;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services
+    .AddControllersWithViews()
+    .AddNewtonsoftJson();
+
 builder.Services.AddSingleton<ResumeData>(service => ResumeData.Load());
-builder.Services.AddSingleton<SkillTypes>(builder.Configuration.GetSection(SkillTypes.SectionName).Get<SkillTypes>());
+builder.Services.AddSingleton<FrontEndParameters>(builder.Configuration.GetSection(FrontEndParameters.SectionName).Get<FrontEndParameters>());
 
 var app = builder.Build();
 
