@@ -7,16 +7,29 @@ body {
     overflow: hidden;
 }
 
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-}
-
 html {
     font-family: Arial;
     font-size: 14px;
 }
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #aaa;
+    }
 
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .5);
@@ -45,9 +58,12 @@ code {
 }
 
 .MainContent {
-    position: relative;
-    margin: 20px 20px 20px 20px;
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
     background-color: white;
+    overflow: auto;
+    border: 1px solid #888;
     box-shadow: 0px 0px 16px 8px #00000040;
 }
 
@@ -70,4 +86,9 @@ code {
     stroke: black;
     fill: black;
     filter: blur(4px);
+}
+
+.SamllIcon {
+    width: 15px;
+    height: 15px;
 }

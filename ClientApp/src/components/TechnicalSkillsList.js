@@ -8,22 +8,35 @@ export class TechnicalSkillsList extends Component {
         super(props);
         let skillTypes = App.FrontEndParameters.skillTypes;
         let jobs = this.props.timeLine.filter(event => event.eventType === "Job");
-        let disciplines = jobs.map(job => job.career.map(career => Object.keys(career.disciplines)).flat()).flat();
+        let disciplines = [...new Set(jobs.map(job => job.career.map(career => Object.keys(career.disciplines)).flat()).flat())];
 
-        console.log(skillTypes);
-
-        this.skills = skillTypes
+        let skillsByCategory = skillTypes
             .map(skillType => ({
                 name: skillType.name,
-                value: disciplines.filter(discipline => skillType.members.find(member => discipline.toLowerCase() === member.toLowerCase()))
+                value: skillType.members.filter(member => {
+                    let disciplineIndex = disciplines.findIndex(discipline => discipline.toLowerCase() === member.toLowerCase());
+                    if (disciplineIndex === -1) {
+                        return false;
+                    }
+                    disciplines.splice(disciplineIndex, 1);
+                    return true;
+                })
             }))
-            .filter(skill => skill.value.length > 0)
-            .map((skill, skillIndex) =>
-                <tr key={skillIndex}>
-                    <td className="SkillName">{skill.name}</td>
-                    <td className="SkillMembers">{skill.value.join(", ")}</td>
-                </tr>
-            );
+            .filter(skill => skill.value.length > 0);
+
+        if (disciplines.length > 0) {
+            skillsByCategory.push({
+                name: "Others",
+                value: disciplines
+            });
+        }
+
+        this.skills = skillsByCategory.map((skill, skillIndex) =>
+            <tr key={skillIndex}>
+                <td className="SkillName">{skill.name}</td>
+                <td className="SkillMembers">{skill.value.join(", ")}</td>
+            </tr>
+        );
     }
 
     render() {

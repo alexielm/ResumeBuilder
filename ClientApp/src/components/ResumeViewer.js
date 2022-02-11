@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import "./ResumeViewer.css";
-
+import EmailIcon from "./images/email.svg";
+import PhoneIcon from "./images/phone.svg";
 import { RemoveHttp } from "../generalUtils/Utils";
-import { Topic } from './Topic';
-import { TechnicalSkillsList } from './TechnicalSkillsList';
-import { JobsEventsList } from './JobsEventsList';
-import { EducationEventsList } from './EducationEventsList';
+import { Remarks } from "./Remarks";
+import { Topic } from "./Topic";
+import { TechnicalSkillsList } from "./TechnicalSkillsList";
+import { JobsEventsList } from "./JobsEventsList";
+import { EducationEventsList } from "./EducationEventsList";
 
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
 
     constructor(props) {
         super(props);
+
+        this.refreshPage = this.refreshPage.bind(this);
+
         this.state = {
             resumeData: null
         };
@@ -22,9 +27,14 @@ export class ResumeViewer extends Component {
     }
 
     async populateResumeData() {
-        const response = await fetch('api/resumeData');
+        const response = await fetch("api/resumeData");
         const resumeData = await response.json();
         this.setState({ resumeData });
+    }
+
+    async refreshPage() {
+        await fetch("api/refreshResumeData");
+        document.location.reload();
     }
 
     render() {
@@ -37,30 +47,36 @@ export class ResumeViewer extends Component {
         let contact = resumeData.contact;
         return (
             <div className="ResumeViewerBody MainContent">
-                <div className="Personal">
-                    <span className="FullName">{resumeData.firstName} {resumeData.lastName}</span>
-                    <div className="ContactInfo">
-                        <div>{contact.phone}</div>
-                        <div><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
+                <div className="TopFadeout"></div>
+                <div>
+                    <div className="Personal">
+                        <span className="FullName">{resumeData.firstName} {resumeData.lastName}</span>
+                        <div className="ContactInfo">
+                            <div><img src={PhoneIcon} className="SamllIcon" alt="phone" />&nbsp;{contact.phone}</div>
+                            <div><img src={EmailIcon} className="SamllIcon" alt="email" onDoubleClick={this.refreshPage} />&nbsp;<a href={`mailto:${contact.email}`}>{contact.email}</a></div>
+                        </div>
                     </div>
+                    <div className="Links">
+                        {
+                            Object
+                                .entries(contact.links)
+                                .map(([name, url]) => <span key={name} className="WebLink">{name}: <a href={url} rel="noreferrer" target="_blank">{RemoveHttp(url)}</a></span>)
+                        }
+                    </div>
+                    <Topic title="REMARKS">
+                        <Remarks remarks={resumeData.remarks} />
+                    </Topic>
+                    <Topic title="TECHNICAL SKILLS">
+                        <TechnicalSkillsList timeLine={resumeData.timeLine} />
+                    </Topic>
+                    <Topic title="WORK EXPERIENCE">
+                        <JobsEventsList timeLine={resumeData.timeLine} />
+                    </Topic>
+                    <Topic title="EDUCATION">
+                        <EducationEventsList timeLine={resumeData.timeLine} />
+                    </Topic>
                 </div>
-                <div className="Links">
-                    {
-                        Object
-                            .entries(contact.links)
-                            .map(([name, url]) => <span key={name} className="WebLink">{name}: <a href={url} rel="noreferrer" target="_blank">{RemoveHttp(url)}</a></span> )
-                    }
-                </div>
-                <Topic title="TECHNICAL SKILLS">
-                    <TechnicalSkillsList timeLine={resumeData.timeLine} />
-                </Topic>
-                <Topic title="WORK EXPERIENCE">
-                    <JobsEventsList timeLine={resumeData.timeLine} />
-                </Topic>
-                <Topic title="EDUCATION">
-                    <EducationEventsList timeLine={resumeData.timeLine} />
-                </Topic>
-
+                <div className="BottomFadeout"></div>
             </div>
         );
     }

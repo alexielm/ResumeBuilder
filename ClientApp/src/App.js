@@ -14,7 +14,7 @@ export default class App extends Component {
     }
 
     async populateFrontEndParameters() {
-        const response = await fetch('api/frontEndParameters');
+        const response = await fetch("api/frontEndParameters");
         App.FrontEndParameters = await response.json();
         this.forceUpdate();
     }
