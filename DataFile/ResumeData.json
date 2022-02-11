@@ -52,7 +52,7 @@
       "eventType": "Job",
       "institution": "RLDatix",
       "location_": "Toronto, Canada",
-      "web_": "https://rldatix.com/",
+      "web": "https://rldatix.com/",
       "career": [
         {
           "title": "Web Reports",
@@ -67,22 +67,64 @@
       ]
     },
     {
+      "eventType": "Job",
+      "institution": "BroadView Software Inc.",
+      "location_": "Toronto, Canada",
+      "web": "https://www.linkedin.com/company/broadviewsoft/",
+      "career": [
+        {
+          "title": "Software Developer",
+          "responsibilities": [ "Helped building front end pages and server communication using COM Objects" ],
+          "startDate": "2000-11-01T00:00:00",
+          "endDate": "2001-04-01T00:00:00",
+          "disciplines": {
+            "Delphi": 80
+          }
+        }
+      ]
+    },
+    {
+      "eventType": "Job",
+      "institution": "Most relevant work done before coming to Canada",
+      "location_": "Cuba",
+      "career": [
+        {
+          "title": "Software Developer",
+          "responsibilities": [
+            "Automation of the International Telegraphic Centre of Cuba (CLN) (1999)",
+            "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salbador Central-American and Caribbean Games (1993) as well as many others similar sport events in Cuba.",
+            "Developed software and hardware to substitude outdate mechanical teletypes by a computer (1992)",
+            "Developed smart sports viewer to display relevant information for journalist and news coverage (VIDEOTEL System) (1991)",
+            "Automation of the National News Agency for the reception and clasification of international news feeds (1991)"
+          ],
+          "startDate": "1988-07-01T00:00:00",
+          "endDate": "2001-08-01T00:00:00",
+          "disciplines": {}
+        }
+      ]
+    },
+    {
       "eventType": "Education",
-      "institution": "CUJAE",
+      "institution": "CUJAE Universiry",
       "location": "Havana, Cuba",
-      "program": "Software Engineering",
-      "description": "Learn to do bunch of stuff",
-      "startDate": "1990-01-01T00:00:00",
-      "endDate": "1996-01-01T00:00:00"
+      "web": "https://www.linkedin.com/school/cujaeredsocial/",
+      "program": "Industrial Control Software Engineering",
+      "achievements": [ "Graduated with university degree in Software Engineering" ],
+      "startDate": "1992-09-01T00:00:00",
+      "endDate": "1999-04-01T00:00:00"
     },
     {
       "eventType": "Education",
       "institution": "Techical High School - Eduardo Garcia Delgado",
       "location": "Havana, Cuba",
-      "program": "Software Development Bechelor",
-      "description": "Graduated with a college degree for software development. Particitate and won national computer context.",
-      "startDate": "1984-01-01T00:00:00",
-      "endDate": "1988-01-01T00:00:00"
+      "program": "Software Development Bachelor",
+      "achievements": [
+        "Graduated with a college degree in software development.",
+        "Won first place on national computer software context.",
+        "Won second place on international computer sotfware context in Varna, Bulgaria."
+      ],
+      "startDate": "1985-09-01T00:00:00",
+      "endDate": "1988-05-01T00:00:00"
     }
   ]
 }

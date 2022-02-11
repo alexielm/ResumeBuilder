@@ -24,14 +24,23 @@ export class EducationEventsList extends Component {
                     <div className="InstitutionHeader">
                         <span className="Institution">{event.institution}</span>
                         {
-                            event.web ? <span className="InstitutionWeb"><a href={event.web}>({RemoveHttp(event.web)})</a></span> : ""
+                            event.web ? <span className="InstitutionWeb"><a href={event.web} rel="noreferrer" target="_blank">({RemoveHttp(event.web)})</a></span> : ""
                         }
                         {
                             event.location ? <span className="Location">{event.location}</span> : ""
                         }
                     </div>
                     <div>
-                        {event.description}
+                        {
+                            event.achievements.length === 1 ?
+                                event.achievements[0]
+                                :
+                                <ul>
+                                    {
+                                        event.achievements.map((achievement, achievementIndex) => <li key={achievementIndex}>{achievement}</li>)
+                                    }
+                                </ul>
+                        }
                     </div>
                 </div>
             );
