@@ -32,23 +32,31 @@ export class JobsEventsList extends Component {
                         }
                     </div>
                     {
-                        event.career.map((career, careerIndex) => {
-                            return (
-                                <div key={careerIndex} className="Career">
-                                    <div className="CareerHeader">
-                                        <span className="Title">{career.title}</span>
-                                        <span className="Period">{Period(career)}</span>
+                        event.career
+                            .map(career => ({
+                                startDate: Date.parse(career.startDate),
+                                career
+                            }
+                            ))
+                            .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+                            .map(career => career.career)
+                            .map((career, careerIndex) => {
+                                return (
+                                    <div key={careerIndex} className="Career">
+                                        <div className="CareerHeader">
+                                            <span className="Title">{career.title}</span>
+                                            <span className="Period">{Period(career)}</span>
+                                        </div>
+                                        <ul className="Responsibilities">
+                                            {
+                                                career.responsibilities.map((responsibility, responsibilityIndex) => {
+                                                    return <li key={responsibilityIndex}>{responsibility}</li>;
+                                                })
+                                            }
+                                        </ul>
                                     </div>
-                                    <ul className="Responsibilities">
-                                        {
-                                            career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                return <li key={responsibilityIndex}>{responsibility}</li>;
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                            );
-                        })
+                                );
+                            })
                     }
                 </div>
             );
