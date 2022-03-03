@@ -1,11 +1,7 @@
 import { Component } from 'react';
 
-export class Remarks extends Component {
-    static displayName = Remarks.name;
-
-    //constructor(props) {
-    //    super(props);
-    //}
+export class PersonalRemarks extends Component {
+    static displayName = PersonalRemarks.name;
 
     render() {
         return (

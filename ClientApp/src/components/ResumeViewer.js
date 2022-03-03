@@ -3,7 +3,7 @@ import "./ResumeViewer.css";
 import EmailIcon from "./images/email.svg";
 import PhoneIcon from "./images/phone.svg";
 import { RemoveHttp } from "../generalUtils/Utils";
-import { Remarks } from "./Remarks";
+import { PersonalRemarks } from "./PersonalRemarks";
 import { Topic } from "./Topic";
 import { TechnicalSkillsList } from "./TechnicalSkillsList";
 import { JobsEventsList } from "./JobsEventsList";
@@ -64,7 +64,7 @@ export class ResumeViewer extends Component {
                         }
                     </div>
                     <Topic title="REMARKS">
-                        <Remarks remarks={resumeData.remarks} />
+                        <PersonalRemarks remarks={resumeData.remarks} />
                     </Topic>
                     <Topic title="TECHNICAL SKILLS">
                         <TechnicalSkillsList timeLine={resumeData.timeLine} />

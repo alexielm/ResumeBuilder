@@ -8,26 +8,24 @@
         text-decoration: none;
     }
 
-.TopFadeout {
+.TopFadeout, .BottomFadeout {
     position: fixed;
     width: 1200px;
     left: calc(50% - 600px);
-    top: 21px;
     height: 20px;
-    padding: 0px 16px 0px 1px;
-    background-image: linear-gradient(#ffffff, rgba(255,255,255,0));
+    border-radius: 8px;
     background-clip: content-box;
+    padding: 0px 16px 0px 1px;
+}
+
+.TopFadeout {
+    top: 21px;
+    background-image: linear-gradient(#ffffff, rgba(255,255,255,0));
 }
 
 .BottomFadeout {
-    position: fixed;
-    width: 1200px;
-    left: calc(50% - 600px);
     bottom: 21px;
-    height: 20px;
-    padding: 0px 16px 0px 1px;
     background-image: linear-gradient(rgba(255,255,255,0), #ffffff 80%);
-    background-clip: content-box;
 }
 
 .FullName {
@@ -59,6 +57,7 @@
 }
 
 .JobTimeLineEvent {
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -82,8 +81,17 @@
         border-left: 2px solid #888;
     }
 
+    .JobTimeLineEvent .JobRemarks {
+        padding: 0px 0px 10px 10px;
+    }
+
+        .JobTimeLineEvent .JobRemarks ul {
+            list-style-type: circle;
+            margin-bottom: -8px;
+        }
+
     .JobTimeLineEvent .Career {
-        margin-left: 10px;
+        margin-left: 19px;
     }
 
     .JobTimeLineEvent .Title {
@@ -97,11 +105,12 @@
 
     .JobTimeLineEvent .Responsibilities {
         max-width: 1050px;
+        margin-block-end: 10px;
     }
 
-    .EducationTimeLineEvent {
-        margin-bottom: 20px;
-    }
+.EducationTimeLineEvent {
+    margin-bottom: 20px;
+}
 
     .EducationTimeLineEvent .Program {
         font-size: 18px;

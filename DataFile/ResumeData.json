@@ -10,13 +10,12 @@
       "GitHub": "https://github.com/alexielm"
     }
   },
-  //https://www.youtube.com/watch?v=bibQB1b93lM
   "remarks": [
     "Senior software developer with many years of experience working from down the trenches to cutting-edge technologies building the product from scratch to production level.",
     "With a wide range of applications under my belt I've' built professional softwares that had help grown an startup company into a multi-billions enterprise.",
     "If humans were able to crack the secrets of the DNA you'll probably find the Engineering and Software Development gene on mine.",
-    "In my spare time sometimes I write code to automate simple task at home from the alarm system to data analytics for my drones flights.",
-    "I also love photography, videography, aereal-videography and building stuff with my hands."
+    "In my spare time I write code to automate simple task at home from the alarm system to data analytics for my drones flights.",
+    "Also love photography and building stuff with my hands."
   ],
   "timeLine": [
     {
@@ -24,12 +23,69 @@
       "institution": "RLDatix (Also known as RLSolutions, Radicalogic and RL)",
       "location": "Toronto, Canada",
       "web": "https://rldatix.com/",
+      "remarks": [
+        "Worked on this software company for 21 years. As employee number 7, helped to grow the company into what it is today.",
+        ""
+      ],
       "career": [
         {
           "title": "Software Developer",
-          "responsibilities": [ "Worked on the job", "Did the work" ],
+          "responsibilities": [
+            "Worked on Forms and on the Info center for the Risk Module and Feedback Module",
+            "Built Desktop Report Center from scratch",
+            "Built Report Wizard. [This was a IRAP/SRED project]",
+            "Worked on the first Web version of the application.",
+            "Build the first HL7 message listener.",
+            "Build the first Web Reports. This was onle a web viewer of the Desktop reports"
+          ],
           "startDate": "2001-04-09T00:00:00",
-          "endDate": "2010-02-02T00:00:00",
+          "endDate": "2008-05-01T00:00:00",
+          "disciplines": {
+            "Delphi": 100,
+            "JavaScript": 100,
+            "Interbase": 90
+          }
+        },
+        {
+          "title": "Senior Software Developer",
+          "responsibilities": [
+            "Worked on RL6; the full Web Based version of the application that sunseted the desktop version.",
+            "Build the full Web Based version of Reports. [This was a IRAP/SRED project]",
+            "Worked on the Alers system [This was a IRAP/SRED project]",
+            "Built the first HL7 Query on demand system",
+            "Build the Reports Dashboard Viewer"
+          ],
+          "startDate": "2008-05-01T00:00:00",
+          "endDate": "2013-08-01T00:00:00",
+          "disciplines": {
+            "Delphi": 100,
+            "JavaScript": 100,
+            "Interbase": 90
+          }
+        },
+        {
+          "title": "Software Architect",
+          "responsibilities": [
+            "Worked on the GOV version of the application installed for the entire country of Denmark",
+            "Worked on the Pharma version of the application installed on CVS and Walmart pharmacies",
+            "Built the Federated Authentication module"
+          ],
+          "startDate": "2013-08-01T00:00:00",
+          "endDate": "2015-02-01T00:00:00",
+          "disciplines": {
+            "Delphi": 100,
+            "JavaScript": 100,
+            "Interbase": 90
+          }
+        },
+        {
+          "title": "Development Team Leader",
+          "responsibilities": [
+            "Worked the Reports Dashboard Client Side Editor",
+            "Worked on the ETL Module exporting data to PSRS, NDNQI, etc"
+          ],
+          "startDate": "2015-02-01T00:00:00",
+          "endDate": "2017-11-01T00:00:00",
           "disciplines": {
             "Delphi": 100,
             "JavaScript": 100,
@@ -39,6 +95,17 @@
         {
           "title": "Senior Research Software Engineer",
           "responsibilities": [
+
+            /*
+
+            - Containarization of the Web App.
+            - Upgraded most services to .NET Core and to run in Containers - AWS/AZURE
+            - End user AI Analitics
+            - Actual Severity AI
+
+            */
+
+
             "Connected Platform Portal to seamlessly integrate all softwares from the combined companies"
           ],
           "startDate": "2017-11-01T00:00:00",
@@ -112,5 +179,9 @@
       "startDate": "1985-09-01T00:00:00",
       "endDate": "1988-05-01T00:00:00"
     }
+  ],
+  "references": [
+    "SRED (Scientific Research and Experimental Development Tax Incentive Program) https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html",
+    "IRAP (Industrial Research Assistance Program) https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program"
   ]
 }

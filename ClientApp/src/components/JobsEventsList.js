@@ -32,6 +32,19 @@ export class JobsEventsList extends Component {
                         }
                     </div>
                     {
+                        event.remarks.length === 0
+                        ?
+                        null
+                        :
+                        <div className="JobRemarks">
+                            <ul>
+                                {
+                                    event.remarks.map(remark => <li>{remark}</li>)
+                                }
+                            </ul>
+                        </div>
+                    }
+                    {
                         event.career
                             .map(career => ({
                                 startDate: Date.parse(career.startDate),
