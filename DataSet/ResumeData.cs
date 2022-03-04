@@ -8,7 +8,11 @@ namespace ResumeBuilder.DataSet
         private static string resumeDataString()
         {
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+#if (DEBUG)
             return File.ReadAllText(path + "\\..\\..\\..\\DataFile\\ResumeData.json");
+#else
+            return File.ReadAllText(path + "\\DataFile\\ResumeData.json");
+#endif
         }
         public static ResumeData Load()
         {

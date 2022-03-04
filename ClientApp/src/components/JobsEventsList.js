@@ -23,6 +23,7 @@ export class JobsEventsList extends Component {
         return this.state.events.map((event, eventIndex) => {
             return (
                 <div key={eventIndex} className="JobTimeLineEvent">
+                    <div className="JobTimeLineHeader KeepTogether">
                     <div className="InstitutionHeader">
                         <span className="Institution">{event.institution}</span>
                         {
@@ -44,7 +45,8 @@ export class JobsEventsList extends Component {
                                     }
                                 </ul>
                             </div>
-                    }
+                        }
+                        </div>
                     {
                         event.career
                             .map(career => ({
@@ -57,7 +59,7 @@ export class JobsEventsList extends Component {
                             .map((career, careerIndex) => {
                                 return (
                                     <div key={careerIndex} className="Career">
-                                        <div className="CareerHeader">
+                                        <div className="CareerHeader KeepTogether">
                                             <span className="Title">{career.title}</span>
                                             <span className="Period">{Period(career)}</span>
                                         </div>

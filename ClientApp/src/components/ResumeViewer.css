@@ -33,6 +33,20 @@
     font-weight: bold;
 }
 
+
+.SmallIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.PrintIcon {
+    margin: -17px 0px 0px 12px;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+
+}
+
 .ContactInfo {
     float: right;
     padding-right: 10px;
@@ -159,6 +173,9 @@
         overflow: auto;
     }
 
+    .ant-popover {
+        display: none;
+    }
 
     .MainBackground {
         display: none;
@@ -167,18 +184,22 @@
     .ResumeViewerBody { /* Supplementing CSS Class MainContent */
         position: static;
         padding: 10px 0px 20px 20px;
-        width: 1200px;
+        width: 1000px;
         left: 0px;
         border: none;
         box-shadow: none;
         overflow: visible;
     }
 
-    .Topic {
+    .KeepTogether {
         page-break-inside: avoid;
     }
 
     .TopFadeout, .BottomFadeout {
+        display: none;
+    }
+
+    .PrintIcon {
         display: none;
     }
 }
