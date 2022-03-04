@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './custom.css'
+
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
 
-import './custom.css'
 
 export default class App extends Component {
     static displayName = App.name;
