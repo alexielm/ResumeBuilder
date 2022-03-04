@@ -21,6 +21,7 @@ namespace ResumeBuilder.DataSet
             serializerSettings.Converters.Add(new TimeLineEventConverter());
             Remarks.Clear();
             TimeLine.Clear();
+            References.Clear();
             JsonConvert.PopulateObject(resumeDataString(), this, serializerSettings);
         }
 
@@ -29,5 +30,6 @@ namespace ResumeBuilder.DataSet
         public ContactData Contact { get; set; }
         public List<string> Remarks { get; set; }
         public List<BasicTimeLineEvent> TimeLine { get; set; }
+        public List<string> References { get; set; }
     }
 }

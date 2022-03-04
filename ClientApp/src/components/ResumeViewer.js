@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import "./ResumeViewer.css";
-import EmailIcon from "./images/email.svg";
-import PhoneIcon from "./images/phone.svg";
-import { RemoveHttp } from "../generalUtils/Utils";
-import { PersonalRemarks } from "./PersonalRemarks";
-import { Topic } from "./Topic";
-import { TechnicalSkillsList } from "./TechnicalSkillsList";
-import { JobsEventsList } from "./JobsEventsList";
-import { EducationEventsList } from "./EducationEventsList";
+import EmailIcon from './images/email.svg';
+import PhoneIcon from './images/phone.svg';
+import { RemoveHttp } from '../generalUtils/Utils';
+import { PersonalRemarks } from './PersonalRemarks';
+import { Topic } from './Topic';
+import { TechnicalSkillsList } from './TechnicalSkillsList';
+import { JobsEventsList } from './JobsEventsList';
+import { EducationEventsList } from './EducationEventsList';
+import { ReferencesList } from './ReferencesList';
 
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
@@ -24,6 +25,16 @@ export class ResumeViewer extends Component {
 
     componentDidMount() {
         this.populateResumeData();
+    }
+
+    test(action) {
+        switch (action) {
+            case "references": {
+                alert("Showing references");
+                break;
+            }
+            default: break;
+        }
     }
 
     async populateResumeData() {
@@ -75,6 +86,15 @@ export class ResumeViewer extends Component {
                     <Topic title="EDUCATION">
                         <EducationEventsList timeLine={resumeData.timeLine} />
                     </Topic>
+                    {
+                        resumeData.references
+                            ?
+                            <Topic title="REFERENCES" className="ReferenceTopic" collapsed="true">
+                                <ReferencesList references={resumeData.references} />
+                            </Topic>
+                            :
+                            null
+                    }
                 </div>
                 <div className="BottomFadeout"></div>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { RemoveHttp, Period } from "../generalUtils/Utils";
+import { RemoveHttp, Period } from '../generalUtils/Utils';
+import { MarkDown } from './MarkDown';
 
 export class EducationEventsList extends Component {
     static displayName = EducationEventsList.name;
@@ -37,7 +38,7 @@ export class EducationEventsList extends Component {
                                 :
                                 <ul>
                                     {
-                                        event.achievements.map((achievement, achievementIndex) => <li key={achievementIndex}>{achievement}</li>)
+                                        event.achievements.map((achievement, achievementIndex) => <li key={achievementIndex}><MarkDown>{achievement}</MarkDown></li>)
                                     }
                                 </ul>
                         }

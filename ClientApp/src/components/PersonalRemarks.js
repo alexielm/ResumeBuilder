@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { MarkDown } from './MarkDown';
 
 export class PersonalRemarks extends Component {
     static displayName = PersonalRemarks.name;
@@ -7,7 +8,7 @@ export class PersonalRemarks extends Component {
         return (
             <ul>
                 {
-                    this.props.remarks.map((remark, remarkIndex) => <li key={remarkIndex}>{remark}</li>)
+                    this.props.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
                 }
             </ul>
         );

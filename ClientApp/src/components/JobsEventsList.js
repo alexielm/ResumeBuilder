@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { RemoveHttp, Period } from "../generalUtils/Utils";
+import { RemoveHttp, Period } from '../generalUtils/Utils';
+import { MarkDown } from './MarkDown';
 
 export class JobsEventsList extends Component {
     static displayName = JobsEventsList.name;
@@ -33,16 +34,16 @@ export class JobsEventsList extends Component {
                     </div>
                     {
                         event.remarks.length === 0
-                        ?
-                        null
-                        :
-                        <div className="JobRemarks">
-                            <ul>
-                                {
-                                    event.remarks.map(remark => <li>{remark}</li>)
-                                }
-                            </ul>
-                        </div>
+                            ?
+                            null
+                            :
+                            <div className="JobRemarks">
+                                <ul>
+                                    {
+                                        event.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
+                                    }
+                                </ul>
+                            </div>
                     }
                     {
                         event.career
@@ -63,7 +64,7 @@ export class JobsEventsList extends Component {
                                         <ul className="Responsibilities">
                                             {
                                                 career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                    return <li key={responsibilityIndex}>{responsibility}</li>;
+                                                    return <li key={responsibilityIndex}><MarkDown>{responsibility}</MarkDown></li>;
                                                 })
                                             }
                                         </ul>

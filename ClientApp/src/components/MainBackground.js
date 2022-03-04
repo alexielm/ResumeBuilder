@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Enumerable from "linq";
+import Enumerable from 'linq';
 
 const nodesCount = 100;
 
@@ -63,7 +63,11 @@ export class MainBackground extends Component {
     }
 
     componentDidMount() {
-        setInterval(this.moveNodes, 50);
+        this.intervalHandler = setInterval(this.moveNodes, 50);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this, this.intervalHandler);
     }
 
     moveNodes() {

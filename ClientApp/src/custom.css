@@ -12,6 +12,10 @@ html {
     font-size: 14px;
 }
 
+p {
+    margin-bottom: 0px;
+}
+
 ::-webkit-scrollbar {
     width: 20px;
 }
