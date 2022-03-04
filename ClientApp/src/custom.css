@@ -53,6 +53,14 @@ code {
     border-color: #1861ac;
 }
 
+.ant-popover-inner {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, .5);
+}
+
+.ant-popover-arrow-content {
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, .5) !important;
+}
+
 .MainContainer {
     position: absolute;
     left: 0px;

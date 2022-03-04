@@ -41,7 +41,7 @@
           "endDate": "2008-05-01T00:00:00",
           "disciplines": {
             "Delphi": 100,
-            "JavaScript": 100,
+            "JavaScript": 80,
             "Interbase": 90
           }
         },
