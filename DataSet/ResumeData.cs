@@ -30,6 +30,6 @@ namespace ResumeBuilder.DataSet
         public ContactData Contact { get; set; }
         public List<string> Remarks { get; set; }
         public List<BasicTimeLineEvent> TimeLine { get; set; }
-        public List<string> References { get; set; }
+        public Dictionary<string, ReferencesItem> References { get; set; }
     }
 }

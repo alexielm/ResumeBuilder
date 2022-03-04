@@ -32,7 +32,7 @@
           "responsibilities": [
             "Worked on Forms and on the Info center for the Risk Module and Feedback Module.",
             "Built Desktop Report Center from scratch",
-            "Built Report Wizard. [This was an IRAP/SRED project](^references).",
+            "Built Report Wizard. [](^sred_irap).",
             "Worked on the first Web version of the application.",
             "Build the first HL7 message listener.",
             "Build the first Web Reports. This was onle a web viewer of the Desktop reports."
@@ -49,8 +49,8 @@
           "title": "Senior Software Developer",
           "responsibilities": [
             "Worked on RL6; the full Web Based version of the application that sunseted the desktop version.",
-            "Build the full Web Based version of Reports. [This was an IRAP/SRED project](^references).",
-            "Worked on the Alers system [This was an IRAP/SRED project](^references).",
+            "Build the full Web Based version of Reports. [](^sred_irap).",
+            "Worked on the Alers system [](^sred_irap).",
             "Built the first HL7 Query on demand system.",
             "Build the Reports Dashboard Viewer."
           ],
@@ -172,8 +172,12 @@
       "endDate": "1988-05-01T00:00:00"
     }
   ],
-  "references": [
-    "SRED - [Scientific Research and Experimental Development Tax Incentive Program](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html)",
-    "IRAP [Industrial Research Assistance Program](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program)"
-  ]
+  "references": {
+    "sred_irap": {
+      "title": "This was an IRAP/SRED project",
+      "content": [
+        "[IRAP](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program) and [SRED](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html) are programs from the goverment of Canada to insentive research by financially supporting inovating project."
+      ]
+    }
+  }
 }

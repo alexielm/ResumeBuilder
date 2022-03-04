@@ -7,21 +7,11 @@ import './custom.css'
 export default class App extends Component {
     static displayName = App.name;
 
-    constructor(props) {
-        super(props);
-
-        App.runAction = this.runAction.bind(this);
-        this.resumeViewer = React.createRef();
-    }
-
     static FrontEndParameters = null;
+    static ResumeData = null;
 
     componentDidMount() {
         this.populateFrontEndParameters();
-    }
-
-    runAction(action) {
-        this.resumeViewer.current.test(action);
     }
 
     async populateFrontEndParameters() {
@@ -38,7 +28,7 @@ export default class App extends Component {
                         (<div>
                             Loading configuration...
                         </div>) :
-                        <ResumeViewer ref={this.resumeViewer} />
+                        <ResumeViewer />
                 }
                 <MainBackground />
             </div>

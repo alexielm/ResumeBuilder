@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import "./ResumeViewer.css";
 import EmailIcon from './images/email.svg';
 import PhoneIcon from './images/phone.svg';
+import App from '../App';
 import { RemoveHttp } from '../generalUtils/Utils';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
 import { JobsEventsList } from './JobsEventsList';
 import { EducationEventsList } from './EducationEventsList';
-import { ReferencesList } from './ReferencesList';
 
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
@@ -17,39 +17,26 @@ export class ResumeViewer extends Component {
         super(props);
 
         this.refreshPage = this.refreshPage.bind(this);
-
-        this.state = {
-            resumeData: null
-        };
     }
 
     componentDidMount() {
         this.populateResumeData();
     }
 
-    test(action) {
-        switch (action) {
-            case "references": {
-                alert("Showing references");
-                break;
-            }
-            default: break;
-        }
-    }
-
     async populateResumeData() {
         const response = await fetch("api/resumeData");
-        const resumeData = await response.json();
-        this.setState({ resumeData });
+        App.ResumeData = await response.json();
+        this.forceUpdate();
     }
 
     async refreshPage() {
+        App.ResumeData = null;
         await fetch("api/refreshResumeData");
         document.location.reload();
     }
 
     render() {
-        let resumeData = this.state.resumeData;
+        let resumeData = App.ResumeData;
         if (resumeData === null) {
             return (<div>
                 Loading resume data...
@@ -86,15 +73,6 @@ export class ResumeViewer extends Component {
                     <Topic title="EDUCATION">
                         <EducationEventsList timeLine={resumeData.timeLine} />
                     </Topic>
-                    {
-                        resumeData.references
-                            ?
-                            <Topic title="REFERENCES" className="ReferenceTopic" collapsed="true">
-                                <ReferencesList references={resumeData.references} />
-                            </Topic>
-                            :
-                            null
-                    }
                 </div>
                 <div className="BottomFadeout"></div>
             </div>
