@@ -162,22 +162,62 @@
     }
 
 .SkillsColumns {
-    width: 90%;
+    width: 100%;
 }
 
-.SkillsColumns .LeftSkillsColumn,
-.SkillsColumns .RightSkillsColumn {
-    width: 50%;
-    vertical-align: top;
+    .SkillsColumns .LeftSkillsColumn,
+    .SkillsColumns .RightSkillsColumn {
+        width: 50%;
+        vertical-align: top;
+    }
+
+.SkillsList {
+    border-collapse: separate;
+    border-spacing: 0px 4px;
 }
 
-.SkillsList .SkillName {
-    font-weight: bold;
-    padding-right: 5px;
-}
+    .SkillsList .SkillName {
+        font-weight: bold;
+        padding-right: 5px;
+        text-align: right;
+        vertical-align: top;
+        padding: 0px;
+        margin: 0px;
+    }
 
-.SkillsList .SkillMembers {
-}
+    .SkillsList .ArrowStart,
+    .SkillsList .ArrowBody div,
+    .SkillsList .ArrowEnd {
+        border: 1px solid #aaa;
+    }
+
+    .SkillsList .ArrowStart,
+    .SkillsList .ArrowBody,
+    .SkillsList .ArrowEnd {
+        width: 5px;
+    }
+
+    .SkillsList .ArrowStart {
+        border-left: none;
+    }
+
+    .SkillsList .ArrowBody {
+        width: 5px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+        .SkillsList .ArrowBody div {
+            border-bottom: none;
+            height: 0px;
+            width: 100%;
+        }
+
+    .SkillsList .SkillMembers {
+        border: 1px solid #aaa;
+        border-right: none;
+        padding-left: 5px;
+    }
 
 .ReferenceTopic {
 }

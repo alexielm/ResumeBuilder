@@ -32,16 +32,28 @@ export class TechnicalSkillsList extends Component {
         }
 
         let skills = skillsByCategory.map((skill, skillIndex) =>
-            <tr key={skillIndex}>
+            <tr key={skillIndex} className="SkillRow">
                 <td className="SkillName">{skill.name}</td>
+                <td className="ArrowStart"></td>
+                <td className="ArrowBody"><div></div></td>
                 <td className="SkillMembers">{skill.value.join(", ")}</td>
             </tr>
         );
 
         let half = (skills.length / 2) + 1;
 
-        this.leftSkillsColumn = skills.slice(0, half);
-        this.rightSkillsColumn = skills.slice(half);
+        this.leftSkillsColumn = this.skillList(skills.slice(0, half));
+        this.rightSkillsColumn = this.skillList(skills.slice(half));
+    }
+
+    skillList(rows) {
+        return  (
+            <table className="SkillsList">
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        );
     }
 
     render() {
@@ -50,18 +62,10 @@ export class TechnicalSkillsList extends Component {
                 <tbody>
                     <tr>
                         <td className="LeftSkillsColumn">
-                            <table className="SkillsList">
-                                <tbody>
-                                    {this.leftSkillsColumn}
-                                </tbody>
-                            </table>
+                            {this.leftSkillsColumn}
                         </td>
                         <td className="RightSkillsColumn">
-                            <table className="SkillsList">
-                                <tbody>
-                                    {this.rightSkillsColumn}
-                                </tbody>
-                            </table>
+                            {this.rightSkillsColumn}
                         </td>
                     </tr>
                 </tbody>
