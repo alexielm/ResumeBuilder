@@ -12,7 +12,7 @@
   },
   "remarks": [
     "Full stack senior software developer with many years of experience, working from down the trenches to cutting-edge technologies, building products from scratch to production level.",
-    "With a wide range of applications and tools under my belt I've' built professional softwares that had help grown an startup company into a multi-billions enterprise.",
+    "With a wide range of applications and tools under my belt I've built professional softwares that had help grown an startup company into a multi-billions enterprise.",
     "If humans were able to crack the secrets of the DNA you'll find the Engineering and Software Development gene on mine.",
     "In my spare time I write code to automate simple task at home from the alarm system to data analytics for my drone flights.",
     "Also love photography and building stuff with my hands."
@@ -43,7 +43,9 @@
             "Delphi": 100,
             "JavaScript/TypeScript": 65,
             "Interbase": 90,
-            "Microsoft SQL": 20
+            "Microsoft SQL": 20,
+            "TeeChart": 75,
+            "ReportBuilder": 75
           }
         },
         {
@@ -69,7 +71,7 @@
             "XML": 70,
             "JSON": 50,
             "SVN": 60,
-            "MVC":  75
+            "MVC": 75
 
           }
         },
@@ -228,7 +230,7 @@
             "JavaScript/TypeScript": 50,
             "XML": 50,
             "CSS/CSS3/SCSS/LESS": 40,
-            "Microsoft SQL":  25
+            "Microsoft SQL": 25
           }
         }
       ]

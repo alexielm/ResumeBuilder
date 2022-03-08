@@ -142,6 +142,9 @@ export class ResumeViewer extends Component {
                         >
                             <JobsEventsList timeLine={resumeData.timeLine} />
                         </Topic>
+                        <Topic title="HOBBIES AND PERSONAL" className="KeepTogether">
+                            Something here
+                        </Topic>
                         <Topic title="EDUCATION" className="KeepTogether">
                             <EducationEventsList timeLine={resumeData.timeLine} />
                         </Topic>
@@ -166,7 +169,7 @@ export class ResumeViewer extends Component {
                             type: "default"
                         }}
                     >
-                        <SkillsChart />
+                        <SkillsChart skillTypes={App.FrontEndParameters.skillTypes} timeLine={resumeData.timeLine} />
                     </Modal>
                 </ViewControl>
             </Fragment>

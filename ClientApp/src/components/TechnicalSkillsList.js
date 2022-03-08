@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import CurlyBracketLeft from './images/curly_bracket_left.svg';
 import App from '../App';
 
 export class TechnicalSkillsList extends Component {
@@ -34,9 +35,10 @@ export class TechnicalSkillsList extends Component {
         let skills = skillsByCategory.map((skill, skillIndex) =>
             <tr key={skillIndex} className="SkillRow">
                 <td className="SkillName">{skill.name}</td>
-                <td className="ArrowStart"></td>
-                <td className="ArrowBody"><div></div></td>
-                <td className="SkillMembers">{skill.value.join(", ")}</td>
+                <td className="SkillConnector">
+                    <img src={CurlyBracketLeft} className="CurlyBracketLeft" alt="CurlyBracketLeft" />
+                </td>
+                <td className="SkillMembers">{skill.value.map(v => v.replace(/ /g, "\u00a0")).join(", ")}</td>
             </tr>
         );
 
@@ -47,7 +49,7 @@ export class TechnicalSkillsList extends Component {
     }
 
     skillList(rows) {
-        return  (
+        return (
             <table className="SkillsList">
                 <tbody>
                     {rows}
