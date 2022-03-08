@@ -57,6 +57,10 @@ code {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, .5);
 }
 
+.ant-modal-content {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, .5);
+}
+
 .ant-popover-arrow-content {
     box-shadow: 5px 10px 20px rgba(0, 0, 0, .5) !important;
 }

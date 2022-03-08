@@ -31,19 +31,39 @@ export class TechnicalSkillsList extends Component {
             });
         }
 
-        this.skills = skillsByCategory.map((skill, skillIndex) =>
+        let skills = skillsByCategory.map((skill, skillIndex) =>
             <tr key={skillIndex}>
                 <td className="SkillName">{skill.name}</td>
                 <td className="SkillMembers">{skill.value.join(", ")}</td>
             </tr>
         );
+
+        let half = (skills.length / 2) + 1;
+
+        this.leftSkillsColumn = skills.slice(0, half);
+        this.rightSkillsColumn = skills.slice(half);
     }
 
     render() {
         return (
-            <table className="SkillsList">
+            <table className="SkillsColumns">
                 <tbody>
-                    {this.skills}
+                    <tr>
+                        <td className="LeftSkillsColumn">
+                            <table className="SkillsList">
+                                <tbody>
+                                    {this.leftSkillsColumn}
+                                </tbody>
+                            </table>
+                        </td>
+                        <td className="RightSkillsColumn">
+                            <table className="SkillsList">
+                                <tbody>
+                                    {this.rightSkillsColumn}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         );

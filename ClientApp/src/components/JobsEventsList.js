@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RemoveHttp, Period } from '../generalUtils/Utils';
 import { MarkDown } from './MarkDown';
+import { ViewControl } from '../generalUtils/ViewControl';
 
 export class JobsEventsList extends Component {
     static displayName = JobsEventsList.name;
@@ -24,29 +25,31 @@ export class JobsEventsList extends Component {
             return (
                 <div key={eventIndex} className="JobTimeLineEvent">
                     <div className="JobTimeLineHeader KeepTogether">
-                    <div className="InstitutionHeader">
-                        <span className="Institution">{event.institution}</span>
+                        <div className="InstitutionHeader">
+                            <span className="Institution">{event.institution}</span>
+                            <ViewControl visible={event.web}>
+                                <span className="InstitutionWeb">
+                                    <a href={event.web} rel="noreferrer" target="_blank">({RemoveHttp(event.web)})</a>
+                                </span>
+                            </ViewControl>
+                            <ViewControl visible={event.location}>
+                                <span className="Location">{event.location}</span>
+                            </ViewControl>
+                        </div>
                         {
-                            event.web ? <span className="InstitutionWeb"><a href={event.web} rel="noreferrer" target="_blank">({RemoveHttp(event.web)})</a></span> : ""
-                        }
-                        {
-                            event.location ? <span className="Location">{event.location}</span> : ""
+                            event.remarks.length === 0
+                                ?
+                                null
+                                :
+                                <div className="JobRemarks">
+                                    <ul>
+                                        {
+                                            event.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
+                                        }
+                                    </ul>
+                                </div>
                         }
                     </div>
-                    {
-                        event.remarks.length === 0
-                            ?
-                            null
-                            :
-                            <div className="JobRemarks">
-                                <ul>
-                                    {
-                                        event.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
-                                    }
-                                </ul>
-                            </div>
-                        }
-                        </div>
                     {
                         event.career
                             .map(career => ({

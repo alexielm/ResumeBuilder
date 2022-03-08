@@ -161,6 +161,16 @@
         border-left: 2px solid #888;
     }
 
+.SkillsColumns {
+    width: 90%;
+}
+
+.SkillsColumns .LeftSkillsColumn,
+.SkillsColumns .RightSkillsColumn {
+    width: 50%;
+    vertical-align: top;
+}
+
 .SkillsList .SkillName {
     font-weight: bold;
     padding-right: 5px;

@@ -10,6 +10,7 @@ import ChartIcon from './images/chart.svg';
 
 import App from '../App';
 import { RemoveHttp } from '../generalUtils/Utils';
+import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
@@ -33,7 +34,7 @@ export class ResumeViewer extends Component {
         this.closeExperienceChart = this.closeExperienceChart.bind(this);
 
         this.state = {
-            skillsChartVisible: true,
+            skillsChartVisible: false,
             experienceChartVisible: false
         }
     }
@@ -147,25 +148,27 @@ export class ResumeViewer extends Component {
                     </div>
                     <div className="BottomFadeout"></div>
                 </div>
-                <Modal
-                    visible={this.state.skillsChartVisible}
-                    title="Technical Skills"
-                    width={1040}
-                    okButtonProps={{
-                        style: {
-                            display: "none"
-                        }
-                    }}
+                <ViewControl visible={this.state.skillsChartVisible}>
+                    <Modal
+                        visible={true}
+                        title="Technical Skills"
+                        width={1040}
+                        okButtonProps={{
+                            style: {
+                                display: "none"
+                            }
+                        }}
 
 
-                    onCancel={this.closeSkillsChart}
-                    cancelText="Close"
-                    cancelButtonProps={{
-                        type: "default"
-                    }}
-                >
-                    <SkillsChart />
-                </Modal>
+                        onCancel={this.closeSkillsChart}
+                        cancelText="Close"
+                        cancelButtonProps={{
+                            type: "default"
+                        }}
+                    >
+                        <SkillsChart />
+                    </Modal>
+                </ViewControl>
             </Fragment>
         );
     }

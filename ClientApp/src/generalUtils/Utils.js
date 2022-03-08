@@ -1,6 +1,7 @@
 import Moment from 'moment';
 
 export function RemoveHttp(url) {
+    if (!url) return null;
     return url.replace(/^(https?:|)\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
 }
 

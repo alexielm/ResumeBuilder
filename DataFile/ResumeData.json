@@ -35,14 +35,15 @@
             "Built Report Wizard. [](^sred_irap).",
             "Worked on the first Web version of the application.",
             "Build the first HL7 message listener.",
-            "Build the first Web Reports. This was onle a web viewer of the Desktop reports."
+            "Build the first Web Reports. This was only a web viewer of the Desktop reports."
           ],
           "startDate": "2001-04-09T00:00:00",
           "endDate": "2008-05-01T00:00:00",
           "disciplines": {
             "Delphi": 100,
-            "JavaScript": 80,
-            "Interbase": 90
+            "JavaScript/TypeScript": 65,
+            "Interbase": 90,
+            "Microsoft SQL": 20
           }
         },
         {
@@ -57,9 +58,19 @@
           "startDate": "2008-05-01T00:00:00",
           "endDate": "2013-08-01T00:00:00",
           "disciplines": {
-            "Delphi": 100,
-            "JavaScript": 100,
-            "Interbase": 90
+            "JavaScript/TypeScript": 75,
+            "C#": 40,
+            "ASP.NET": 60,
+            "Microsoft SQL": 40,
+            "DevExpress": 40,
+            "Windows Services": 60,
+            "jQuery": 60,
+            "CSS/CSS3/SCSS/LESS": 50,
+            "XML": 70,
+            "JSON": 50,
+            "SVN": 60,
+            "MVC":  75
+
           }
         },
         {
@@ -72,9 +83,25 @@
           "startDate": "2013-08-01T00:00:00",
           "endDate": "2015-02-01T00:00:00",
           "disciplines": {
-            "Delphi": 100,
-            "JavaScript": 100,
-            "Interbase": 90
+            "JavaScript/TypeScript": 90,
+            "C#": 90,
+            "ASP.NET": 90,
+            "Microsoft SQL": 60,
+            "DevExpress": 60,
+            "Windows Services": 80,
+            "jQuery": 75,
+            "CSS/CSS3/SCSS/LESS": 60,
+            "XML": 90,
+            "JSON": 80,
+            "SVN": 80,
+            "SAML 2.0": 90,
+            "OAuth 2.0": 30,
+            "Windows Active Directory": 75,
+            "RESTful API": 25,
+            "NodeJS": 50,
+            "Unit Test": 60,
+            "MVC": 90,
+            "Agile": 25
           }
         },
         {
@@ -86,9 +113,32 @@
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
           "disciplines": {
-            "Delphi": 100,
-            "JavaScript": 100,
-            "Interbase": 90
+            "JavaScript/TypeScript": 100,
+            "C#": 100,
+            "ASP.NET": 100,
+            "Microsoft SQL": 75,
+            "DevExpress": 100,
+            "Windows Services": 100,
+            "jQuery": 100,
+            "CSS/CSS3/SCSS/LESS": 80,
+            "XML": 100,
+            "JSON": 95,
+            "SVN": 90,
+            "SAML 2.0": 90,
+            "OAuth 2.0": 50,
+            "Windows Active Directory": 75,
+            "React": 40,
+            ".NET Core": 25,
+            "RESTful API": 75,
+            "NodeJS": 90,
+            "Unit Test": 80,
+            "MongoDB": 25,
+            "EF/EFCore": 75,
+            "Agile": 80,
+            "TeamCity": 25,
+            "Git": 50,
+            "Microsoft Report Builder": 10,
+            "ReChart": 50
           }
         },
         {
@@ -104,9 +154,38 @@
           "endDate": "2022-02-02T00:00:00",
           "disciplines": {
             "C#": 100,
-            "JavaScript": 100,
+            "JavaScript/TypeScript": 100,
             "React": 100,
-            "Microsoft SQL": 90
+            "Microsoft SQL": 90,
+            "ASP.NET": 100,
+            ".NET Core": 100,
+            "Redux/Mobx": 75,
+            "CSS/CSS3/SCSS/LESS": 90,
+            "Material Design": 50,
+            "Bootstrap": 50,
+            "ANTD": 90,
+            "Python": 25,
+            "SQLite": 50,
+            "MySQL": 50,
+            "PostgreSQL": 50,
+            "MongoDB": 25,
+            "OrmLite": 50,
+            "Windows Services": 100,
+            "Docker": 75,
+            "Kubernetes": 50,
+            "Kafka/KafkaStream": 75,
+            "RabitMQ": 75,
+            "Dapr": 50,
+            "Ocelot": 50,
+            "Agile": 80,
+            "TeamCity": 80,
+            "Octopus": 50,
+            "Git": 100,
+            "Azure DevOps": 75,
+            "Yellowfin": 50,
+            "Microsoft Report Builder": 50,
+            "Tableau": 25,
+            "ReChart": 75
           }
         }
       ]
@@ -144,7 +223,13 @@
           ],
           "startDate": "1988-07-01T00:00:00",
           "endDate": "2001-08-01T00:00:00",
-          "disciplines": {}
+          "disciplines": {
+            "Delphi": 80,
+            "JavaScript/TypeScript": 50,
+            "XML": 50,
+            "CSS/CSS3/SCSS/LESS": 40,
+            "Microsoft SQL":  25
+          }
         }
       ]
     },
