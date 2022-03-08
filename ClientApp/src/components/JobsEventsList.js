@@ -36,19 +36,15 @@ export class JobsEventsList extends Component {
                                 <span className="Location">{event.location}</span>
                             </ViewControl>
                         </div>
-                        {
-                            event.remarks.length === 0
-                                ?
-                                null
-                                :
-                                <div className="JobRemarks">
-                                    <ul>
-                                        {
-                                            event.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
-                                        }
-                                    </ul>
-                                </div>
-                        }
+                        <ViewControl visible={event.remarks.length > 0}>
+                            <div className="JobRemarks">
+                                <ul>
+                                    {
+                                        event.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
+                                    }
+                                </ul>
+                            </div>
+                        </ViewControl>
                     </div>
                     {
                         event.career
@@ -69,7 +65,18 @@ export class JobsEventsList extends Component {
                                         <ul className="Responsibilities">
                                             {
                                                 career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                    return <li key={responsibilityIndex}><MarkDown>{responsibility}</MarkDown></li>;
+                                                    return <div key={responsibilityIndex}>
+                                                        <MarkDown>
+                                                            {
+                                                                responsibility.description
+                                                            }
+                                                        </MarkDown>.
+                                                        <div className="UsedDisciplines">
+                                                            Used: {
+                                                                responsibility.disciplines.sort().join(", ")
+                                                            }
+                                                        </div>
+                                                    </div>;
                                                 })
                                             }
                                         </ul>

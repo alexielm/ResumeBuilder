@@ -15,6 +15,7 @@ import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
 import { JobsEventsList } from './JobsEventsList';
+import { HobbyEventsList } from './HobbyEventsList';
 import { EducationEventsList } from './EducationEventsList';
 import { SkillsChart } from './SkillsChart';
 
@@ -135,16 +136,18 @@ export class ResumeViewer extends Component {
                         <Topic
                             title={<>
                                 WORK EXPERIENCE
-                                <Popover placement="right" content="Click to view experience chart">
-                                    <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openExperienceChart} />
-                                </Popover>
+                            {/*    <Popover placement="right" content="Click to view experience chart">*/}
+                            {/*        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openExperienceChart} />*/}
+                            {/*    </Popover>*/}
                             </>}
                         >
                             <JobsEventsList timeLine={resumeData.timeLine} />
                         </Topic>
-                        <Topic title="HOBBIES AND PERSONAL" className="KeepTogether">
-                            Something here
-                        </Topic>
+                        <ViewControl visible={resumeData.timeLine.some(event => event.eventType === "Hobby")}>
+                            <Topic title="HOBBY PROJECTS" className="KeepTogether">
+                                <HobbyEventsList timeLine={resumeData.timeLine} />
+                            </Topic>
+                        </ViewControl>
                         <Topic title="EDUCATION" className="KeepTogether">
                             <EducationEventsList timeLine={resumeData.timeLine} />
                         </Topic>

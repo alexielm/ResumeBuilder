@@ -9,7 +9,18 @@ export class TechnicalSkillsList extends Component {
         super(props);
         let skillTypes = App.FrontEndParameters.skillTypes;
         let jobs = this.props.timeLine.filter(event => event.eventType === "Job");
-        let disciplines = [...new Set(jobs.map(job => job.career.map(career => Object.keys(career.disciplines)).flat()).flat())];
+
+        let disciplines = [...new Set(
+            jobs
+                .map(job => job
+                    .career
+                    .map(career => Object.keys(
+                        career.otherDisciplines)
+                    )
+                    .flat()
+                )
+                .flat()
+        )];
 
         let skillsByCategory = skillTypes
             .map(skillType => ({
@@ -42,7 +53,7 @@ export class TechnicalSkillsList extends Component {
             </tr>
         );
 
-        let half = (skills.length / 2) + 1;
+        let half = (skills.length / 2);
 
         this.leftSkillsColumn = this.skillList(skills.slice(0, half));
         this.rightSkillsColumn = this.skillList(skills.slice(half));

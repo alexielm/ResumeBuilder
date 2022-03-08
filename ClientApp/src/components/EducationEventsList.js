@@ -38,7 +38,7 @@ export class EducationEventsList extends Component {
                                 :
                                 <ul>
                                     {
-                                        event.achievements.map((achievement, achievementIndex) => <li key={achievementIndex}><MarkDown>{achievement}</MarkDown></li>)
+                                        event.achievements.map((achievement, achievementIndex) => <div key={achievementIndex}><MarkDown>{achievement}</MarkDown>.</div>)
                                     }
                                 </ul>
                         }

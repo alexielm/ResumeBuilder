@@ -5,7 +5,7 @@
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Title { get; set; }
-        public List<string> Responsibilities { get; set; }
-        public Dictionary<String, string> Disciplines { get; set; }
+        public List<Responsibility> Responsibilities { get; set; }
+        public Dictionary<string, string> OtherDisciplines { get; set; } = new Dictionary<string, string>();
     }
 }

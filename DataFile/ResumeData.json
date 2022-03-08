@@ -11,11 +11,11 @@
     }
   },
   "remarks": [
-    "Full stack senior software developer with many years of experience, working from down the trenches to cutting-edge technologies, building products from scratch to production level.",
-    "With a wide range of applications and tools under my belt I've built professional softwares that had help grown an startup company into a multi-billions enterprise.",
-    "If humans were able to crack the secrets of the DNA you'll find the Engineering and Software Development gene on mine.",
-    "In my spare time I write code to automate simple task at home from the alarm system to data analytics for my drone flights.",
-    "Also love photography and building stuff with my hands."
+    "Full stack senior software developer with many years of experience, working from down the trenches to cutting-edge technologies, building products from scratch to production level",
+    "With a wide range of applications and tools under my belt I've built professional softwares that had help grown an startup company into a multi-billions enterprise",
+    "If humans were able to crack the secrets of the DNA you'll find the Engineering and Software Development gene on mine",
+    "In my spare time I write code to automate simple task at home from the alarm system to data analytics for my drone flights",
+    "Also love photography and building stuff with my hands"
   ],
   "timeLine": [
     {
@@ -24,22 +24,40 @@
       "location": "Toronto, Canada",
       "web": "https://rldatix.com/",
       "remarks": [
-        "Worked on this software company for 21 years. As employee number 7, worn multiple hats to help to grow the company into what it is today."
+        "Worked on this software company for 21 years. As employee number 7, worn multiple hats to help to grow the company into what it is today"
       ],
       "career": [
         {
           "title": "Software Developer",
           "responsibilities": [
-            "Worked on Forms and on the Info center for the Risk Module and Feedback Module.",
-            "Built Desktop Report Center from scratch",
-            "Built Report Wizard. [](^sred_irap).",
-            "Worked on the first Web version of the application.",
-            "Build the first HL7 message listener.",
-            "Build the first Web Reports. This was only a web viewer of the Desktop reports."
+            {
+              "description": "Worked on Forms and on the Info center for the Risk Module and Feedback Module",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            },
+            {
+              "description": "Built Desktop Report Center from scratch",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            },
+            {
+              "description": "Built Report Wizard. [](^sred_irap)",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            },
+            {
+              "description": "Worked on the first Web version of the application",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            },
+            {
+              "description": "Build the first HL7 message listener",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            },
+            {
+              "description": "Build the first Web Reports. This was only a web viewer of the Desktop reports",
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+            }
           ],
           "startDate": "2001-04-09T00:00:00",
           "endDate": "2008-05-01T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "Delphi": 100,
             "JavaScript/TypeScript": 65,
             "Interbase": 90,
@@ -51,15 +69,30 @@
         {
           "title": "Senior Software Developer",
           "responsibilities": [
-            "Worked on RL6; the full Web Based version of the application that sunseted the desktop version.",
-            "Build the full Web Based version of Reports. [](^sred_irap).",
-            "Worked on the Alers system [](^sred_irap).",
-            "Built the first HL7 Query on demand system.",
-            "Build the Reports Dashboard Viewer."
+            {
+              "description": "Worked on RL6; the full Web Based version of the application that sunseted the desktop version",
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML" ]
+            },
+            {
+              "description": "Build the full Web Based version of Reports. [](^sred_irap)",
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+            },
+            {
+              "description": "Worked on the Alers system [](^sred_irap)",
+              "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON" ]
+            },
+            {
+              "description": "Built the first HL7 Query on demand system",
+              "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON" ]
+            },
+            {
+              "description": "Build the Reports Dashboard Viewer",
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+            }
           ],
           "startDate": "2008-05-01T00:00:00",
           "endDate": "2013-08-01T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "JavaScript/TypeScript": 75,
             "C#": 40,
             "ASP.NET": 60,
@@ -72,19 +105,27 @@
             "JSON": 50,
             "SVN": 60,
             "MVC": 75
-
           }
         },
         {
           "title": "Software Architect",
           "responsibilities": [
-            "Worked on the GOV version of the application installed for the entire country of Denmark.",
-            "Worked on the Pharma version of the application installed on CVS and Walmart pharmacies.",
-            "Built the Federated Authentication module"
+            {
+              "description": "Worked on the GOV version of the application installed for the entire country of Denmark",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+            },
+            {
+              "description": "Worked on the Pharma version of the application installed on CVS and Walmart pharmacies",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+            },
+            {
+              "description": "Built the Federated Authentication module",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SAML 2.0", "OAuth 2.0", "Windows Active Directory" ]
+            }
           ],
           "startDate": "2013-08-01T00:00:00",
           "endDate": "2015-02-01T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "JavaScript/TypeScript": 90,
             "C#": 90,
             "ASP.NET": 90,
@@ -109,12 +150,18 @@
         {
           "title": "Development Team Leader",
           "responsibilities": [
-            "Worked the Reports Dashboard Client Side Editor.",
-            "Worked on the ETL Module and customizations to export data to PSRS, NDNQI and others."
+            {
+              "description": "Worked the Reports Dashboard Client Side Editor",
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API" ]
+            },
+            {
+              "description": "Worked on the ETL Module and customizations to export data to PSRS, NDNQI and others",
+              "disciplines": [ "C#", "ASP.NET", "Microsoft SQL", "Windows Services", "XML", "JSON", "RESTful API" ]
+            }
           ],
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "JavaScript/TypeScript": 100,
             "C#": 100,
             "ASP.NET": 100,
@@ -146,15 +193,30 @@
         {
           "title": "Senior Research Software Engineer",
           "responsibilities": [
-            "Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
-            "Worked on a Module to allow End User access to AI Analitics Tools",
-            "Worked on AI module to determine Incidents Actual Severity Level",
-            "Worked on Containarization of the RL6 Web App and the Dashboard.",
-            "Upgraded services to .NET Core and to run in Containers - AWS and AZURE"
+            {
+              "description": "Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD" ]
+            },
+            {
+              "description": "Worked on a Module to allow End User access to AI Analitics Tools",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux/Mobx", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart" ]
+            },
+            {
+              "description": "Worked on AI module to predict values such as Incidents Severity Level",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux/Mobx", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr" ]
+            },
+            {
+              "description": "Worked on Containarization of the RL6 Web App and the Dashboard",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "Microsoft SQL", "ASP.NET", ".NET Core", "CSS/CSS3/SCSS/LESS", "Docker", "Kubernetes" ]
+            },
+            {
+              "description": "Upgraded services to .NET Core and to run in Containers - AWS and AZURE",
+              "disciplines": [ "C#", "Microsoft SQL", ".NET Core", "SQLite", "OrmLite", "Windows Services", "Docker", "Kubernetes", "Kafka/KafkaStream", "Dapr" ]
+            }
           ],
           "startDate": "2017-11-01T00:00:00",
           "endDate": "2022-02-02T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "C#": 100,
             "JavaScript/TypeScript": 100,
             "React": 100,
@@ -194,18 +256,24 @@
     },
     {
       "eventType": "Job",
-      "institution": "BroadView Software Inc.",
+      "institution": "BroadView Software Inc",
       "location_": "Toronto, Canada",
       "web": "https://www.linkedin.com/company/broadviewsoft/",
       "career": [
         {
           "title": "Software Developer",
-          "responsibilities": [ "Helped building front end forms and server communication using COM Objects" ],
+          "responsibilities": [
+            {
+              "description": "Helped building front end forms and server communication using COM Objects",
+              "disciplines": [ "Delphi" ]
+            }
+          ],
           "startDate": "2000-12-01T00:00:00",
           "endDate": "2001-03-15T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "Delphi": 80
           }
+
         }
       ]
     },
@@ -217,15 +285,30 @@
         {
           "title": "Software Developer",
           "responsibilities": [
-            "Automation of the International Telegraphic Centre of Cuba (CLN) (1999)",
-            "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salbador Central-American and Caribbean Games (1993) as well as many others similar sport events in Cuba.",
-            "Developed software and hardware to substitude outdate mechanical teletypes by a computer (1992)",
-            "Developed smart sports viewer to display relevant information for journalist and news coverage (VIDEOTEL System) (1991)",
-            "Automation of the National News Agency for the reception and clasification of international news feeds (1991)"
+            {
+              "description": "Automation of the International Telegraphic Centre of Cuba (CLN) (1999)",
+              "disciplines": [ "Delphi", "XML", "Microsoft SQL", "Serial Communication", "TCP/IP" ]
+            },
+            {
+              "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salbador Central-American and Caribbean Games (1993) as well as many others similar sport events in Cuba",
+              "disciplines": [ "Delphi", "XML", "Serial ommunication", "TCP/IP" ]
+            },
+            {
+              "description": "Developed software and hardware to substitude outdate mechanical teletypes by a computer (1992)",
+              "disciplines": [ "Delphi", "XML", "Serial Communication" ]
+            },
+            {
+              "description": "Developed smart sports viewer to display relevant information for journalist and news coverage (VIDEOTEL System) (1991)",
+              "disciplines": [ "Delphi", "XML", "Microsoft SQL" ]
+            },
+            {
+              "description": "Automation of the National News Agency for the reception and clasification of international news feeds (1991)",
+              "disciplines": [ "Delphi", "Microsoft SQL", "Serial Communication" ]
+            }
           ],
           "startDate": "1988-07-01T00:00:00",
           "endDate": "2001-08-01T00:00:00",
-          "disciplines": {
+          "otherDisciplines": {
             "Delphi": 80,
             "JavaScript/TypeScript": 50,
             "XML": 50,
@@ -233,6 +316,46 @@
             "Microsoft SQL": 25
           }
         }
+      ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "DJI Drones Flight Log Viewer",
+      "remarks": [
+        "This application shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
+        "To test it you can download this example dji drone log file: <http://www.nexus-solutions.org/DJI_Logs/DJIFlightRecord_2017-08-14_[14-58-22].txt>"
+      ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "Spherical 360 Photo Viewer for Windows",
+      "remarks": [
+        "This desktop windows application is a light weight 360 photo viewer",
+        "Source Code Available on GitHub: <https://github.com/alexielm/Spherical360Viewer>"
+      ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "Web Based Spherical 360 Photo Viewer",
+      "remarks": [
+        "This is a lightning fast web based 360 photo viewer",
+        "Source Code Available on GitHub: <https://github.com/alexielm/Html360Viewer>",
+        "Demo version at: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
+      ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "RV Level",
+      "remarks": [
+        "Software and hardware to help leveling an RV (Recreational Vehicle). The device is accessed from an Android or Apple phone via WiFi and Web App so leveling process can be monitored from the driver's seat"
+      ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "Home Alarm System",
+      "remarks": [
+        "A set of softwares and hardwares to monitor doors and windows and notify me if something is wrong as well as knowing when we are home or not.",
+        "This also includes connectivity with Alexa and Google Home. More details upon request"
       ]
     },
     {
@@ -251,9 +374,9 @@
       "location": "Havana, Cuba",
       "program": "Software Development Bachelor",
       "achievements": [
-        "Graduated with a college degree in software development.",
-        "Won first place on national computer software context.",
-        "Won second place on international computer sotfware context in Varna, Bulgaria."
+        "Graduated with a college degree in software development",
+        "Won first place on national computer software context",
+        "Won second place on international computer sotfware context in Varna, Bulgaria"
       ],
       "startDate": "1985-09-01T00:00:00",
       "endDate": "1988-05-01T00:00:00"
@@ -263,7 +386,7 @@
     "sred_irap": {
       "title": "This was an IRAP/SRED project",
       "content": [
-        "[IRAP](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program) and [SRED](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html) are programs from the goverment of Canada to insentive research by financially supporting inovating project."
+        "[IRAP](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program) and [SRED](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html) are programs from the goverment of Canada to insentive research by financially supporting inovating project"
       ]
     }
   }

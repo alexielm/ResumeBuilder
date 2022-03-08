@@ -8,7 +8,7 @@ export class PersonalRemarks extends Component {
         return (
             <ul>
                 {
-                    this.props.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown></li>)
+                    this.props.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
                 }
             </ul>
         );

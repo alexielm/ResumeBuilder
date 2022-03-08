@@ -128,6 +128,23 @@
         margin-block-end: 10px;
     }
 
+    .JobTimeLineEvent .UsedDisciplines {
+        font-style: italic;
+        font-size: 12px;
+        margin-top: -3px;
+        padding-bottom: 10px;
+    }
+
+.HobbyTimeLineEvent {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+    .HobbyTimeLineEvent .HobbyTitle {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
 .EducationTimeLineEvent {
     margin-bottom: 20px;
 }
