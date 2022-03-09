@@ -14,7 +14,7 @@
     "Full stack senior software developer with many years of experience, working from down the trenches to cutting-edge technologies, building products from scratch to production level",
     "With a wide range of applications and tools under my belt I've built professional softwares that had help grown an startup company into a multi-billions enterprise",
     "If humans were able to crack the secrets of the DNA you'll find the Engineering and Software Development gene on mine",
-    "In my spare time I write code to automate simple task at home from the alarm system to data analytics for my drone flights",
+    "In my spare time I write code to automate tasks at home from the alarm system to data analytics for my drone flights",
     "Also love photography and building stuff with my hands"
   ],
   "timeLine": [
@@ -57,8 +57,10 @@
           ],
           "startDate": "2001-04-09T00:00:00",
           "endDate": "2008-05-01T00:00:00",
-          "otherDisciplines": {
-            "Delphi": 100,
+          "disciplinesSet": {
+            "Delphi": 95,
+            "C#": 40,
+            "ASP.NET": 45,
             "JavaScript/TypeScript": 65,
             "Interbase": 90,
             "Microsoft SQL": 20,
@@ -92,10 +94,10 @@
           ],
           "startDate": "2008-05-01T00:00:00",
           "endDate": "2013-08-01T00:00:00",
-          "otherDisciplines": {
+          "disciplinesSet": {
             "JavaScript/TypeScript": 75,
-            "C#": 40,
-            "ASP.NET": 60,
+            "C#": 65,
+            "ASP.NET": 55,
             "Microsoft SQL": 40,
             "DevExpress": 40,
             "Windows Services": 60,
@@ -125,9 +127,9 @@
           ],
           "startDate": "2013-08-01T00:00:00",
           "endDate": "2015-02-01T00:00:00",
-          "otherDisciplines": {
+          "disciplinesSet": {
             "JavaScript/TypeScript": 90,
-            "C#": 90,
+            "C#": 80,
             "ASP.NET": 90,
             "Microsoft SQL": 60,
             "DevExpress": 60,
@@ -161,9 +163,9 @@
           ],
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
-          "otherDisciplines": {
+          "disciplinesSet": {
             "JavaScript/TypeScript": 100,
-            "C#": 100,
+            "C#": 95,
             "ASP.NET": 100,
             "Microsoft SQL": 75,
             "DevExpress": 100,
@@ -216,7 +218,7 @@
           ],
           "startDate": "2017-11-01T00:00:00",
           "endDate": "2022-02-02T00:00:00",
-          "otherDisciplines": {
+          "disciplinesSet": {
             "C#": 100,
             "JavaScript/TypeScript": 100,
             "React": 100,
@@ -270,8 +272,9 @@
           ],
           "startDate": "2000-12-01T00:00:00",
           "endDate": "2001-03-15T00:00:00",
-          "otherDisciplines": {
-            "Delphi": 80
+          "disciplinesSet": {
+            "Delphi": 85,
+            "C#": 0
           }
 
         }
@@ -307,9 +310,9 @@
             }
           ],
           "startDate": "1988-07-01T00:00:00",
-          "endDate": "2001-08-01T00:00:00",
-          "otherDisciplines": {
-            "Delphi": 80,
+          "endDate": "2000-08-01T00:00:00",
+          "disciplinesSet": {
+            "Delphi": 75,
             "JavaScript/TypeScript": 50,
             "XML": 50,
             "CSS/CSS3/SCSS/LESS": 40,

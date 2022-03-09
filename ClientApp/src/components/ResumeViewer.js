@@ -35,7 +35,7 @@ export class ResumeViewer extends Component {
         this.closeExperienceChart = this.closeExperienceChart.bind(this);
 
         this.state = {
-            skillsChartVisible: false,
+            skillsChartVisible: true,
             experienceChartVisible: false
         }
     }

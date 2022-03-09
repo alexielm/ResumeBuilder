@@ -15,7 +15,7 @@ export class TechnicalSkillsList extends Component {
                 .map(job => job
                     .career
                     .map(career => Object.keys(
-                        career.otherDisciplines)
+                        career.disciplinesSet)
                     )
                     .flat()
                 )
