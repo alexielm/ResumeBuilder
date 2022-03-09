@@ -59,7 +59,7 @@
           "endDate": "2008-05-01T00:00:00",
           "disciplinesSet": {
             "Delphi": 95,
-            "C#": 40,
+            "C#": 60,
             "ASP.NET": 45,
             "JavaScript/TypeScript": 65,
             "Interbase": 90,
@@ -96,7 +96,7 @@
           "endDate": "2013-08-01T00:00:00",
           "disciplinesSet": {
             "JavaScript/TypeScript": 75,
-            "C#": 65,
+            "C#": 85,
             "ASP.NET": 55,
             "Microsoft SQL": 40,
             "DevExpress": 40,
@@ -129,7 +129,7 @@
           "endDate": "2015-02-01T00:00:00",
           "disciplinesSet": {
             "JavaScript/TypeScript": 90,
-            "C#": 80,
+            "C#": 95,
             "ASP.NET": 90,
             "Microsoft SQL": 60,
             "DevExpress": 60,
@@ -137,6 +137,7 @@
             "jQuery": 75,
             "CSS/CSS3/SCSS/LESS": 60,
             "XML": 90,
+            "Python": 0,
             "JSON": 80,
             "SVN": 80,
             "SAML 2.0": 90,
@@ -164,8 +165,8 @@
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
           "disciplinesSet": {
-            "JavaScript/TypeScript": 100,
-            "C#": 95,
+            "C#": 100,
+            "JavaScript/TypeScript": 95,
             "ASP.NET": 100,
             "Microsoft SQL": 75,
             "DevExpress": 100,
@@ -196,7 +197,7 @@
           "title": "Senior Research Software Engineer",
           "responsibilities": [
             {
-              "description": "Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
+              "description": "MVP: Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD" ]
             },
             {

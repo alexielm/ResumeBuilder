@@ -8,6 +8,6 @@ namespace ResumeBuilder.DataSet
         public enum TimeLineEventTypes { Job, Hobby, Education }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public abstract TimeLineEventTypes EventType { get; }   
+        public abstract TimeLineEventTypes EventType { get; }
     }
 }
