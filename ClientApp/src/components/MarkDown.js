@@ -67,7 +67,7 @@ export class MarkDown extends Component {
         return <ReactMarkdown
             components={{
                 a: this.linkComponent,
-                p: ({ node, ...props }) => <span>{props.children}</span>
+                p: ({ node, ...props }) => <span className={this.props.className}>{props.children}</span>
             }}
         >{this.props.children}</ReactMarkdown>;
     }

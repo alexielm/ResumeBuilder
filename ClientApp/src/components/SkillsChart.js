@@ -14,8 +14,7 @@ export class SkillsChart extends Component {
         this.chartTooltipBuilder = this.chartTooltipBuilder.bind(this);
     }
 
-    skills = ["Delphi", "JavaScript", "C#", "JQuery", "React", "Microsoft SQL", "Interbase"];
-    colors = ["#4f5bd5", "#962fbf", "#d62976", "#fa7e1e", "#feda75", "#fba8d2", "#a8d2fb", "#7fff00", "#0058ed", "#f58874", "#00eaff", "#829192", "#800000", "#cbfa14"];
+    colors = ["#4f5bd5", "#feda75", "#962fbf", "#d62976", "#fa7e1e", "#fba8d2", "#a8d2fb", "#7fff00", "#0058ed", "#f58874", "#00eaff", "#829192", "#800000", "#cbfa14"];
 
     chartYAxisFormatter(tickValue) {
         if (tickValue < 12.5) return "Novice";
@@ -56,22 +55,22 @@ export class SkillsChart extends Component {
             })
             .toArray();
 
-        let skills = [];
-        let data = [];
+        let skillsLevelTimeProgress = this.props.skillsLevelTimeProgress;
 
-        //        console.log(data);
+        let skillLines = [...new Set(skillsLevelTimeProgress
+            .map(skills => Object.keys(skills))
+            .flat()
+            .filter(skill => skill !== "year")
+        )];
 
         return (
             <div>
                 <LineChart
                     width={1000}
                     height={280}
-                    data={data}
+                    data={skillsLevelTimeProgress}
                     margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
                 >
-                    <XAxis dataKey="year" type="number" domain={[startingQuinquennium, currentYear]} ticks={ticks} />
-                    <YAxis tickFormatter={this.chartYAxisFormatter} domain={[0, 100]} />
-                    <Tooltip content={this.chartTooltipBuilder} />
                     <Legend
                         layout="vertical"
                         verticalAlign="top"
@@ -80,9 +79,12 @@ export class SkillsChart extends Component {
                             paddingRight: "24px",
                         }}
                     />
+                    <XAxis dataKey="year" type="number" domain={[startingQuinquennium, currentYear]} ticks={ticks} />
+                    <YAxis tickFormatter={this.chartYAxisFormatter} domain={[0, 100]} />
+                    <Tooltip content={this.chartTooltipBuilder} />
                     <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                     {
-                        skills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} />)
+                        skillLines.map((skill, skillIndex) => <Line key={skill} connectNulls={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} />)
                     }
                 </LineChart>
             </div>

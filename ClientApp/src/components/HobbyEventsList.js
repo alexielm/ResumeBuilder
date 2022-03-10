@@ -19,18 +19,20 @@ export class HobbyEventsList extends Component {
                     <div className="HobbyTitle">
                         {event.title}
                     </div>
-                    <div className="HobbyRemarks">
-                        {
-                            event.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
-                        }
-                    </div>
-                    <ViewControl visible={event.disciplines.length}>
-                        <div className="UsedDisciplines">
-                            Used: {
-                                event.disciplines.sort().join(", ")
+                    <div className="HobbySet">
+                        <div className="HobbyRemarks">
+                            {
+                                event.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
                             }
                         </div>
-                    </ViewControl>
+                        <ViewControl visible={event.disciplines.length}>
+                            <div className="JobEnviroment">
+                                Environment: {
+                                    event.disciplines.sort().join(", ")
+                                }
+                            </div>
+                        </ViewControl>
+                    </div>
                 </div>
             );
         });

@@ -34,7 +34,7 @@ namespace ResumeBuilder.DataSet
         public string LastName { get; set; }
         public ContactData Contact { get; set; }
         public List<string> Remarks { get; set; }
-        public List<Dictionary<string, string>> SkillsLevelTimeProgress { get; set; } 
+        public List<Dictionary<string, int?>> SkillsLevelTimeProgress { get; set; } 
         public List<GenericTimeLineEvent> TimeLine { get; set; }
         public Dictionary<string, ReferencesItem> References { get; set; }
     }

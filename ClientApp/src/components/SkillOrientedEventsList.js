@@ -3,8 +3,8 @@ import { RemoveHttp, Period } from '../generalUtils/Utils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
 
-export class JobsPriorityEventsList extends Component {
-    static displayName = JobsPriorityEventsList.name;
+export class SkillOrientedEventsList extends Component {
+    static displayName = SkillOrientedEventsList.name;
 
     constructor(props) {
         super(props);
@@ -40,7 +40,7 @@ export class JobsPriorityEventsList extends Component {
                             <div className="JobRemarks">
                                 <ul>
                                     {
-                                        event.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
+                                        event.remarks.map((remark, remarkIndex) => <li key={remarkIndex}><MarkDown>{remark}</MarkDown>.</li>)
                                     }
                                 </ul>
                             </div>
@@ -62,21 +62,32 @@ export class JobsPriorityEventsList extends Component {
                                             <span className="Title">{career.title}</span>
                                             <span className="Period">{Period(career)}</span>
                                         </div>
+                                        <div className="KeyEnvironment">
+                                            <span className="EnvironmentLabel">Environment: </span>
+                                            <span>
+                                                {
+                                                    [...new Set(
+                                                        career.responsibilities
+                                                            .map(responsibility => responsibility.disciplines)
+                                                            .flat()
+                                                            .concat(career.otherDisciplines)
+                                                    )]
+                                                        .sort()
+                                                        .join(", ")
+                                                }
+                                            </span>
+                                        </div>
+                                        <div className="ResponsibilitiesLabel">Key Responsibilites:</div>
                                         <ul className="Responsibilities">
                                             {
                                                 career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                    return <div key={responsibilityIndex}>
-                                                        <MarkDown>
+                                                    return <li key={responsibilityIndex}>
+                                                        <MarkDown className="JobDescription">
                                                             {
                                                                 responsibility.description
                                                             }
                                                         </MarkDown>.
-                                                        <div className="UsedDisciplines">
-                                                            Environment: {
-                                                                responsibility.disciplines.sort().join(", ")
-                                                            }
-                                                        </div>
-                                                    </div>;
+                                                    </li>;
                                                 })
                                             }
                                         </ul>

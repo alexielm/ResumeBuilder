@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Popover, Modal } from 'antd';
-import "./ResumeViewer.css";
+import { Switch, Menu, Dropdown, Popover, Modal } from 'antd';
+import { DownOutlined, CheckOutlined } from '@ant-design/icons';
 
+import "./ResumeViewer.css";
 
 import PhoneIcon from './images/phone.svg';
 import EmailIcon from './images/email.svg';
@@ -14,7 +15,8 @@ import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
-import { JobsPriorityEventsList } from './JobsPriorityEventsList';
+import { JobsOrientedEventsList } from './JobsOrientedEventsList';
+import { SkillOrientedEventsList } from './SkillOrientedEventsList';
 import { HobbyEventsList } from './HobbyEventsList';
 import { EducationEventsList } from './EducationEventsList';
 import { SkillsChart } from './SkillsChart';
@@ -25,15 +27,6 @@ export class ResumeViewer extends Component {
     constructor(props) {
         super(props);
 
-
-        this.skillPriorityView = (() => {
-            switch (App.QueryParameters.skillPriorityView) {
-                case "true": return true;
-                case "false": return false;
-                default: return App.FrontEndParameters.skillPriorityView;
-            }
-        })();
-
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
 
@@ -43,7 +36,15 @@ export class ResumeViewer extends Component {
         this.openExperienceChart = this.openExperienceChart.bind(this);
         this.closeExperienceChart = this.closeExperienceChart.bind(this);
 
+        this.toggleYearsOfExperienceView = this.toggleYearsOfExperienceView.bind(this);
+        this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
+        this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
+        this.workExperienceViewypeMenu = this.workExperienceViewypeMenu.bind(this);
+
         this.state = {
+            showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
+            workExperienceViewType: App.FrontEndParameters.workExperienceViewType,
+            printHobbiesSection: true,
             skillsChartVisible: false,
             experienceChartVisible: false
         }
@@ -96,6 +97,49 @@ export class ResumeViewer extends Component {
         });
     }
 
+    workExperience(resumeData) {
+        switch (this.state.workExperienceViewType) {
+            case "Jobs": return <JobsOrientedEventsList timeLine={resumeData.timeLine} />;
+            case "Skills": return <SkillOrientedEventsList timeLine={resumeData.timeLine} />;
+            default: return `Invalid 'workExperienceViewType: ${this.state.workExperienceViewType}`;
+        }
+    }
+
+    toggleYearsOfExperienceView() {
+        this.setState({
+            showYearsOfExperience: !this.state.showYearsOfExperience
+        });
+    }
+
+    togglePrintHobbiesSection() {
+        this.setState({
+            printHobbiesSection: !this.state.printHobbiesSection
+        });
+    }
+
+    setWorkExperienceViewType(workExperienceViewType) {
+        this.setState({ workExperienceViewType })
+    }
+
+    workExperienceViewypeMenu() {
+        return <Menu>
+            <Menu.Item key="0" onClick={() => this.setWorkExperienceViewType("Skills")}>
+                Skills Oriented View
+                &nbsp;
+                {
+                    this.state.workExperienceViewType === "Skills" ? <CheckOutlined className="UpAlignedIcon" /> : ""
+                }
+            </Menu.Item>
+            <Menu.Item key="1" onClick={() => this.setWorkExperienceViewType("Jobs")}>
+                Jobs Oriented View
+                &nbsp;
+                {
+                    this.state.workExperienceViewType === "Jobs" ? <CheckOutlined className="UpAlignedIcon" /> : ""
+                }
+            </Menu.Item>
+        </Menu>
+    }
+
     render() {
         let resumeData = App.ResumeData;
         if (resumeData === null) {
@@ -134,35 +178,51 @@ export class ResumeViewer extends Component {
                         <Topic
                             title={<>
                                 TECHNICAL SKILLS
-                                <ViewControl visible={resumeData.skillsLevelTimeProgress?.length}>
-                                    <Popover placement="right" content="Click to view skills chart">
+                                <ViewControl visible={App.FrontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
+                                    <Popover placement="right" content="Click to view skills historical thrend chart">
                                         <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
                                     </Popover>
                                 </ViewControl>
+                                <div className="TopicRightControl">
+                                    <Popover placement="left" content="Show or hide years of experience">
+                                        <Switch size="small" defaultChecked={this.state.showYearsOfExperience} onClick={this.toggleYearsOfExperienceView} />
+                                    </Popover>
+                                </div>
                             </>}
                             className="KeepTogether"
                         >
-                            <TechnicalSkillsList skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} timeLine={resumeData.timeLine} />
+                            <TechnicalSkillsList showYearsOfExperience={this.state.showYearsOfExperience} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} timeLine={resumeData.timeLine} />
                         </Topic>
                         <Topic
                             title={<>
-                                WORK EXPERIENCE
-                                {/*    <Popover placement="right" content="Click to view experience chart">*/}
-                                {/*        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openExperienceChart} />*/}
-                                {/*    </Popover>*/}
+                                <Popover placement="left" content="Change the Work Experience visualization style">
+                                    <Dropdown overlay={this.workExperienceViewypeMenu()} trigger={['click']}>
+                                        <a className="ant-dropdown-link" href="about:blank" onClick={e => e.preventDefault()}>
+                                            WORK EXPERIENCE <DownOutlined className="UpAlignedIcon" />
+                                        </a>
+                                    </Dropdown>
+                                </Popover>
                             </>}
                         >
-                            {
-                                this.skillPriorityView
-                                    ?
-                                    "Not done yet"
-                                    :
-                                    <JobsPriorityEventsList timeLine={resumeData.timeLine} />
-                            }
+                            {this.workExperience(resumeData)}
                         </Topic>
                         <ViewControl visible={resumeData.timeLine.some(event => event.eventType === "Hobby")}>
-                            <Topic title="HOBBY PROJECTS" className="KeepTogether">
-                                <HobbyEventsList timeLine={resumeData.timeLine} />
+                            <Topic
+                                title={<>
+                                    HOBBY PROJECT
+                                    <ViewControl visible={!this.state.printHobbiesSection}>
+                                        &nbsp;(This section is not going to be printed)
+                                    </ViewControl>
+                                    <div className="TopicRightControl">
+                                        <Popover placement="left" content="Include this section when printing or not">
+                                            <Switch size="small" defaultChecked={this.state.printHobbiesSection} onClick={this.togglePrintHobbiesSection} />
+                                        </Popover>
+                                    </div>
+                                </>}
+
+                                className={`KeepTogether ${this.state.printHobbiesSection ? "" : "HiddenTopic"}`}>
+                                <HobbyEventsList timeLine={resumeData.timeLine}
+                                />
                             </Topic>
                         </ViewControl>
                         <Topic title="EDUCATION" className="KeepTogether">
@@ -174,7 +234,7 @@ export class ResumeViewer extends Component {
                 <ViewControl visible={this.state.skillsChartVisible}>
                     <Modal
                         visible={true}
-                        title="Technical Skills"
+                        title="Most Relevant Technical Skills Historical Thrend"
                         width={1040}
                         okButtonProps={{
                             style: {
@@ -189,7 +249,7 @@ export class ResumeViewer extends Component {
                             type: "default"
                         }}
                     >
-                        <SkillsChart />
+                        <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
                     </Modal>
                 </ViewControl>
             </Fragment>

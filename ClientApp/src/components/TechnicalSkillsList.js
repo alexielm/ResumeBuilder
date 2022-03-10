@@ -6,11 +6,7 @@ import App from '../App';
 export class TechnicalSkillsList extends Component {
     static displayName = TechnicalSkillsList.name;
 
-    constructor(props) {
-        super(props);
-
-        this.showYearsOfExperience = App.FrontEndParameters.showYearsOfExperience;
-
+    prepareSkillsSet() {
         let skillTypes = App.FrontEndParameters.skillTypes;
 
         let jobEventTypes = this.props.timeLine.filter(event => event.eventType === "Job");
@@ -42,11 +38,11 @@ export class TechnicalSkillsList extends Component {
                 endYear: 0
             })
             .concat(
-                props.skillsLevelTimeProgress
+                this.props.skillsLevelTimeProgress
                     .map(event => ({
                         disciplines: Object.entries(event).filter(([key, value]) => value && (key !== "year")).map(([key, value]) => key),
-                        startYear: parseInt(event.year),
-                        endYear: parseInt(event.year)
+                        startYear: event.year,
+                        endYear: event.year
                     }))
             )
             .map(disciplinesInYear => disciplinesInYear.disciplines.map(discipline => ({
@@ -59,17 +55,17 @@ export class TechnicalSkillsList extends Component {
         let disciplinesWithStartYear =
             disciplinesPerYearAA
                 .reduce((current, { discipline, startYear }) => {
-                let currentYear = current[discipline];
-                if (currentYear === undefined) {
-                    current[discipline] = startYear;
-                }
-                else {
-                    if ((startYear > 0) && (current[discipline] > startYear)) {
+                    let currentYear = current[discipline];
+                    if (currentYear === undefined) {
                         current[discipline] = startYear;
                     }
-                }
-                return current;
-            }, {});
+                    else {
+                        if ((startYear > 0) && (current[discipline] > startYear)) {
+                            current[discipline] = startYear;
+                        }
+                    }
+                    return current;
+                }, {});
 
         let disciplinesWithEndYear =
             disciplinesPerYearAA
@@ -119,7 +115,7 @@ export class TechnicalSkillsList extends Component {
                     .value
                     .sort()
                     .map(skill => {
-                        if (this.showYearsOfExperience) {
+                        if (this.props.showYearsOfExperience) {
                             let startYear = disciplinesWithStartYear[skill];
                             if (startYear > 0) {
                                 let endYear = disciplinesWithEndYear[skill] ?? currentYear;
@@ -135,8 +131,10 @@ export class TechnicalSkillsList extends Component {
 
         let half = (skills.length / 2) + 0.5;
 
-        this.leftSkillsColumn = this.skillList(skills.slice(0, half));
-        this.rightSkillsColumn = this.skillList(skills.slice(half));
+        return {
+            leftSkillsColumn: this.skillList(skills.slice(0, half)),
+            rightSkillsColumn: this.skillList(skills.slice(half))
+        }
     }
 
     skillList(rows) {
@@ -150,15 +148,16 @@ export class TechnicalSkillsList extends Component {
     }
 
     render() {
+       let skillsSet = this.prepareSkillsSet();
         return (
             <table className="SkillsColumns">
                 <tbody>
                     <tr>
                         <td className="LeftSkillsColumn">
-                            {this.leftSkillsColumn}
+                            {skillsSet.leftSkillsColumn}
                         </td>
                         <td className="RightSkillsColumn">
-                            {this.rightSkillsColumn}
+                            {skillsSet.rightSkillsColumn}
                         </td>
                     </tr>
                 </tbody>

@@ -20,21 +20,63 @@
   "skillsLevelTimeProgress": [
     {
       "year": 1995,
-      "JavaScript/TypeScript": 2,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
       "React": null,
-      "Delphi": 9,
-      "Microsoft SQL": 2,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
       "Docker": null,
-      "Web Services": 4
+      "Web Services": 40
     },
     {
       "year": 2000,
-      "JavaScript/TypeScript": 2,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
       "React": null,
-      "Delphi": 9,
-      "Microsoft SQL": 2,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
       "Docker": null,
-      "Web Services": 4
+      "Web Services": 40
+    },
+    {
+      "year": 2010,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
+      "React": null,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
+      "Docker": null,
+      "Web Services": 40
+    },
+    {
+      "year": 2015,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
+      "React": null,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
+      "Docker": null,
+      "Web Services": 40
+    },
+    {
+      "year": 2020,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
+      "React": null,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
+      "Docker": null,
+      "Web Services": 40
+    },
+    {
+      "year": 2022,
+      "C#": null,
+      "JavaScript/TypeScript": 20,
+      "React": null,
+      "Delphi": 90,
+      "Microsoft SQL": 20,
+      "Docker": null,
+      "Web Services": 40
     }
   ],
   "timeLine": [
@@ -141,7 +183,7 @@
           ],
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
-          "otherDisciplines": [ "SVN", "Unit Test", "MongoDB", "EF/EFCore", "Agile", "TeamCity", "Git", "Microsoft Report Builder", "ReChart" ]
+          "otherDisciplines": [ "SVN", "Unit Test", "MongoDB", "EF/EFCore", "Agile", "TeamCity", "Git", "Microsoft Report Builder", "ReChart", "React", "Redux" ]
         },
         {
           "title": "Senior Research Software Engineer",

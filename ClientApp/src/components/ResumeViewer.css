@@ -1,4 +1,9 @@
-﻿.ResumeViewerBody { /* Supplementing CSS Class MainContent */
+﻿.UpAlignedIcon {
+    position: relative;
+    top: -2px;
+}
+
+.ResumeViewerBody { /* Supplementing CSS Class MainContent */
     padding: 20px 20px 60px 20px;
     width: 1200px;
     left: calc(50% - 600px);
@@ -68,12 +73,27 @@
         padding-left: 10px;
     }
 
+.HiddenTopic {
+    color: #ccc;
+}
+
 .TopicHeader {
     font-size: 20px;
     font-weight: bold;
     margin-top: 16px;
     width: 100%;
     border-bottom: 1px solid #888;
+}
+
+    .TopicHeader a {
+        color: black;
+    }
+
+.TopicRightControl {
+    float: right;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 24px;
 }
 
 .JobTimeLineEvent {
@@ -114,8 +134,12 @@
         margin-left: 19px;
     }
 
+    .JobTimeLineEvent .CareerHeader {
+        padding-top: 8px;
+    }
+
     .JobTimeLineEvent .Title {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
     }
 
@@ -123,12 +147,28 @@
         float: right;
     }
 
+    .JobTimeLineEvent .KeyEnvironment,
+    .JobTimeLineEvent .ResponsibilitiesLabel {
+        padding-top: 5px;
+    }
+
+    .JobTimeLineEvent .EnvironmentLabel,
+    .JobTimeLineEvent .ResponsibilitiesLabel {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
     .JobTimeLineEvent .Responsibilities {
         max-width: 1050px;
         margin-block-end: 10px;
     }
 
-    .JobTimeLineEvent .UsedDisciplines {
+    .JobTimeLineEvent .JobDescription {
+        font-size: 15px;
+    }
+
+
+    .JobTimeLineEvent .JobEnviroment {
         font-style: italic;
         font-size: 12px;
         margin-top: -3px;
@@ -136,19 +176,23 @@
     }
 
 .HobbyTimeLineEvent {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
     .HobbyTimeLineEvent .HobbyTitle {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
     }
 
-    .HobbyTimeLineEvent .UsedDisciplines {
+    .HobbyTimeLineEvent .HobbySet {
+        padding-left: 28px;
+    }
+
+    .HobbyTimeLineEvent .JobEnviroment {
         font-style: italic;
         font-size: 12px;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
     }
 
 
@@ -278,6 +322,18 @@
     }
 
     .PrintIcon, .ChartIcon {
+        display: none;
+    }
+
+    .anticon-down {
+        display: none;
+    }
+
+    .TopicRightControl {
+        display: none;
+    }
+
+    .HiddenTopic {
         display: none;
     }
 }
