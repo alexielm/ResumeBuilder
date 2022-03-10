@@ -2,9 +2,14 @@
 <html lang="en">
   <head>
       <script type="text/javascript">
-          if (!location.href.endsWith("/")) {
-              window.stop();
-              location.href = location.href + "/";
+
+          let href = location.href;
+          let search = location.search;
+          let server = href.substring(0, href.length - search.length);
+
+          if (!server.endsWith("/")) {
+             window.stop();
+              location.href = server + "/" + search;
           }
       </script>
     <meta charset="utf-8">

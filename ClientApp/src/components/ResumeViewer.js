@@ -14,7 +14,7 @@ import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
-import { JobsEventsList } from './JobsEventsList';
+import { JobsPriorityEventsList } from './JobsPriorityEventsList';
 import { HobbyEventsList } from './HobbyEventsList';
 import { EducationEventsList } from './EducationEventsList';
 import { SkillsChart } from './SkillsChart';
@@ -24,6 +24,15 @@ export class ResumeViewer extends Component {
 
     constructor(props) {
         super(props);
+
+
+        this.skillPriorityView = (() => {
+            switch (App.QueryParameters.skillPriorityView) {
+                case "true": return true;
+                case "false": return false;
+                default: return App.FrontEndParameters.skillPriorityView;
+            }
+        })();
 
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
@@ -35,7 +44,7 @@ export class ResumeViewer extends Component {
         this.closeExperienceChart = this.closeExperienceChart.bind(this);
 
         this.state = {
-            skillsChartVisible: true,
+            skillsChartVisible: false,
             experienceChartVisible: false
         }
     }
@@ -125,23 +134,31 @@ export class ResumeViewer extends Component {
                         <Topic
                             title={<>
                                 TECHNICAL SKILLS
-                                <Popover placement="right" content="Click to view skills chart">
-                                    <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
-                                </Popover>
+                                <ViewControl visible={resumeData.skillsLevelTimeProgress?.length}>
+                                    <Popover placement="right" content="Click to view skills chart">
+                                        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
+                                    </Popover>
+                                </ViewControl>
                             </>}
                             className="KeepTogether"
                         >
-                            <TechnicalSkillsList timeLine={resumeData.timeLine} />
+                            <TechnicalSkillsList skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} timeLine={resumeData.timeLine} />
                         </Topic>
                         <Topic
                             title={<>
                                 WORK EXPERIENCE
-                            {/*    <Popover placement="right" content="Click to view experience chart">*/}
-                            {/*        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openExperienceChart} />*/}
-                            {/*    </Popover>*/}
+                                {/*    <Popover placement="right" content="Click to view experience chart">*/}
+                                {/*        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openExperienceChart} />*/}
+                                {/*    </Popover>*/}
                             </>}
                         >
-                            <JobsEventsList timeLine={resumeData.timeLine} />
+                            {
+                                this.skillPriorityView
+                                    ?
+                                    "Not done yet"
+                                    :
+                                    <JobsPriorityEventsList timeLine={resumeData.timeLine} />
+                            }
                         </Topic>
                         <ViewControl visible={resumeData.timeLine.some(event => event.eventType === "Hobby")}>
                             <Topic title="HOBBY PROJECTS" className="KeepTogether">
@@ -172,7 +189,7 @@ export class ResumeViewer extends Component {
                             type: "default"
                         }}
                     >
-                        <SkillsChart skillTypes={App.FrontEndParameters.skillTypes} timeLine={resumeData.timeLine} />
+                        <SkillsChart />
                     </Modal>
                 </ViewControl>
             </Fragment>

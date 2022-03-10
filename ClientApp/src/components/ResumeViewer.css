@@ -145,6 +145,13 @@
         font-weight: bold;
     }
 
+    .HobbyTimeLineEvent .UsedDisciplines {
+        font-style: italic;
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
+
+
 .EducationTimeLineEvent {
     margin-bottom: 20px;
 }
@@ -197,7 +204,7 @@
         font-weight: bold;
         padding-right: 5px;
         text-align: right;
-        vertical-align: central;
+        vertical-align: middle;
     }
 
     .SkillsList .SkillConnector {
@@ -216,7 +223,7 @@
 
     .SkillsList .SkillMembers {
         text-align: left;
-        vertical-align: top;
+        vertical-align: middle;
     }
 
 .ReferenceTopic {

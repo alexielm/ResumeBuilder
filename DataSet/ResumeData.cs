@@ -23,9 +23,10 @@ namespace ResumeBuilder.DataSet
         {
             var serializerSettings = new JsonSerializerSettings();
             serializerSettings.Converters.Add(new TimeLineEventConverter());
-            Remarks.Clear();
-            TimeLine.Clear();
-            References.Clear();
+            Remarks?.Clear();
+            SkillsLevelTimeProgress?.Clear();
+            TimeLine?.Clear();
+            References?.Clear();
             JsonConvert.PopulateObject(resumeDataString(), this, serializerSettings);
         }
 
@@ -33,6 +34,7 @@ namespace ResumeBuilder.DataSet
         public string LastName { get; set; }
         public ContactData Contact { get; set; }
         public List<string> Remarks { get; set; }
+        public List<Dictionary<string, string>> SkillsLevelTimeProgress { get; set; } 
         public List<GenericTimeLineEvent> TimeLine { get; set; }
         public Dictionary<string, ReferencesItem> References { get; set; }
     }

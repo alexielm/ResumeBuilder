@@ -7,5 +7,6 @@
         public string Title { get; set; }
 
         public List<string> Remarks { get; set; } = new List<string>();
+        public List<string> Disciplines { get; set; } = new List<string>();
     }
 }

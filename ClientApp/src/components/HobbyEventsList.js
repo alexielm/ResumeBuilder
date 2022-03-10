@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MarkDown } from './MarkDown';
+import { ViewControl } from '../generalUtils/ViewControl';
 
 export class HobbyEventsList extends Component {
     static displayName = HobbyEventsList.name;
@@ -23,6 +24,13 @@ export class HobbyEventsList extends Component {
                             event.remarks.map((remark, remarkIndex) => <div key={remarkIndex}><MarkDown>{remark}</MarkDown>.</div>)
                         }
                     </div>
+                    <ViewControl visible={event.disciplines.length}>
+                        <div className="UsedDisciplines">
+                            Used: {
+                                event.disciplines.sort().join(", ")
+                            }
+                        </div>
+                    </ViewControl>
                 </div>
             );
         });

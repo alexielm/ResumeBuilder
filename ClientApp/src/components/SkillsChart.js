@@ -26,6 +26,9 @@ export class SkillsChart extends Component {
     }
 
     chartTooltipBuilder(tooltipElement) {
+        if (!tooltipElement.payload) {
+            return null;
+        }
         return <div className="ToolTipPanel">
             <div>Year: {tooltipElement.label}</div>
             {
@@ -42,11 +45,6 @@ export class SkillsChart extends Component {
         let currentQuinquennium = currentYear - (currentYear % 5);
         let startingQuinquennium = currentQuinquennium - 20;
 
-        let skills = this.props.skillTypes
-            .filter(skillType => (skillType.name === "Languages") || (skillType.name === "Development Framewords and Tools"))
-            .map(skillType => skillType.members)
-            .flat();
-
         let ticks = Enumerable
             .range(0, 6)
             .select(index => {
@@ -58,21 +56,10 @@ export class SkillsChart extends Component {
             })
             .toArray();
 
-        let data = this.props.timeLine
-            .filter(event => event.eventType === "Job")
-            .map(event => {
-                return event.career.map(job => ({
-                    title: job.title,
-                    year: moment(job.endDate).year(),
-                    ...job.disciplinesSet
-                }));
-            })
-            .flat()
-            .sort((left, right) => left.year === right.year ? 0 : (left.year < right.year ? -1 : 1));
+        let skills = [];
+        let data = [];
 
-        console.log(data);
-
-        let topSkills = skills.splice(0, 10);
+        //        console.log(data);
 
         return (
             <div>
@@ -95,7 +82,7 @@ export class SkillsChart extends Component {
                     />
                     <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                     {
-                        topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} />)
+                        skills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} />)
                     }
                 </LineChart>
             </div>

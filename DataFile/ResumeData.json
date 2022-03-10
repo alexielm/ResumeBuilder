@@ -17,6 +17,26 @@
     "In my spare time I write code to automate tasks at home from the alarm system to data analytics for my drone flights",
     "Also love photography and building stuff with my hands"
   ],
+  "skillsLevelTimeProgress": [
+    {
+      "year": 1995,
+      "JavaScript/TypeScript": 2,
+      "React": null,
+      "Delphi": 9,
+      "Microsoft SQL": 2,
+      "Docker": null,
+      "Web Services": 4
+    },
+    {
+      "year": 2000,
+      "JavaScript/TypeScript": 2,
+      "React": null,
+      "Delphi": 9,
+      "Microsoft SQL": 2,
+      "Docker": null,
+      "Web Services": 4
+    }
+  ],
   "timeLine": [
     {
       "eventType": "Job",
@@ -57,27 +77,18 @@
           ],
           "startDate": "2001-04-09T00:00:00",
           "endDate": "2008-05-01T00:00:00",
-          "disciplinesSet": {
-            "Delphi": 95,
-            "C#": 60,
-            "ASP.NET": 45,
-            "JavaScript/TypeScript": 65,
-            "Interbase": 90,
-            "Microsoft SQL": 20,
-            "TeeChart": 75,
-            "ReportBuilder": 75
-          }
+          "otherDisciplines": []
         },
         {
           "title": "Senior Software Developer",
           "responsibilities": [
             {
               "description": "Worked on RL6; the full Web Based version of the application that sunseted the desktop version",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML" ]
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML", "SOAP API" ]
             },
             {
               "description": "Build the full Web Based version of Reports. [](^sred_irap)",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SOAP API" ]
             },
             {
               "description": "Worked on the Alers system [](^sred_irap)",
@@ -85,7 +96,7 @@
             },
             {
               "description": "Built the first HL7 Query on demand system",
-              "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON" ]
+              "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON", "SOAP API" ]
             },
             {
               "description": "Build the Reports Dashboard Viewer",
@@ -94,20 +105,7 @@
           ],
           "startDate": "2008-05-01T00:00:00",
           "endDate": "2013-08-01T00:00:00",
-          "disciplinesSet": {
-            "JavaScript/TypeScript": 75,
-            "C#": 85,
-            "ASP.NET": 55,
-            "Microsoft SQL": 40,
-            "DevExpress": 40,
-            "Windows Services": 60,
-            "jQuery": 60,
-            "CSS/CSS3/SCSS/LESS": 50,
-            "XML": 70,
-            "JSON": 50,
-            "SVN": 60,
-            "MVC": 75
-          }
+          "otherDisciplines": [ "SVN", "MVC" ]
         },
         {
           "title": "Software Architect",
@@ -122,33 +120,12 @@
             },
             {
               "description": "Built the Federated Authentication module",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SAML 2.0", "OAuth 2.0", "Windows Active Directory" ]
+              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SAML 2.0", "JWT", "OAuth 2.0", "Windows Active Directory" ]
             }
           ],
           "startDate": "2013-08-01T00:00:00",
           "endDate": "2015-02-01T00:00:00",
-          "disciplinesSet": {
-            "JavaScript/TypeScript": 90,
-            "C#": 95,
-            "ASP.NET": 90,
-            "Microsoft SQL": 60,
-            "DevExpress": 60,
-            "Windows Services": 80,
-            "jQuery": 75,
-            "CSS/CSS3/SCSS/LESS": 60,
-            "XML": 90,
-            "Python": 0,
-            "JSON": 80,
-            "SVN": 80,
-            "SAML 2.0": 90,
-            "OAuth 2.0": 30,
-            "Windows Active Directory": 75,
-            "RESTful API": 25,
-            "NodeJS": 50,
-            "Unit Test": 60,
-            "MVC": 90,
-            "Agile": 25
-          }
+          "otherDisciplines": [  "SVN", "Unit Test", "Agile" ]
         },
         {
           "title": "Development Team Leader",
@@ -164,49 +141,22 @@
           ],
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
-          "disciplinesSet": {
-            "C#": 100,
-            "JavaScript/TypeScript": 95,
-            "ASP.NET": 100,
-            "Microsoft SQL": 75,
-            "DevExpress": 100,
-            "Windows Services": 100,
-            "jQuery": 100,
-            "CSS/CSS3/SCSS/LESS": 80,
-            "XML": 100,
-            "JSON": 95,
-            "SVN": 90,
-            "SAML 2.0": 90,
-            "OAuth 2.0": 50,
-            "Windows Active Directory": 75,
-            "React": 40,
-            ".NET Core": 25,
-            "RESTful API": 75,
-            "NodeJS": 90,
-            "Unit Test": 80,
-            "MongoDB": 25,
-            "EF/EFCore": 75,
-            "Agile": 80,
-            "TeamCity": 25,
-            "Git": 50,
-            "Microsoft Report Builder": 10,
-            "ReChart": 50
-          }
+          "otherDisciplines": [ "SVN", "Unit Test", "MongoDB", "EF/EFCore", "Agile", "TeamCity", "Git", "Microsoft Report Builder", "ReChart" ]
         },
         {
           "title": "Senior Research Software Engineer",
           "responsibilities": [
             {
-              "description": "MVP: Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD" ]
+              "description": "MVP for Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD", "RESTful API", "JWT", "SAML 2.0", "Auth0", "OAuth 2.0" ]
             },
             {
               "description": "Worked on a Module to allow End User access to AI Analitics Tools",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux/Mobx", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart" ]
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
               "description": "Worked on AI module to predict values such as Incidents Severity Level",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux/Mobx", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr" ]
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API" ]
             },
             {
               "description": "Worked on Containarization of the RL6 Web App and the Dashboard",
@@ -214,46 +164,12 @@
             },
             {
               "description": "Upgraded services to .NET Core and to run in Containers - AWS and AZURE",
-              "disciplines": [ "C#", "Microsoft SQL", ".NET Core", "SQLite", "OrmLite", "Windows Services", "Docker", "Kubernetes", "Kafka/KafkaStream", "Dapr" ]
+              "disciplines": [ "C#", "Microsoft SQL", ".NET Core", "SQLite", "OrmLite", "Windows Services", "Docker", "Kubernetes", "Kafka/KafkaStream", "Dapr", "Azure DevOps", "AWS", "AZURE" ]
             }
           ],
           "startDate": "2017-11-01T00:00:00",
           "endDate": "2022-02-02T00:00:00",
-          "disciplinesSet": {
-            "C#": 100,
-            "JavaScript/TypeScript": 100,
-            "React": 100,
-            "Microsoft SQL": 90,
-            "ASP.NET": 100,
-            ".NET Core": 100,
-            "Redux/Mobx": 75,
-            "CSS/CSS3/SCSS/LESS": 90,
-            "Material Design": 50,
-            "Bootstrap": 50,
-            "ANTD": 90,
-            "Python": 25,
-            "SQLite": 50,
-            "MySQL": 50,
-            "PostgreSQL": 50,
-            "MongoDB": 25,
-            "OrmLite": 50,
-            "Windows Services": 100,
-            "Docker": 75,
-            "Kubernetes": 50,
-            "Kafka/KafkaStream": 75,
-            "RabitMQ": 75,
-            "Dapr": 50,
-            "Ocelot": 50,
-            "Agile": 80,
-            "TeamCity": 80,
-            "Octopus": 50,
-            "Git": 100,
-            "Azure DevOps": 75,
-            "Yellowfin": 50,
-            "Microsoft Report Builder": 50,
-            "Tableau": 25,
-            "ReChart": 75
-          }
+          "otherDisciplines": [ ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "Material Design", "MySQL", "PostgreSQL", "MongoDB", "Agile", "TeamCity", "Octopus", "Git", "Yellowfin", "Microsoft Report Builder", "Tableau" ]
         }
       ]
     },
@@ -273,11 +189,7 @@
           ],
           "startDate": "2000-12-01T00:00:00",
           "endDate": "2001-03-15T00:00:00",
-          "disciplinesSet": {
-            "Delphi": 85,
-            "C#": 0
-          }
-
+          "otherDisciplines": []
         }
       ]
     },
@@ -295,7 +207,7 @@
             },
             {
               "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salbador Central-American and Caribbean Games (1993) as well as many others similar sport events in Cuba",
-              "disciplines": [ "Delphi", "XML", "Serial ommunication", "TCP/IP" ]
+              "disciplines": [ "Delphi", "XML", "Serial Communication", "TCP/IP" ]
             },
             {
               "description": "Developed software and hardware to substitude outdate mechanical teletypes by a computer (1992)",
@@ -312,13 +224,7 @@
           ],
           "startDate": "1988-07-01T00:00:00",
           "endDate": "2000-08-01T00:00:00",
-          "disciplinesSet": {
-            "Delphi": 75,
-            "JavaScript/TypeScript": 50,
-            "XML": 50,
-            "CSS/CSS3/SCSS/LESS": 40,
-            "Microsoft SQL": 25
-          }
+          "otherDisciplines": [ ]
         }
       ]
     },
@@ -328,7 +234,8 @@
       "remarks": [
         "This application shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
         "To test it you can download this example dji drone log file: <http://www.nexus-solutions.org/DJI_Logs/DJIFlightRecord_2017-08-14_[14-58-22].txt>"
-      ]
+      ],
+      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
     },
     {
       "eventType": "Hobby",
@@ -336,7 +243,8 @@
       "remarks": [
         "This desktop windows application is a light weight 360 photo viewer",
         "Source Code Available on GitHub: <https://github.com/alexielm/Spherical360Viewer>"
-      ]
+      ],
+      "disciplines": [ "C#" ]
     },
     {
       "eventType": "Hobby",
@@ -345,14 +253,16 @@
         "This is a lightning fast web based 360 photo viewer",
         "Source Code Available on GitHub: <https://github.com/alexielm/Html360Viewer>",
         "Demo version at: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
-      ]
+      ],
+      "disciplines": [ "JavaScript/TypeScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js"]
     },
     {
       "eventType": "Hobby",
       "title": "RV Level",
       "remarks": [
         "Software and hardware to help leveling an RV (Recreational Vehicle). The device is accessed from an Android or Apple phone via WiFi and Web App so leveling process can be monitored from the driver's seat"
-      ]
+      ],
+      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "Adobe Photoshop" ]
     },
     {
       "eventType": "Hobby",
@@ -360,7 +270,8 @@
       "remarks": [
         "A set of softwares and hardwares to monitor doors and windows and notify me if something is wrong as well as knowing when we are home or not.",
         "This also includes connectivity with Alexa and Google Home. More details upon request"
-      ]
+      ],
+      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
     },
     {
       "eventType": "Education",

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import CurlyBracketLeft from './images/curly_bracket_left.svg';
+import moment from 'moment';
 import App from '../App';
 
 export class TechnicalSkillsList extends Component {
@@ -7,21 +8,86 @@ export class TechnicalSkillsList extends Component {
 
     constructor(props) {
         super(props);
-        let skillTypes = App.FrontEndParameters.skillTypes;
-        let jobs = this.props.timeLine.filter(event => event.eventType === "Job");
 
-        let disciplines = [...new Set(
-            jobs
-                .map(job => job
-                    .career
-                    .map(career => Object.keys(
-                        career.disciplinesSet)
-                    )
+        this.showYearsOfExperience = App.FrontEndParameters.showYearsOfExperience;
+
+        let skillTypes = App.FrontEndParameters.skillTypes;
+
+        let jobEventTypes = this.props.timeLine.filter(event => event.eventType === "Job");
+        let hobbyEventTypes = this.props.timeLine.filter(event => event.eventType === "Hobby");
+
+        let disciplinesPerYearAA = jobEventTypes
+            .map(job => job
+                .career
+                .map(career => career
+                    .responsibilities
+                    .map(responsibility => ({
+                        disciplines: responsibility.disciplines,
+                        startYear: moment(career.startDate).year(),
+                        endYear: moment(career.endDate).year()
+                    }))
                     .flat()
+                    .concat({
+                        disciplines: career.otherDisciplines,
+                        startYear: moment(career.startDate).year(),
+                        endYear: moment(career.endDate).year()
+                    })
                 )
                 .flat()
-        )];
+            )
+            .flat()
+            .concat({
+                disciplines: hobbyEventTypes.map(hobby => hobby.disciplines).flat(),
+                startYear: 0,
+                endYear: 0
+            })
+            .concat(
+                props.skillsLevelTimeProgress
+                    .map(event => ({
+                        disciplines: Object.entries(event).filter(([key, value]) => value && (key !== "year")).map(([key, value]) => key),
+                        startYear: parseInt(event.year),
+                        endYear: parseInt(event.year)
+                    }))
+            )
+            .map(disciplinesInYear => disciplinesInYear.disciplines.map(discipline => ({
+                discipline,
+                startYear: disciplinesInYear.startYear,
+                endYear: disciplinesInYear.endYear
+            })))
+            .flat();
 
+        let disciplinesWithStartYear =
+            disciplinesPerYearAA
+                .reduce((current, { discipline, startYear }) => {
+                let currentYear = current[discipline];
+                if (currentYear === undefined) {
+                    current[discipline] = startYear;
+                }
+                else {
+                    if ((startYear > 0) && (current[discipline] > startYear)) {
+                        current[discipline] = startYear;
+                    }
+                }
+                return current;
+            }, {});
+
+        let disciplinesWithEndYear =
+            disciplinesPerYearAA
+                .reduce((current, { discipline, endYear }) => {
+                    let currentYear = current[discipline];
+                    if (currentYear === undefined) {
+                        current[discipline] = endYear;
+                    }
+                    else {
+                        if ((endYear > 0) && (current[discipline] < endYear)) {
+                            current[discipline] = endYear;
+                        }
+                    }
+                    return current;
+                }, {});
+
+        let disciplines = Object.keys(disciplinesWithStartYear);
+        let currentYear = moment().year();
         let skillsByCategory = skillTypes
             .map(skillType => ({
                 name: skillType.name,
@@ -49,11 +115,25 @@ export class TechnicalSkillsList extends Component {
                 <td className="SkillConnector">
                     <img src={CurlyBracketLeft} className="CurlyBracketLeft" alt="CurlyBracketLeft" />
                 </td>
-                <td className="SkillMembers">{skill.value.map(v => v.replace(/ /g, "\u00a0")).join(", ")}</td>
+                <td className="SkillMembers">{skill
+                    .value
+                    .sort()
+                    .map(skill => {
+                        if (this.showYearsOfExperience) {
+                            let startYear = disciplinesWithStartYear[skill];
+                            if (startYear > 0) {
+                                let endYear = disciplinesWithEndYear[skill] ?? currentYear;
+                                return `${skill} (${endYear - startYear}+)`;
+                            }
+                        }
+                        return skill;
+                    })
+
+                    .map(string => string.replace(/ /g, "\u00a0")).join(", ")}</td>
             </tr>
         );
 
-        let half = (skills.length / 2);
+        let half = (skills.length / 2) + 0.5;
 
         this.leftSkillsColumn = this.skillList(skills.slice(0, half));
         this.rightSkillsColumn = this.skillList(skills.slice(half));

@@ -3,8 +3,8 @@ import { RemoveHttp, Period } from '../generalUtils/Utils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
 
-export class JobsEventsList extends Component {
-    static displayName = JobsEventsList.name;
+export class JobsPriorityEventsList extends Component {
+    static displayName = JobsPriorityEventsList.name;
 
     constructor(props) {
         super(props);
@@ -72,7 +72,7 @@ export class JobsEventsList extends Component {
                                                             }
                                                         </MarkDown>.
                                                         <div className="UsedDisciplines">
-                                                            Used: {
+                                                            Environment: {
                                                                 responsibility.disciplines.sort().join(", ")
                                                             }
                                                         </div>
