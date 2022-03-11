@@ -10,16 +10,19 @@ import PrintIcon from './images/print.svg';
 import ChartIcon from './images/chart.svg';
 
 import App from '../App';
-import { RemoveHttp } from '../generalUtils/Utils';
+import { HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/Utils';
 import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
 import { TechnicalSkillsList } from './TechnicalSkillsList';
 import { JobsOrientedEventsList } from './JobsOrientedEventsList';
 import { SkillOrientedEventsList } from './SkillOrientedEventsList';
+import { SpecificSkillsOrientedEventsList } from './SpecificSkillsOrientedEventsList';
 import { HobbyEventsList } from './HobbyEventsList';
 import { EducationEventsList } from './EducationEventsList';
 import { SkillsChart } from './SkillsChart';
+
+const { SubMenu } = Menu;
 
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
@@ -29,21 +32,19 @@ export class ResumeViewer extends Component {
 
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
-
+        this.workExperienceViewTypeDescriptor = this.workExperienceViewTypeDescriptor.bind(this);
         this.openSkillsChart = this.openSkillsChart.bind(this);
         this.closeSkillsChart = this.closeSkillsChart.bind(this);
-
         this.openExperienceChart = this.openExperienceChart.bind(this);
         this.closeExperienceChart = this.closeExperienceChart.bind(this);
-
         this.toggleYearsOfExperienceView = this.toggleYearsOfExperienceView.bind(this);
         this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
         this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
-        this.workExperienceViewypeMenu = this.workExperienceViewypeMenu.bind(this);
+        this.workExperienceViewypeMenu = this.workExperienceViewerTypeMenu.bind(this);
 
         this.state = {
             showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
-            workExperienceViewType: App.FrontEndParameters.workExperienceViewType,
+            experienceViewerType: this.getExperienceViewerType(App.FrontEndParameters.workExperienceViewType),
             printHobbiesSection: true,
             skillsChartVisible: false,
             experienceChartVisible: false
@@ -97,14 +98,6 @@ export class ResumeViewer extends Component {
         });
     }
 
-    workExperience(resumeData) {
-        switch (this.state.workExperienceViewType) {
-            case "Jobs": return <JobsOrientedEventsList timeLine={resumeData.timeLine} />;
-            case "Skills": return <SkillOrientedEventsList timeLine={resumeData.timeLine} />;
-            default: return `Invalid 'workExperienceViewType: ${this.state.workExperienceViewType}`;
-        }
-    }
-
     toggleYearsOfExperienceView() {
         this.setState({
             showYearsOfExperience: !this.state.showYearsOfExperience
@@ -117,33 +110,88 @@ export class ResumeViewer extends Component {
         });
     }
 
-    setWorkExperienceViewType(workExperienceViewType) {
-        this.setState({ workExperienceViewType })
+
+    getExperienceViewerType(workExperienceViewType) {
+        let viewTypeDividerIndex = workExperienceViewType.indexOf("|");
+        if (viewTypeDividerIndex < 0) {
+            return {
+                type: workExperienceViewType,
+                parameter: ""
+            }
+        }
+        return {
+            type: workExperienceViewType.substring(0, viewTypeDividerIndex),
+            parameter: workExperienceViewType.substring(viewTypeDividerIndex + 1),
+        }
     }
 
-    workExperienceViewypeMenu() {
+    workExperience(resumeData) {
+        let experienceViewerType = this.state.experienceViewerType;
+        switch (experienceViewerType.type) {
+            case "Jobs": return <JobsOrientedEventsList timeLine={resumeData.timeLine} />;
+            case "Skills": return <SkillOrientedEventsList timeLine={resumeData.timeLine} />;
+            case "SpecificSkill": return <SpecificSkillsOrientedEventsList timeLine={resumeData.timeLine} skillSetType={experienceViewerType.parameter} />;
+            default: return `Invalid viewer type: ${experienceViewerType.type}`;
+        }
+    }
+
+    setWorkExperienceViewType(type, parameter) {
+        this.setState({
+            experienceViewerType: {
+                type,
+                parameter
+            }
+        })
+    }
+
+    workExperienceViewTypeDescriptor() {
+        let experienceViewerType = this.state.experienceViewerType;
+        switch (experienceViewerType.type) {
+            case "Jobs": return "";
+            case "Skills": return "";
+            case "SpecificSkill": return <span className="JobTimeLineFilteType">
+                <HorizontalSpacer />
+                (Organized by {
+                    experienceViewerType.parameter
+                } skills)
+            </span>;
+            default: return "";
+        }
+    }
+
+    workExperienceMenuIcon(type, parameter) {
+        if ((this.state.experienceViewerType.type === type) && ((parameter === undefined) || (this.state.experienceViewerType.parameter === parameter))) {
+            return <CheckOutlined />;
+        }
+        return <IconSpacer />;
+    }
+
+    workExperienceViewerTypeMenu() {
+        let skillTypes = App.FrontEndParameters.skillTypes;
+
         return <Menu>
-            <Menu.Item key="0" onClick={() => this.setWorkExperienceViewType("Skills")}>
+            <Menu.Item key="skillsOriented" icon={this.workExperienceMenuIcon("Skills")} onClick={() => this.setWorkExperienceViewType("Skills")}>
                 Skills Oriented View
-                &nbsp;
-                {
-                    this.state.workExperienceViewType === "Skills" ? <CheckOutlined className="UpAlignedIcon" /> : ""
-                }
             </Menu.Item>
-            <Menu.Item key="1" onClick={() => this.setWorkExperienceViewType("Jobs")}>
+            <Menu.Item key="jobOriented" icon={this.workExperienceMenuIcon("Jobs")} onClick={() => this.setWorkExperienceViewType("Jobs")}>
                 Jobs Oriented View
-                &nbsp;
-                {
-                    this.state.workExperienceViewType === "Jobs" ? <CheckOutlined className="UpAlignedIcon" /> : ""
-                }
             </Menu.Item>
+            <Menu.Divider />
+            <SubMenu key="specificSkill" icon={this.workExperienceMenuIcon("SpecificSkill")} title="Specific Skill Oriented">
+                {
+                    skillTypes.map(skill =>
+                        <Menu.Item key={skill.name} icon={this.workExperienceMenuIcon("SpecificSkill", skill.name)} onClick={() => this.setWorkExperienceViewType("SpecificSkill", skill.name)}>
+                            {skill.name}
+                        </Menu.Item>)
+                }
+            </SubMenu>
         </Menu>
     }
 
     render() {
         let resumeData = App.ResumeData;
         if (resumeData === null) {
-            return (<div>
+            return (<div className="Loading">
                 Loading resume data...
             </div>);
         }
@@ -196,9 +244,12 @@ export class ResumeViewer extends Component {
                         <Topic
                             title={<>
                                 <Popover placement="left" content="Change the Work Experience visualization style">
-                                    <Dropdown overlay={this.workExperienceViewypeMenu()} trigger={['click']}>
+                                    <Dropdown overlay={this.workExperienceViewerTypeMenu()} trigger={['click']}>
                                         <a className="ant-dropdown-link" href="about:blank" onClick={e => e.preventDefault()}>
-                                            WORK EXPERIENCE <DownOutlined className="UpAlignedIcon" />
+                                            MOST RELEVANT WORK EXPERIENCES
+                                            <this.workExperienceViewTypeDescriptor />
+                                            <HorizontalSpacer />
+                                            <DownOutlined className="UpAlignedIcon" />
                                         </a>
                                     </Dropdown>
                                 </Popover>
@@ -241,8 +292,6 @@ export class ResumeViewer extends Component {
                                 display: "none"
                             }
                         }}
-
-
                         onCancel={this.closeSkillsChart}
                         cancelText="Close"
                         cancelButtonProps={{

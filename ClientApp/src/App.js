@@ -34,8 +34,8 @@ export default class App extends Component {
             <div className="MainContainer">
                 {
                     App.FrontEndParameters === null ?
-                        (<div>
-                            Loading configuration...
+                        (<div className="Loading">
+                            Loading application configuration...
                         </div>) :
                         <ResumeViewer />
                 }

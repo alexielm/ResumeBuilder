@@ -94,23 +94,23 @@
           "responsibilities": [
             {
               "description": "Worked on Forms and on the Info center for the Risk Module and Feedback Module",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi", "Interbase", "Microsoft SQL" ]
             },
             {
               "description": "Built Desktop Report Center from scratch",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
             },
             {
               "description": "Built Report Wizard. [](^sred_irap)",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi"]
             },
             {
               "description": "Worked on the first Web version of the application",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL" ]
             },
             {
               "description": "Build the first HL7 message listener",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TCP/IP"]
             },
             {
               "description": "Build the first Web Reports. This was only a web viewer of the Desktop reports",
@@ -174,7 +174,7 @@
           "responsibilities": [
             {
               "description": "Worked the Reports Dashboard Client Side Editor",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API" ]
+              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
             },
             {
               "description": "Worked on the ETL Module and customizations to export data to PSRS, NDNQI and others",
@@ -183,7 +183,7 @@
           ],
           "startDate": "2015-02-01T00:00:00",
           "endDate": "2017-11-01T00:00:00",
-          "otherDisciplines": [ "SVN", "Unit Test", "MongoDB", "EF/EFCore", "Agile", "TeamCity", "Git", "Microsoft Report Builder", "ReChart", "React", "Redux" ]
+          "otherDisciplines": [ "SVN", "Unit Test", "MongoDB", "EF/EFCore", "Agile", "TeamCity", "Git", "Microsoft Report Builder", "ReChart" ]
         },
         {
           "title": "Senior Research Software Engineer",

@@ -18,3 +18,12 @@ export function ClassNames(classNames) {
         .filter(className => className)
         .join(" ");
 }
+
+export function HorizontalSpacer() {
+    return <span className="HorizontalSpacer">&nbsp;</span>;
+}
+
+export function IconSpacer() {
+    return <span className="MenuIconSpacer"></span>;
+}
+
