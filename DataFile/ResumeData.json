@@ -102,7 +102,7 @@
             },
             {
               "description": "Built Report Wizard. [](^sred_irap)",
-              "disciplines": [ "Delphi"]
+              "disciplines": [ "Delphi" ]
             },
             {
               "description": "Worked on the first Web version of the application",
@@ -110,7 +110,7 @@
             },
             {
               "description": "Build the first HL7 message listener",
-              "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TCP/IP"]
+              "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TCP/IP" ]
             },
             {
               "description": "Build the first Web Reports. This was only a web viewer of the Desktop reports",
@@ -167,7 +167,7 @@
           ],
           "startDate": "2013-08-01T00:00:00",
           "endDate": "2015-02-01T00:00:00",
-          "otherDisciplines": [  "SVN", "Unit Test", "Agile" ]
+          "otherDisciplines": [ "SVN", "Unit Test", "Agile" ]
         },
         {
           "title": "Development Team Leader",
@@ -266,9 +266,18 @@
           ],
           "startDate": "1988-07-01T00:00:00",
           "endDate": "2000-08-01T00:00:00",
-          "otherDisciplines": [ ]
+          "otherDisciplines": []
         }
       ]
+    },
+    {
+      "eventType": "Hobby",
+      "title": "Resume Builder",
+      "remarks": [
+        "This application generates personal resumes allowing for dynamic changes for different view styles: <http://nexus-solutions.org/resume/>",
+        "Source Code Available on GitHub: <https://github.com/alexielm/ResumeBuilder>"
+      ],
+      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API" ]
     },
     {
       "eventType": "Hobby",
@@ -296,7 +305,7 @@
         "Source Code Available on GitHub: <https://github.com/alexielm/Html360Viewer>",
         "Demo version at: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
       ],
-      "disciplines": [ "JavaScript/TypeScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js"]
+      "disciplines": [ "JavaScript/TypeScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js" ]
     },
     {
       "eventType": "Hobby",
