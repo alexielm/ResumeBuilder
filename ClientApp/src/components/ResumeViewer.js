@@ -36,8 +36,6 @@ export class ResumeViewer extends Component {
         this.workExperienceViewTypeDescriptor = this.workExperienceViewTypeDescriptor.bind(this);
         this.openSkillsChart = this.openSkillsChart.bind(this);
         this.closeSkillsChart = this.closeSkillsChart.bind(this);
-        this.openExperienceChart = this.openExperienceChart.bind(this);
-        this.closeExperienceChart = this.closeExperienceChart.bind(this);
         this.toggleYearsOfExperienceView = this.toggleYearsOfExperienceView.bind(this);
         this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
         this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
@@ -47,8 +45,7 @@ export class ResumeViewer extends Component {
             showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
             experienceViewerType: this.getExperienceViewerType(App.FrontEndParameters.workExperienceViewType),
             printHobbiesSection: true,
-            skillsChartVisible: false,
-            experienceChartVisible: false
+            skillsChartVisible: false
         }
     }
 
@@ -84,18 +81,6 @@ export class ResumeViewer extends Component {
     closeSkillsChart() {
         this.setState({
             skillsChartVisible: false
-        });
-    }
-
-    openExperienceChart() {
-        this.setState({
-            experienceChartVisible: true
-        });
-    }
-
-    closeExperienceChart() {
-        this.setState({
-            experienceChartVisible: false
         });
     }
 
@@ -245,7 +230,7 @@ export class ResumeViewer extends Component {
                             title={<>
                                 TECHNICAL SKILLS
                                 <ViewControl visible={App.FrontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
-                                    <Popover placement="right" content="Click to view skills historical thrend chart">
+                                    <Popover placement="right" content="Click to view skill's historical thrend chart">
                                         <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
                                     </Popover>
                                 </ViewControl>
@@ -303,8 +288,8 @@ export class ResumeViewer extends Component {
                 <ViewControl visible={this.state.skillsChartVisible}>
                     <Modal
                         visible={true}
-                        title="Most Relevant Technical Skills Historical Thrend"
-                        width={1040}
+                        title="Most Relevant Technical Skills - Historical Thrend"
+                        width={1150}
                         okButtonProps={{
                             style: {
                                 display: "none"

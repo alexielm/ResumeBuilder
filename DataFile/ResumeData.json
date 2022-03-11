@@ -20,63 +20,72 @@
   "skillsLevelTimeProgress": [
     {
       "year": 1995,
-      "C#": null,
       "JavaScript/TypeScript": 20,
-      "React": null,
-      "Delphi": 90,
+      "Delphi": 80,
       "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "Web Services": 50,
+      "C++": 65
     },
     {
       "year": 2000,
-      "C#": null,
-      "JavaScript/TypeScript": 20,
-      "React": null,
-      "Delphi": 90,
-      "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "C#": 10,
+      "JavaScript/TypeScript": 30,
+      "Delphi": 95,
+      "Microsoft SQL": 50,
+      "Web Services": 40,
+      "C++": 60
+    },
+    {
+      "year": 2005,
+      "C#": 40,
+      "JavaScript/TypeScript": 80,
+      "Delphi": 100,
+      "Microsoft SQL": 70,
+      "Web Services": 50,
+      "C++": 55
     },
     {
       "year": 2010,
-      "C#": null,
-      "JavaScript/TypeScript": 20,
-      "React": null,
+      "C#": 60,
+      "JavaScript/TypeScript": 95,
+      "React": 10,
       "Delphi": 90,
-      "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "Microsoft SQL": 80,
+      "Web Services": 85,
+      "C++": 50
     },
     {
       "year": 2015,
-      "C#": null,
-      "JavaScript/TypeScript": 20,
-      "React": null,
-      "Delphi": 90,
-      "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "C#": 95,
+      "JavaScript/TypeScript": 100,
+      "React": 40,
+      "Delphi": 85,
+      "Microsoft SQL": 78,
+      "Docker": 10,
+      "Web Services": 95,
+      "C++": 60
     },
     {
       "year": 2020,
-      "C#": null,
-      "JavaScript/TypeScript": 20,
-      "React": null,
-      "Delphi": 90,
-      "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "C#": 100,
+      "JavaScript/TypeScript": 100,
+      "React": 95,
+      "Delphi": 60,
+      "Microsoft SQL": 80,
+      "Docker": 60,
+      "Web Services": 95,
+      "C++": 60
     },
     {
       "year": 2022,
-      "C#": null,
-      "JavaScript/TypeScript": 20,
-      "React": null,
-      "Delphi": 90,
-      "Microsoft SQL": 20,
-      "Docker": null,
-      "Web Services": 40
+      "C#": 100,
+      "JavaScript/TypeScript": 100,
+      "React": 100,
+      "Delphi": 58,
+      "Microsoft SQL": 80,
+      "Docker": 75,
+      "Web Services": 100,
+      "C++": 65
     }
   ],
   "timeLine": [

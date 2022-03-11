@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Enumerable from 'linq';
-import moment from 'moment';
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 export class SkillsChart extends Component {
     static displayName = SkillsChart.name;
@@ -12,9 +10,16 @@ export class SkillsChart extends Component {
 
         this.chartYAxisFormatter = this.chartYAxisFormatter.bind(this);
         this.chartTooltipBuilder = this.chartTooltipBuilder.bind(this);
+
+        this.data = props.skillsLevelTimeProgress;
+
+        this.state = {
+            highlightedSkill: null
+        }
     }
 
-    colors = ["#4f5bd5", "#feda75", "#962fbf", "#d62976", "#fa7e1e", "#fba8d2", "#a8d2fb", "#7fff00", "#0058ed", "#f58874", "#00eaff", "#829192", "#800000", "#cbfa14"];
+
+    colors = ["#4f5bd5", "#0058ed", "#962fbf", "#d62976", "#fa7e1e", "#fba8d2", "#a8d2fb", "#7fff00", "#829192", "#f58874", "#00eaff", "#feda75", "#800000", "#cbfa14"];
 
     chartYAxisFormatter(tickValue) {
         if (tickValue < 12.5) return "Novice";
@@ -33,61 +38,58 @@ export class SkillsChart extends Component {
             {
                 tooltipElement.payload.map((skill, skillIndex) => <div key={skillIndex} style={{ color: skill.color }}>
                     <span>{skill.name}: </span>
-                    <span>{this.chartYAxisFormatter(skill.value)}({skill.value})</span>
+                    <span>{this.chartYAxisFormatter(skill.value)}</span>
                 </div>)
             }
         </div>
     }
 
+    highlistLine(highlightedSkill) {
+        this.setState({
+            highlightedSkill
+        });
+    }
+
     render() {
-        let currentYear = moment().year();
-        let currentQuinquennium = currentYear - (currentYear % 5);
-        let startingQuinquennium = currentQuinquennium - 20;
+        let startingQuinquennium = 1995;
+        let currentYear = 2022;
+        let xTicks = this.data.map(row => row.year);
+        let yTicks = [0, 25, 50, 75, 100];
 
-        let ticks = Enumerable
-            .range(0, 6)
-            .select(index => {
-                let year = startingQuinquennium + (index * 5);
-                if (year > currentQuinquennium) {
-                    return currentYear;
-                }
-                return year;
-            })
-            .toArray();
-
-        let skillsLevelTimeProgress = this.props.skillsLevelTimeProgress;
-
-        let skillLines = [...new Set(skillsLevelTimeProgress
-            .map(skills => Object.keys(skills))
-            .flat()
-            .filter(skill => skill !== "year")
+        let skillLines = [...new Set(this.data.map(row => {
+            let { year, ...others } = row;
+            return Object.keys(others);
+        }).flat()
         )];
 
         return (
-            <div>
+            <div className="ChartContainer">
+                <div className="LegendPanel">
+                    <ul className="LegendList">
+                        {
+                            skillLines.map((tick, tickIndex) =>
+                                <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(skillLines[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
+                                    {skillLines[tickIndex]}
+                                </li>
+                            )
+                        }
+                    </ul>
+                </div>
                 <LineChart
-                    width={1000}
+                    className="ChartPanel"
+                    width={910}
                     height={280}
-                    data={skillsLevelTimeProgress}
-                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+                    data={this.data}
                 >
-                    <Legend
-                        layout="vertical"
-                        verticalAlign="top"
-                        align="left"
-                        wrapperStyle={{
-                            paddingRight: "24px",
-                        }}
-                    />
-                    <XAxis dataKey="year" type="number" domain={[startingQuinquennium, currentYear]} ticks={ticks} />
-                    <YAxis tickFormatter={this.chartYAxisFormatter} domain={[0, 100]} />
+                    <XAxis dataKey="year" type="number" domain={[startingQuinquennium, currentYear]} ticks={xTicks} />
+                    <YAxis tickFormatter={this.chartYAxisFormatter} domain={[0, 100]} ticks={yTicks} width={80} />
                     <Tooltip content={this.chartTooltipBuilder} />
                     <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                     {
-                        skillLines.map((skill, skillIndex) => <Line key={skill} connectNulls={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} />)
+                        skillLines.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
                     }
                 </LineChart>
-            </div>
+            </div >
         );
     }
 }
