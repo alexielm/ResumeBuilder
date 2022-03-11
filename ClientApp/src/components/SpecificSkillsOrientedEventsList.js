@@ -29,14 +29,11 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                     newResponsibility.disciplines = disciplines.filter(discipline => skillSet.some(skill => skill === discipline));
                                     newResponsibility.otherDisciplines = disciplines.filter(discipline => !skillSet.some(skill => skill === discipline))
                                     return newResponsibility;
-                                })
-                                .filter(responsibility => responsibility.disciplines.length);
+                                });
                             return newCareer;
-                        })
-                        .filter(career => career.responsibilities.length);
+                        });
                     return newEvent;
                 })
-                .filter(event => event.career.length)
                 .map(event => ({
                     startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
                     event
@@ -88,7 +85,7 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                         <ul className="Responsibilities">
                                             {
                                                 career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                    return <li key={responsibilityIndex}>
+                                                    return <li key={responsibilityIndex} className={responsibility.disciplines.length > 0 ? "HighlightedResponsibility" : "" }>
                                                         <MarkDown className="JobDescription">
                                                             {
                                                                 responsibility.description
@@ -98,16 +95,23 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                                         built using
                                                         <HorizontalSpacer />
                                                         {
-                                                            responsibility.disciplines.join(", ")
-                                                        }.
-                                                        <ViewControl visible={responsibility.otherDisciplines.length}>
-                                                            <HorizontalSpacer />
-                                                            Also used 
-                                                            <HorizontalSpacer />
-                                                            {
-                                                                responsibility.otherDisciplines.join(", ")
-                                                            }.
-                                                        </ViewControl>
+                                                            ((() => {
+                                                                if (responsibility.disciplines.length === 0) {
+                                                                    return responsibility.otherDisciplines.join(", ");
+                                                                }
+                                                                return <>
+                                                                    <span className="HighlightedDisciplines">{responsibility.disciplines.join(", ")}.</span>
+                                                                    < ViewControl visible={responsibility.otherDisciplines.length}>
+                                                                        <HorizontalSpacer />
+                                                                        Also used
+                                                                        <HorizontalSpacer />
+                                                                        {
+                                                                            responsibility.otherDisciplines.join(", ")
+                                                                        }.
+                                                                    </ViewControl>
+                                                                </>;
+                                                            }))()
+                                                        }
                                                     </li>;
                                                 })
                                             }

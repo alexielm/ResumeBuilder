@@ -32,6 +32,7 @@ export class ResumeViewer extends Component {
 
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
+        this.updatePageTitle = this.updatePageTitle.bind(this);
         this.workExperienceViewTypeDescriptor = this.workExperienceViewTypeDescriptor.bind(this);
         this.openSkillsChart = this.openSkillsChart.bind(this);
         this.closeSkillsChart = this.closeSkillsChart.bind(this);
@@ -59,7 +60,7 @@ export class ResumeViewer extends Component {
         const response = await fetch("api/resumeData");
         let resumeData = await response.json();
         App.ResumeData = resumeData;
-        document.title = `${resumeData.firstName} ${resumeData.lastName} Resume`;
+        this.updatePageTitle();
         this.forceUpdate();
     }
 
@@ -141,8 +142,25 @@ export class ResumeViewer extends Component {
                 type,
                 parameter
             }
-        })
+        });
+        setTimeout(this.updatePageTitle, 0);
     }
+
+
+    updatePageTitle() {
+        let resumeData = App.ResumeData;
+        document.title = `${resumeData.firstName} ${resumeData.lastName} Resume${(() => {
+            let experienceViewerType = this.state.experienceViewerType;
+            switch (experienceViewerType.type) {
+                case "Jobs": return " - Jobs Priority";
+                case "Skills": return " - Skills Priority";
+                case "SpecificSkill": return " - Organized by " + experienceViewerType.parameter;
+                default: return "";
+            }
+        })()}`;
+
+    }
+
 
     workExperienceViewTypeDescriptor() {
         let experienceViewerType = this.state.experienceViewerType;
@@ -260,7 +278,7 @@ export class ResumeViewer extends Component {
                         <ViewControl visible={resumeData.timeLine.some(event => event.eventType === "Hobby")}>
                             <Topic
                                 title={<>
-                                    HOBBY PROJECT
+                                    HOBBY PROJECTS
                                     <ViewControl visible={!this.state.printHobbiesSection}>
                                         &nbsp;(This section is not going to be printed)
                                     </ViewControl>

@@ -220,6 +220,22 @@
         padding-bottom: 10px;
     }
 
+    .JobTimeLineEvent .HighlightedResponsibility:before {
+        content: "\2022";
+        font-size: 30px;
+        font-weight: bold;
+        display: inline-block;
+        width: 0.7em;
+        margin-left: -0.7em;
+        position: relative;
+        top: 3px;
+    }
+
+
+    .JobTimeLineEvent .HighlightedDisciplines {
+        font-weight: 500;
+    }
+
 .HobbyTimeLineEvent {
     margin-top: 5px;
     margin-bottom: 10px;
