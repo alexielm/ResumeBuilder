@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Switch, Menu, Dropdown, Popover, Modal } from 'antd';
+import { Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
 import { DownOutlined, CheckOutlined } from '@ant-design/icons';
+import { ExportAsImage } from '../generalUtils/Utils';
 
 import "./ResumeViewer.css";
 
@@ -30,6 +31,8 @@ export class ResumeViewer extends Component {
     constructor(props) {
         super(props);
 
+        this.skillsChart = React.createRef();
+
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
         this.updatePageTitle = this.updatePageTitle.bind(this);
@@ -40,6 +43,7 @@ export class ResumeViewer extends Component {
         this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
         this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
         this.workExperienceViewypeMenu = this.workExperienceViewerTypeMenu.bind(this);
+        this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
 
         this.state = {
             showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
@@ -191,6 +195,12 @@ export class ResumeViewer extends Component {
         </Menu>
     }
 
+
+    downloadSkillsChart() {
+        ExportAsImage(this.chartModalContainer.current, this.props.personName + " - Most Relevant Technical Skills - Historical Thrend");
+    }
+
+
     render() {
         let resumeData = App.ResumeData;
         if (resumeData === null) {
@@ -198,6 +208,7 @@ export class ResumeViewer extends Component {
                 Loading resume data...
             </div>);
         }
+        let fullName = resumeData.firstName + " " + resumeData.lastName;
         let contact = resumeData.contact;
         return (
             <Fragment>
@@ -206,7 +217,7 @@ export class ResumeViewer extends Component {
                     <div>
                         <div className="AboutPerson KeepTogether">
                             <div className="Personal">
-                                <span className="FullName">{resumeData.firstName}&nbsp;{resumeData.lastName}</span>
+                                <span className="FullName">{fullName}</span>
                                 <Popover placement="right" content="Click to print">
                                     <img src={PrintIcon} className="PrintIcon" alt="print" onClick={this.printPage} />
                                 </Popover>
@@ -301,8 +312,16 @@ export class ResumeViewer extends Component {
                         cancelButtonProps={{
                             type: "default"
                         }}
+                        footer={[
+                            <Button key="back" onClick={() => this.skillsChart.current.downloadSkillsChart()}>
+                                Download
+                            </Button>,
+                            <Button key="submit" type="primary" onClick={this.closeSkillsChart}>
+                                Close
+                            </Button>,
+                        ]}
                     >
-                        <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
+                        <SkillsChart ref={this.skillsChart} personName={fullName} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
                     </Modal>
                 </ViewControl>
             </Fragment>

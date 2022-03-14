@@ -1,4 +1,5 @@
 import Moment from 'moment';
+import html2canvas from "html2canvas";
 
 export function RemoveHttp(url) {
     if (!url) return null;
@@ -27,25 +28,19 @@ export function IconSpacer() {
     return <span className="MenuIconSpacer"></span>;
 }
 
-export function GetScreenshotOfElement(element, posX, posY, width, height, callback) {
-    html2canvas(element, {
-        onrendered: function (canvas) {
-            var context = canvas.getContext('2d');
-            var imageData = context.getImageData(posX, posY, width, height).data;
-            var outputCanvas = document.createElement('canvas');
-            var outputContext = outputCanvas.getContext('2d');
-            outputCanvas.width = width;
-            outputCanvas.height = height;
+export async function ExportAsImage(element, imageFileName) {
+    let canvas = await html2canvas(element);
+    let image = canvas.toDataURL("image/png", 1.0);
 
-            var idata = outputContext.createImageData(width, height);
-            idata.data.set(imageData);
-            outputContext.putImageData(idata, 0, 0);
-            callback(outputCanvas.toDataURL().replace("data:image/png;base64,", ""));
-        },
-        width: width,
-        height: height,
-        useCORS: true,
-        taintTest: false,
-        allowTaint: false
-    });
+    let fakeLink = window.document.createElement("a");
+    fakeLink.style = "display:none;";
+    fakeLink.download = imageFileName;
+
+    fakeLink.href = image;
+
+    document.body.appendChild(fakeLink);
+    fakeLink.click();
+    document.body.removeChild(fakeLink);
+
+    fakeLink.remove();
 }

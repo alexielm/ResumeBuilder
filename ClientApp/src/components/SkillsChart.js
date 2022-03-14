@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Enumerable from 'linq';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { GetScreenshotOfElement } from '../generalUtils/Utils';
+import { ExportAsImage } from '../generalUtils/Utils';
 
 export class SkillsChart extends Component {
     static displayName = SkillsChart.name;
@@ -10,8 +10,11 @@ export class SkillsChart extends Component {
     constructor(props) {
         super(props);
 
+        this.chartModalContainer = React.createRef();
+
         this.chartYAxisFormatter = this.chartYAxisFormatter.bind(this);
         this.chartTooltipBuilder = this.chartTooltipBuilder.bind(this);
+        this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
 
         this.data = props.skillsLevelTimeProgress;
 
@@ -109,25 +112,22 @@ export class SkillsChart extends Component {
         });
     }
 
-    test() {
-
-    //    GetScreenshotOfElement(document.getElementById("div#toBeCaptured").get(0), 0, 0, 100, 100, function (data) {
-    //        // in the data variable there is the base64 image
-    //        // exmaple for displaying the image in an <img>
-    //        //$("img#captured").attr("src", "data:image/png;base64," + data);
-    //        console.log(data);
-    //    });
+    downloadSkillsChart() {
+        ExportAsImage(this.chartModalContainer.current, this.props.personName + " - Most Relevant Technical Skills - Historical Thrend");
     }
 
     render() {
         return (
-            <div id="ChartModalContainer" className="ChartModalContainer">
+            <div ref={this.chartModalContainer} className="ChartModalContainer">
                 <div className="LegendPanel">
+                    <div className="LegendTitle" >
+                        Legend
+                    </div>
                     <ul className="LegendList">
                         {
                             this.topSkills.map((tick, tickIndex) =>
                                 <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(this.topSkills[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
-                                    {this.topSkills[tickIndex]}
+                                    <span>{this.topSkills[tickIndex]}</span>
                                 </li>
                             )
                         }
