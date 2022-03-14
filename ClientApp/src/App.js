@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
 import './custom.css'
 
+import { LoadQueryParameters } from './generalUtils/Utils';
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
 
@@ -12,15 +12,15 @@ export default class App extends Component {
     constructor(props) {
         super(props);
 
-        App.QueryParameters = queryString.parse(document.location.search);
+        App.QueryParameters = LoadQueryParameters();
 
-        App.SpecialView = App.QueryParameters["specialView"] === "true";
+        App.SpecialView = App.QueryParameters.BoolValueOrDefault("specialView", false);
     }
 
     static QueryParameters = null;
     static FrontEndParameters = null;
     static ResumeData = null;
-    static SpecialView = false;
+    static SpecialView;
 
     componentDidMount() {
         this.populateFrontEndParameters();

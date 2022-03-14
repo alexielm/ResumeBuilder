@@ -9,6 +9,18 @@ import { ViewControl } from '../generalUtils/ViewControl';
 export class SpecificSkillsOrientedEventsList extends Component {
     static displayName = SpecificSkillsOrientedEventsList.name;
 
+    specialLinks(specialLinks) {
+        if (!specialLinks?.length || !App.SpecialView) {
+            return null;
+        }
+        return <span className="SpecialLinks">[
+
+            {
+                specialLinks.map((specialLink, specialLinkIndex) => <a key={specialLinkIndex} href={specialLink.link} rel="noreferrer" target="_blank">{specialLink.source}</a>)
+            }
+            ]</span>;
+    }
+
     render() {
         let skillTypes = App.FrontEndParameters.skillTypes;
 
@@ -109,6 +121,9 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                                                             responsibility.otherDisciplines.join(", ")
                                                                         }.
                                                                     </ViewControl>
+                                                                    {
+                                                                        this.specialLinks(responsibility.specialLinks)
+                                                                    }
                                                                 </>;
                                                             }))()
                                                         }

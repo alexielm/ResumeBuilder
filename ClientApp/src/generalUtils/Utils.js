@@ -1,5 +1,6 @@
 import Moment from 'moment';
 import html2canvas from "html2canvas";
+import queryString from 'query-string';
 
 export function RemoveHttp(url) {
     if (!url) return null;
@@ -43,4 +44,17 @@ export async function ExportAsImage(element, imageFileName) {
     document.body.removeChild(fakeLink);
 
     fakeLink.remove();
+}
+
+export function LoadQueryParameters() {
+    let queryParameters = queryString.parse(document.location.search);
+
+    queryParameters.BoolValueOrDefault = (valueName, defaultValue) => {
+        let value = queryParameters[valueName];
+        if (value) {
+            return JSON.parse(value);
+        }
+        return defaultValue;
+    }
+    return queryParameters;
 }
