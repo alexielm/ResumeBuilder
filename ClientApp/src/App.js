@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './custom.css'
 
 import { LoadQueryParameters } from './generalUtils/Utils';
+import { ViewControl } from './generalUtils/ViewControl';
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
 
@@ -42,7 +43,9 @@ export default class App extends Component {
                         </div>) :
                         <ResumeViewer />
                 }
-                <MainBackground />
+                <ViewControl visible={!window.MobileView}>
+                    <MainBackground />
+                </ViewControl>
             </div>
         );
     }

@@ -455,3 +455,24 @@
         display: none;
     }
 }
+
+
+.MobileView {
+    overflow: auto;
+    width: 1030px;
+}
+
+.MobileView .ResumeViewerBody { /* Supplementing CSS Class MainContent */
+    position: static;
+    padding: 10px 0px 20px 20px;
+    width: 1000px;
+    left: 0px;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.MobileView .TopFadeout, 
+.MobileView .BottomFadeout {
+    display: none;
+}

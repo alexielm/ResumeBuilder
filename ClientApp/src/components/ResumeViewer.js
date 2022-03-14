@@ -11,7 +11,7 @@ import PrintIcon from './images/print.svg';
 import ChartIcon from './images/chart.svg';
 
 import App from '../App';
-import { HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/Utils';
+import { ClassNames, HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/Utils';
 import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
@@ -301,7 +301,7 @@ export class ResumeViewer extends Component {
                                     </div>
                                 </>}
 
-                                className={`KeepTogether ${this.state.printHobbiesSection ? "" : "HiddenTopic"}`}>
+                                className={ClassNames(["KeepTogether", this.state.printHobbiesSection ? "" : "HiddenTopic"])}>
                                 <HobbyEventsList timeLine={resumeData.timeLine}
                                 />
                             </Topic>
