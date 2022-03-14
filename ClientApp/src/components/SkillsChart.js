@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import Enumerable from 'linq';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { ExportAsImage } from '../generalUtils/Utils';
 
 export class SkillsChart extends Component {
     static displayName = SkillsChart.name;
 
+    static Title = "Most Relevant Technical Skills - Historical Thrend";
+
     constructor(props) {
         super(props);
 
-        this.chartModalContainer = React.createRef();
-
         this.chartYAxisFormatter = this.chartYAxisFormatter.bind(this);
         this.chartTooltipBuilder = this.chartTooltipBuilder.bind(this);
-        this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
 
         this.data = props.skillsLevelTimeProgress;
 
@@ -112,44 +110,45 @@ export class SkillsChart extends Component {
         });
     }
 
-    downloadSkillsChart() {
-        ExportAsImage(this.chartModalContainer.current, this.props.personName + " - Most Relevant Technical Skills - Historical Thrend");
-    }
-
     render() {
         return (
-            <div ref={this.chartModalContainer} className="ChartModalContainer">
-                <div className="LegendPanel">
-                    <div className="LegendTitle" >
-                        Legend
-                    </div>
-                    <ul className="LegendList">
-                        {
-                            this.topSkills.map((tick, tickIndex) =>
-                                <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(this.topSkills[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
-                                    <span>{this.topSkills[tickIndex]}</span>
-                                </li>
-                            )
-                        }
-                    </ul>
+            <div id="ChartModalContent" className="ChartModalContent">
+                <div className="ant-modal-header">
+                    <div className="ant-modal-title" id="rcDialogTitle1">{SkillsChart.Title}</div>
                 </div>
                 <div className="ChartContainer">
-                    <ResponsiveContainer width="100%" height={350}>
-                        <LineChart
-                            className="ChartPanel"
-                            data={this.data}
-                        >
-                            <XAxis dataKey="year" type="number" ticks={this.xTicks} domain={this.xDomain} />
-                            <YAxis tickFormatter={this.chartYAxisFormatter} ticks={this.yTicks} domain={[0, 100]} width={80} />
-                            <Tooltip content={this.chartTooltipBuilder} />
-                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                    <div className="LegendPanel">
+                        <div className="LegendTitle" >
+                            Legend
+                        </div>
+                        <ul className="LegendList">
                             {
-                                this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
+                                this.topSkills.map((tick, tickIndex) =>
+                                    <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(this.topSkills[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
+                                        <span>{this.topSkills[tickIndex]}</span>
+                                    </li>
+                                )
                             }
-                        </LineChart>
-                    </ResponsiveContainer>
+                        </ul>
+                    </div>
+                    <div className="ChartPanel">
+                        <ResponsiveContainer width="100%" height={275}>
+                            <LineChart
+                                className="ChartPanel"
+                                data={this.data}
+                            >
+                                <XAxis dataKey="year" type="number" ticks={this.xTicks} domain={this.xDomain} />
+                                <YAxis tickFormatter={this.chartYAxisFormatter} ticks={this.yTicks} domain={[0, 100]} width={80} />
+                                <Tooltip content={this.chartTooltipBuilder} />
+                                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                                {
+                                    this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
+                                }
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
-            </div >
+            </div>
         );
     }
 }

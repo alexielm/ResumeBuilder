@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
+import { notification, Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
 import { DownOutlined, CheckOutlined } from '@ant-design/icons';
 import { ExportAsImage } from '../generalUtils/Utils';
 
@@ -31,8 +31,6 @@ export class ResumeViewer extends Component {
     constructor(props) {
         super(props);
 
-        this.skillsChart = React.createRef();
-
         this.refreshPage = this.refreshPage.bind(this);
         this.printPage = this.printPage.bind(this);
         this.updatePageTitle = this.updatePageTitle.bind(this);
@@ -44,6 +42,7 @@ export class ResumeViewer extends Component {
         this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
         this.workExperienceViewypeMenu = this.workExperienceViewerTypeMenu.bind(this);
         this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
+        this.tryToUnlock = this.tryToUnlock.bind(this);
 
         this.state = {
             showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
@@ -195,11 +194,29 @@ export class ResumeViewer extends Component {
         </Menu>
     }
 
-
-    downloadSkillsChart() {
-        ExportAsImage(this.chartModalContainer.current, this.props.personName + " - Most Relevant Technical Skills - Historical Thrend");
+    fullName() {
+        return App.ResumeData.firstName + " " + App.ResumeData.lastName;
     }
 
+    async downloadSkillsChart() {
+        let chartModalContent = document.getElementById("ChartModalContent");
+        let previousClassName = chartModalContent.className;
+        chartModalContent.className = previousClassName + " Downloading";
+        await ExportAsImage(chartModalContent, this.fullName() + " - " + SkillsChart.Title);
+        chartModalContent.className = previousClassName;
+    }
+
+    tryToUnlock(event) {
+        event.preventDefault();
+        if (event.altKey && event.ctrlKey && event.shiftKey) {
+            App.SpecialView = !App.SpecialView;
+            notification.open({
+                description: <div style={{ textAlign: "center" }}>Special Links {App.SpecialView ? "Enabled" : "Disabled"}</div>,
+                duration: 1
+            });
+            this.forceUpdate();
+        }
+    }
 
     render() {
         let resumeData = App.ResumeData;
@@ -208,7 +225,6 @@ export class ResumeViewer extends Component {
                 Loading resume data...
             </div>);
         }
-        let fullName = resumeData.firstName + " " + resumeData.lastName;
         let contact = resumeData.contact;
         return (
             <Fragment>
@@ -217,7 +233,7 @@ export class ResumeViewer extends Component {
                     <div>
                         <div className="AboutPerson KeepTogether">
                             <div className="Personal">
-                                <span className="FullName">{fullName}</span>
+                                <span className="FullName" onDoubleClick={this.tryToUnlock}>{this.fullName()}</span>
                                 <Popover placement="right" content="Click to print">
                                     <img src={PrintIcon} className="PrintIcon" alt="print" onClick={this.printPage} />
                                 </Popover>
@@ -300,7 +316,6 @@ export class ResumeViewer extends Component {
                     <Modal
                         className="ChartDialog"
                         visible={true}
-                        title="Most Relevant Technical Skills - Historical Thrend"
                         width={1400}
                         okButtonProps={{
                             style: {
@@ -313,7 +328,7 @@ export class ResumeViewer extends Component {
                             type: "default"
                         }}
                         footer={[
-                            <Button key="back" onClick={() => this.skillsChart.current.downloadSkillsChart()}>
+                            <Button key="back" onClick={() => this.downloadSkillsChart()}>
                                 Download
                             </Button>,
                             <Button key="submit" type="primary" onClick={this.closeSkillsChart}>
@@ -321,7 +336,7 @@ export class ResumeViewer extends Component {
                             </Button>,
                         ]}
                     >
-                        <SkillsChart ref={this.skillsChart} personName={fullName} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
+                        <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
                     </Modal>
                 </ViewControl>
             </Fragment>

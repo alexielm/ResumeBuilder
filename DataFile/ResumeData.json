@@ -11,10 +11,10 @@
     }
   },
   "remarks": [
-    "Full stack senior software developer with many years of experience, working from down the trenches to cutting-edge technologies, building products from scratch to production level",
-    "With a wide range of applications and tools under my belt I've built professional softwares that had help grown an startup company into a multi-billions enterprise",
-    "If humans were able to crack the secrets of the DNA you'll find the Engineering and Software Development gene on mine",
-    "In my spare time I write code to automate tasks at home from the alarm system to data analytics for my drone flights",
+    "Full stack senior software developer with many years of experience, working from down in the trenches to cutting-edge technologies, building products from scratch to production level",
+    "With a wide range of applications and tools under my belt, I've built professional software applications that has helped grow a startup company into a multi-billion dollar enterprise",
+    "If humans were able to crack the secrets of the DNA, you'll find the Engineering and Software Development gene in mine",
+    "In my spare time, I write code to automate tasks at home, from the alarm system to data analytics for my drone flights",
     "Also love photography and building stuff with my hands"
   ],
   "skillsLevelTimeProgress": [
@@ -100,11 +100,11 @@
   "timeLine": [
     {
       "eventType": "Job",
-      "institution": "RLDatix (Also known as RLSolutions, Radicalogic and RL)",
+      "institution": "RLDatix (Previously known as RL Solutions and Radicalogic, Inc.)",
       "location": "Toronto, Canada",
       "web": "https://rldatix.com/",
       "remarks": [
-        "Worked on this software company for 21 years. As employee number 7, worn multiple hats to help to grow the company into what it is today"
+        "Worked at this software company for 21 years. As employee number 7, I've worn multiple hats to help to grow the company into what it is today"
       ],
       "career": [
         {
@@ -115,7 +115,7 @@
               "disciplines": [ "Delphi", "Interbase", "Microsoft SQL" ]
             },
             {
-              "description": "Built Desktop Report Center from scratch",
+              "description": "Built the desktop Report Center",
               "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
             },
             {
@@ -131,7 +131,7 @@
               "disciplines": [ "Delphi", "Interbase", "Microsoft SQL", "TCP/IP" ]
             },
             {
-              "description": "Build the first Web Reports. This was only a web viewer of the Desktop reports",
+              "description": "Built the first reports web viewer",
               "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
             }
           ],
@@ -143,11 +143,11 @@
           "title": "Senior Software Developer",
           "responsibilities": [
             {
-              "description": "Worked on RL6; the full Web Based version of the application that sunseted the desktop version",
+              "description": "Worked on RL6, the company's full web-based application that replaced its desktop client version",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML", "SOAP API" ]
             },
             {
-              "description": "Build the full Web Based version of Reports. [](^sred_irap)",
+              "description": "Built the web-based reports application. [](^sred_irap)",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SOAP API" ]
             },
             {
@@ -159,7 +159,7 @@
               "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON", "SOAP API" ]
             },
             {
-              "description": "Build the Reports Dashboard Viewer",
+              "description": "Built the Reports Dashboard Viewer",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             }
           ],
@@ -171,11 +171,11 @@
           "title": "Software Architect",
           "responsibilities": [
             {
-              "description": "Worked on the GOV version of the application installed for the entire country of Denmark",
+              "description": "Worked on the GOV version of the application, used across government agencies in Denmark",
               "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
-              "description": "Worked on the Pharma version of the application installed on CVS and Walmart pharmacies",
+              "description": "Worked on the Pharma version of the application, implemented at all CVS and Walmart pharmacies in the US",
               "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
@@ -191,7 +191,7 @@
           "title": "Development Team Leader",
           "responsibilities": [
             {
-              "description": "Worked the Reports Dashboard Client Side Editor",
+              "description": "Worked on the Reports Dashboard Client Side Editor",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
             },
             {
@@ -207,15 +207,37 @@
           "title": "Senior Research Software Engineer",
           "responsibilities": [
             {
-              "description": "MVP for Connected Platform Portal to seamlessly integrate all softwares from the combined companies",
+              "description": "Connected Platform Portal - A module to seamlessly integrate all applications from various acquired companies",
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD", "RESTful API", "JWT", "SAML 2.0", "Auth0", "OAuth 2.0" ]
             },
             {
-              "description": "Worked on a Module to allow End User access to AI Analitics Tools",
+              "description": "Machine Learning Assistant - A module that allows end-user access to AI analytics tools. [](^sred_irap)",
+              "specialLinks": [
+                {
+                  "source": "YouTube Video",
+                  "link": "https://www.youtube.com/watch?v=KFRL2Y1UDrY"
+                }
+              ],
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
-              "description": "Worked on AI module to predict values such as Incidents Severity Level based on the text description of the incident",
+              "description": "Time Series - An AI module that adds a time dimention to report, allowing users visualize thrends [](^sred_irap)",
+              "specialLinks": [
+                {
+                  "source": "YouTube Video",
+                  "link": "https://www.youtube.com/watch?v=K3YaUL5hwFc"
+                }
+              ],
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
+            },
+            {
+              "description": "NLP - An AI module to automatically fill up values on a form based on the text description of the event. [](^sred_irap)",
+              "specialLinks": [
+                {
+                  "source": "YouTube Video",
+                  "link": "https://www.youtube.com/watch?v=fs0gQkiL520&list=PLtQw3CfhE5x0raPBPLi3WDzBRzRcT-ZhP"
+                }
+              ],
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
             },
             {
@@ -243,7 +265,7 @@
           "title": "Software Developer",
           "responsibilities": [
             {
-              "description": "Helped building front end forms and server communication using COM Objects",
+              "description": "Built front-end forms and server communications using COM objects",
               "disciplines": [ "Delphi" ]
             }
           ],
@@ -255,7 +277,7 @@
     },
     {
       "eventType": "Job",
-      "institution": "Most relevant work done before coming to Canada",
+      "institution": "International work experience",
       "location_": "Cuba",
       "career": [
         {
@@ -266,11 +288,11 @@
               "disciplines": [ "Delphi", "XML", "Microsoft SQL", "Serial Communication", "TCP/IP" ]
             },
             {
-              "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salbador Central-American and Caribbean Games (1993) as well as many others similar sport events in Cuba",
+              "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salvador Central-American and Caribbean Games (1993) as well as many others similar sporting events in Cuba",
               "disciplines": [ "Delphi", "XML", "Serial Communication", "TCP/IP" ]
             },
             {
-              "description": "Developed software and hardware to substitude outdate mechanical teletypes by a computer (1992)",
+              "description": "Developed software and hardware to replace outdated mechanical teletypes by a computer (1992)",
               "disciplines": [ "Delphi", "XML", "Serial Communication" ]
             },
             {
@@ -278,7 +300,7 @@
               "disciplines": [ "Delphi", "XML", "Microsoft SQL" ]
             },
             {
-              "description": "Automation of the National News Agency for the reception and clasification of international news feeds (1991)",
+              "description": "Automation of the National News Agency for the reception and classification of international news feeds (1991)",
               "disciplines": [ "Delphi", "Microsoft SQL", "Serial Communication" ]
             }
           ],
@@ -292,8 +314,8 @@
       "eventType": "Hobby",
       "title": "Resume Builder",
       "remarks": [
-        "This application generates personal resumes allowing for dynamic changes for different view styles: <http://nexus-solutions.org/resume/>",
-        "Source Code Available on GitHub: <https://github.com/alexielm/ResumeBuilder>"
+        "Generates personal resumes allowing for dynamic changes for different view styles: <http://nexus-solutions.org/resume/>",
+        "Source code available on GitHub: <https://github.com/alexielm/ResumeBuilder>"
       ],
       "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API" ]
     },
@@ -301,27 +323,17 @@
       "eventType": "Hobby",
       "title": "DJI Drones Flight Log Viewer",
       "remarks": [
-        "This application shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
-        "To test it you can download this example dji drone log file: <http://www.nexus-solutions.org/DJI_Logs/DJIFlightRecord_2017-08-14_[14-58-22].txt>"
+        "Shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
+        "Download example DJI drone log file for testing: <http://www.nexus-solutions.org/DJI_Logs/DJIFlightRecord_2017-08-14_[14-58-22].txt>"
       ],
       "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
     },
     {
       "eventType": "Hobby",
-      "title": "Spherical 360 Photo Viewer for Windows",
-      "remarks": [
-        "This desktop windows application is a light weight 360 photo viewer",
-        "Source Code Available on GitHub: <https://github.com/alexielm/Spherical360Viewer>"
-      ],
-      "disciplines": [ "C#" ]
-    },
-    {
-      "eventType": "Hobby",
       "title": "Web Based Spherical 360 Photo Viewer",
       "remarks": [
-        "This is a lightning fast web based 360 photo viewer",
-        "Source Code Available on GitHub: <https://github.com/alexielm/Html360Viewer>",
-        "Demo version at: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
+        "Source code available on GitHub: <https://github.com/alexielm/Html360Viewer>",
+        "Demo version: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
       ],
       "disciplines": [ "JavaScript/TypeScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js" ]
     },
@@ -337,8 +349,7 @@
       "eventType": "Hobby",
       "title": "Home Alarm System",
       "remarks": [
-        "A set of softwares and hardwares to monitor doors and windows and notify me if something is wrong as well as knowing when we are home or not.",
-        "This also includes connectivity with Alexa and Google Home. More details upon request"
+        "Software and hardware that monitors doors and windows to send issue and activity notifications and integrates with Alexa and Google Home"
       ],
       "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
     },
@@ -370,7 +381,7 @@
     "sred_irap": {
       "title": "This was an IRAP/SRED project",
       "content": [
-        "[IRAP](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program) and [SRED](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html) are programs from the goverment of Canada to insentive research by financially supporting inovating project"
+        "[IRAP](https://nrc.canada.ca/en/support-technology-innovation/about-nrc-industrial-research-assistance-program) and [SRED](https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html) are programs from the government of Canada to incentive research by financially supporting innovation project."
       ]
     }
   }

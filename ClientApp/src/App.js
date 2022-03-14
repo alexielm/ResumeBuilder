@@ -13,11 +13,14 @@ export default class App extends Component {
         super(props);
 
         App.QueryParameters = queryString.parse(document.location.search);
+
+        App.SpecialView = App.QueryParameters["specialView"] === "true";
     }
 
     static QueryParameters = null;
     static FrontEndParameters = null;
     static ResumeData = null;
+    static SpecialView = false;
 
     componentDidMount() {
         this.populateFrontEndParameters();

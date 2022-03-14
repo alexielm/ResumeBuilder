@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { RemoveHttp, Period } from '../generalUtils/Utils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
+import App from '../App';
 
 export class JobsOrientedEventsList extends Component {
     static displayName = JobsOrientedEventsList.name;
@@ -18,6 +19,18 @@ export class JobsOrientedEventsList extends Component {
                 .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
                 .map(event => event.event)
         };
+    }
+
+    specialLinks(specialLinks) {
+        if (!specialLinks?.length || !App.SpecialView) {
+            return null;
+        }
+        return <span className="SpecialLinks">[
+
+            {
+                specialLinks.map((specialLink, specialLinkIndex) => <a key={specialLinkIndex} href={specialLink.link} rel="noreferrer" target="_blank">{specialLink.source}</a>)
+            }
+            ]</span>;
     }
 
     render() {
@@ -71,6 +84,9 @@ export class JobsOrientedEventsList extends Component {
                                                                 responsibility.description
                                                             }
                                                         </MarkDown>.
+                                                        {
+                                                            this.specialLinks(responsibility.specialLinks)
+                                                        }
                                                         <div className="JobEnviroment">
                                                             Environment: {
                                                                 responsibility.disciplines.sort().join(", ")
