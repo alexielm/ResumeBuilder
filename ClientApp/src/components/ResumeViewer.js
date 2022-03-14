@@ -287,9 +287,10 @@ export class ResumeViewer extends Component {
                 </div>
                 <ViewControl visible={this.state.skillsChartVisible}>
                     <Modal
+                        className="ChartDialog"
                         visible={true}
                         title="Most Relevant Technical Skills - Historical Thrend"
-                        width={1150}
+                        width={1400}
                         okButtonProps={{
                             style: {
                                 display: "none"

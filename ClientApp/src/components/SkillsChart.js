@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import Enumerable from 'linq';
+import moment from 'moment';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { GetScreenshotOfElement } from '../generalUtils/Utils';
 
 export class SkillsChart extends Component {
     static displayName = SkillsChart.name;
@@ -16,10 +18,65 @@ export class SkillsChart extends Component {
         this.state = {
             highlightedSkill: null
         }
+
+        let totalQuinquenniums = 5;
+        let currentYear = moment().year();
+        let currentQuinquennium = currentYear - (currentYear % 5);
+        let startingQuinquennium = currentQuinquennium - (5 * totalQuinquenniums);
+        if (currentQuinquennium !== currentYear) totalQuinquenniums++;
+        this.xTicks = Enumerable
+            .range(0, totalQuinquenniums + 1)
+            .select(index => {
+                let year = startingQuinquennium + (index * 5);
+                if (year > currentQuinquennium) {
+                    return currentYear;
+                }
+                return year;
+            })
+            .toArray();
+
+        this.xDomain = [Math.min(...this.xTicks), Math.max(...this.xTicks)];
+
+        this.yTicks = [0, 25, 50, 75, 100];
+
+        this.topSkills = [...new Set(
+            this.data.map(
+                row => {
+                    let { year, ...others } = row;
+                    return Object.keys(others);
+                })
+                .flat()
+                .map(skill => ({
+                    skill,
+                    lastKnownLevel: this.data.map(row => row[skill]).filter(level => level).slice(-1)[0]
+                }))
+                .sort(this.fieldSorter(["-lastKnownLevel", "skill"]))
+                .map(item => item.skill)
+        )];
     }
 
+    fieldSorter(fields) {
+        return (left, right) => {
+            return fields
+                .map(property => {
+                    var direction = 1;
+                    if (property[0] === "-") {
+                        direction = -1;
+                        property = property.substring(1);
+                    }
+                    if (left[property] > right[property]) return direction;
+                    if (left[property] < right[property]) return -direction;
+                    return 0;
+                })
+                .reduce((current, value) => {
+                    return current ? current : value;
+                }, 0);
+        };
+    }
 
-    colors = ["#4f5bd5", "#0058ed", "#962fbf", "#d62976", "#fa7e1e", "#fba8d2", "#a8d2fb", "#7fff00", "#829192", "#f58874", "#00eaff", "#feda75", "#800000", "#cbfa14"];
+    //From: https://coolors.co/gradient-palette/ffa600-003f5c?number=12
+    colors = ["#ff8c00", "#e81123", "#ec008c", "#68217a", "#00188f", "#00bcf2", "#00b294", "#009e49", "#bad80a", "#fff100"];
+
 
     chartYAxisFormatter(tickValue) {
         if (tickValue < 12.5) return "Novice";
@@ -36,10 +93,12 @@ export class SkillsChart extends Component {
         return <div className="ToolTipPanel">
             <div>Year: {tooltipElement.label}</div>
             {
-                tooltipElement.payload.map((skill, skillIndex) => <div key={skillIndex} style={{ color: skill.color }}>
-                    <span>{skill.name}: </span>
-                    <span>{this.chartYAxisFormatter(skill.value)}</span>
-                </div>)
+                tooltipElement.payload
+                    .sort(this.fieldSorter(["-value", "name"]))
+                    .map((skill, skillIndex) => <div key={skillIndex} style={{ color: skill.color }}>
+                        <span>{skill.name}: </span>
+                        <span>{this.chartYAxisFormatter(skill.value)}</span>
+                    </div>)
             }
         </div>
     }
@@ -50,45 +109,46 @@ export class SkillsChart extends Component {
         });
     }
 
+    test() {
+
+    //    GetScreenshotOfElement(document.getElementById("div#toBeCaptured").get(0), 0, 0, 100, 100, function (data) {
+    //        // in the data variable there is the base64 image
+    //        // exmaple for displaying the image in an <img>
+    //        //$("img#captured").attr("src", "data:image/png;base64," + data);
+    //        console.log(data);
+    //    });
+    }
+
     render() {
-        let startingQuinquennium = 1995;
-        let currentYear = 2022;
-        let xTicks = this.data.map(row => row.year);
-        let yTicks = [0, 25, 50, 75, 100];
-
-        let skillLines = [...new Set(this.data.map(row => {
-            let { year, ...others } = row;
-            return Object.keys(others);
-        }).flat()
-        )];
-
         return (
-            <div className="ChartContainer">
+            <div id="ChartModalContainer" className="ChartModalContainer">
                 <div className="LegendPanel">
                     <ul className="LegendList">
                         {
-                            skillLines.map((tick, tickIndex) =>
-                                <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(skillLines[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
-                                    {skillLines[tickIndex]}
+                            this.topSkills.map((tick, tickIndex) =>
+                                <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(this.topSkills[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
+                                    {this.topSkills[tickIndex]}
                                 </li>
                             )
                         }
                     </ul>
                 </div>
-                <LineChart
-                    className="ChartPanel"
-                    width={910}
-                    height={280}
-                    data={this.data}
-                >
-                    <XAxis dataKey="year" type="number" domain={[startingQuinquennium, currentYear]} ticks={xTicks} />
-                    <YAxis tickFormatter={this.chartYAxisFormatter} domain={[0, 100]} ticks={yTicks} width={80} />
-                    <Tooltip content={this.chartTooltipBuilder} />
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                    {
-                        skillLines.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
-                    }
-                </LineChart>
+                <div className="ChartContainer">
+                    <ResponsiveContainer width="100%" height={350}>
+                        <LineChart
+                            className="ChartPanel"
+                            data={this.data}
+                        >
+                            <XAxis dataKey="year" type="number" ticks={this.xTicks} domain={this.xDomain} />
+                            <YAxis tickFormatter={this.chartYAxisFormatter} ticks={this.yTicks} domain={[0, 100]} width={80} />
+                            <Tooltip content={this.chartTooltipBuilder} />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            {
+                                this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
+                            }
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
             </div >
         );
     }

@@ -28,7 +28,7 @@
     },
     {
       "year": 2000,
-      "C#": 10,
+      "C#": 0,
       "JavaScript/TypeScript": 30,
       "Delphi": 95,
       "Microsoft SQL": 50,
@@ -42,50 +42,59 @@
       "Delphi": 100,
       "Microsoft SQL": 70,
       "Web Services": 50,
-      "C++": 55
+      "C++": 55,
+      "AWS": 0,
+      "jQuery": 0
     },
     {
       "year": 2010,
-      "C#": 60,
+      "C#": 70,
       "JavaScript/TypeScript": 95,
-      "React": 10,
       "Delphi": 90,
       "Microsoft SQL": 80,
       "Web Services": 85,
-      "C++": 50
+      "C++": 50,
+      "AWS": 20,
+      "jQuery": 75
     },
     {
       "year": 2015,
       "C#": 95,
       "JavaScript/TypeScript": 100,
-      "React": 40,
+      "React": 5,
       "Delphi": 85,
       "Microsoft SQL": 78,
       "Docker": 10,
       "Web Services": 95,
-      "C++": 60
+      "C++": 60,
+      "AWS": 40,
+      "jQuery": 87
     },
     {
       "year": 2020,
       "C#": 100,
       "JavaScript/TypeScript": 100,
       "React": 95,
-      "Delphi": 60,
+      "Delphi": 65,
       "Microsoft SQL": 80,
       "Docker": 60,
       "Web Services": 95,
-      "C++": 60
+      "C++": 60,
+      "AWS": 50,
+      "jQuery": 85
     },
     {
       "year": 2022,
       "C#": 100,
       "JavaScript/TypeScript": 100,
       "React": 100,
-      "Delphi": 58,
+      "Delphi": 62,
       "Microsoft SQL": 80,
       "Docker": 75,
       "Web Services": 100,
-      "C++": 65
+      "C++": 60,
+      "AWS": 70,
+      "jQuery": 84
     }
   ],
   "timeLine": [
@@ -206,8 +215,8 @@
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
-              "description": "Worked on AI module to predict values such as Incidents Severity Level",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API" ]
+              "description": "Worked on AI module to predict values such as Incidents Severity Level based on the text description of the incident",
+              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
             },
             {
               "description": "Worked on Containarization of the RL6 Web App and the Dashboard",
