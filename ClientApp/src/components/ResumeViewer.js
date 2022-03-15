@@ -22,6 +22,7 @@ import { SpecificSkillsOrientedEventsList } from './SpecificSkillsOrientedEvents
 import { HobbyEventsList } from './HobbyEventsList';
 import { EducationEventsList } from './EducationEventsList';
 import { SkillsChart } from './SkillsChart';
+import { Tutorial } from './Tutorial';
 
 const { SubMenu } = Menu;
 
@@ -40,7 +41,7 @@ export class ResumeViewer extends Component {
         this.toggleYearsOfExperienceView = this.toggleYearsOfExperienceView.bind(this);
         this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
         this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
-        this.workExperienceViewypeMenu = this.workExperienceViewerTypeMenu.bind(this);
+        this.workExperienceViewerTypeMenu = this.workExperienceViewerTypeMenu.bind(this);
         this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
         this.tryToUnlock = this.tryToUnlock.bind(this);
 
@@ -48,7 +49,9 @@ export class ResumeViewer extends Component {
             showYearsOfExperience: App.FrontEndParameters.showYearsOfExperience,
             experienceViewerType: this.getExperienceViewerType(App.FrontEndParameters.workExperienceViewType),
             printHobbiesSection: true,
-            skillsChartVisible: false
+            skillsChartVisible: false,
+            personTitle: null,
+            personTitleOptions: null
         }
     }
 
@@ -60,18 +63,44 @@ export class ResumeViewer extends Component {
         const response = await fetch("api/resumeData");
         let resumeData = await response.json();
         App.ResumeData = resumeData;
-        this.updatePageTitle();
-        this.forceUpdate();
+        this.updatePersonTitle(resumeData);
     }
 
-    async refreshPage() {
+    updatePersonTitle(resumeData) {
+        let titles = [...new Set(resumeData.timeLine
+            .filter(event => event.eventType === "Job")
+            .map(event => event.career)
+            .flat()
+            .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+            .map(career => career.title)
+        )];
+
+        this.setState(
+            {
+                personTitle: titles[0],
+                personTitleOptions: <Menu>
+                    {
+                        titles.map((title, titleIndex) => <Menu.Item key={titleIndex} onClick={() => this.setState({ personTitle: title }, this.updatePageTitle)}>
+                            {title}
+                        </Menu.Item>)
+                    }
+                </Menu>
+            },
+            this.updatePageTitle
+        );
+    }
+
+    async refreshPage(event) {
+        if (event.altKey && event.ctrlKey && event.shiftKey) {
+            window.localStorage.removeItem("tutorialDone");
+        }
         document.title = "Resume Viewer";
         App.ResumeData = null;
         await fetch("api/refreshResumeData");
         document.location.reload();
     }
 
-    printPage() {
+    printPage(event) {
         window.print();
     }
 
@@ -125,19 +154,21 @@ export class ResumeViewer extends Component {
     }
 
     setWorkExperienceViewType(type, parameter) {
-        this.setState({
-            experienceViewerType: {
-                type,
-                parameter
-            }
-        });
-        setTimeout(this.updatePageTitle, 0);
+        this.setState(
+            {
+                experienceViewerType: {
+                    type,
+                    parameter
+                }
+            },
+            this.updatePageTitle
+        );
     }
 
 
     updatePageTitle() {
         let resumeData = App.ResumeData;
-        document.title = `${resumeData.firstName} ${resumeData.lastName} Resume${(() => {
+        document.title = `${resumeData.firstName} ${resumeData.lastName} Resume - ${this.state.personTitle}${(() => {
             let experienceViewerType = this.state.experienceViewerType;
             switch (experienceViewerType.type) {
                 case "Jobs": return " - Jobs Priority";
@@ -148,7 +179,6 @@ export class ResumeViewer extends Component {
         })()}`;
 
     }
-
 
     workExperienceViewTypeDescriptor() {
         let experienceViewerType = this.state.experienceViewerType;
@@ -237,6 +267,17 @@ export class ResumeViewer extends Component {
                                 <Popover placement="right" content="Click to print">
                                     <img src={PrintIcon} className="PrintIcon" alt="print" onClick={this.printPage} />
                                 </Popover>
+                                <div className="PersonTitle">
+                                    <Popover placement="right" content="Change title">
+                                        <Dropdown overlay={this.state.personTitleOptions} trigger={['click']}>
+                                            <span>
+                                                {this.state.personTitle}
+                                                <HorizontalSpacer />
+                                                <DownOutlined className="PersonTitleDropDown UpAlignedIcon" />
+                                            </span>
+                                        </Dropdown>
+                                    </Popover>
+                                </div>
                                 <div className="ContactInfo">
                                     <div><img src={PhoneIcon} className="SmallIcon" alt="phone" />&nbsp;{contact.phone}</div>
                                     <div><img src={EmailIcon} className="SmallIcon" alt="email" onDoubleClick={this.refreshPage} />&nbsp;<a href={`mailto:${contact.email}`}>{contact.email}</a></div>
@@ -263,7 +304,7 @@ export class ResumeViewer extends Component {
                                 </ViewControl>
                                 <div className="TopicRightControl">
                                     <Popover placement="left" content="Show or hide years of experience">
-                                        <Switch size="small" defaultChecked={this.state.showYearsOfExperience} onClick={this.toggleYearsOfExperienceView} />
+                                        <Switch className="ExperienceSwitch" size="small" defaultChecked={this.state.showYearsOfExperience} onClick={this.toggleYearsOfExperienceView} />
                                     </Popover>
                                 </div>
                             </>}
@@ -273,13 +314,13 @@ export class ResumeViewer extends Component {
                         </Topic>
                         <Topic
                             title={<>
-                                <Popover placement="left" content="Change the Work Experience visualization style">
+                                <Popover placement="left" content="Change Work Experience visualization style">
                                     <Dropdown overlay={this.workExperienceViewerTypeMenu()} trigger={['click']}>
                                         <a className="ant-dropdown-link" href="about:blank" onClick={e => e.preventDefault()}>
                                             MOST RELEVANT WORK EXPERIENCES
                                             <this.workExperienceViewTypeDescriptor />
                                             <HorizontalSpacer />
-                                            <DownOutlined className="UpAlignedIcon" />
+                                            <DownOutlined className="WorkExperienceDropDown UpAlignedIcon" />
                                         </a>
                                     </Dropdown>
                                 </Popover>
@@ -296,7 +337,7 @@ export class ResumeViewer extends Component {
                                     </ViewControl>
                                     <div className="TopicRightControl">
                                         <Popover placement="left" content="Include this section when printing or not">
-                                            <Switch size="small" defaultChecked={this.state.printHobbiesSection} onClick={this.togglePrintHobbiesSection} />
+                                            <Switch className="HobbiesSwitch" size="small" defaultChecked={this.state.printHobbiesSection} onClick={this.togglePrintHobbiesSection} />
                                         </Popover>
                                     </div>
                                 </>}
@@ -339,6 +380,7 @@ export class ResumeViewer extends Component {
                         <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
                     </Modal>
                 </ViewControl>
+                <Tutorial />
             </Fragment>
         );
     }

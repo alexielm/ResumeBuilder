@@ -66,11 +66,23 @@
     font-weight: bold;
 }
 
-
-.SmallIcon {
-    width: 15px;
-    height: 15px;
+.PersonTitle {
+    position: absolute;
+    left: calc(50% - 250px);
+    top: 36px;
+    width: 500px;
+    font-size: 22px;
+    text-align: center;
 }
+
+    .PersonTitle span {
+        cursor: pointer;
+    }
+
+    .SmallIcon {
+        width: 15px;
+        height: 15px;
+    }
 
 .PrintIcon {
     margin: -12px 0px 0px 12px;
@@ -386,7 +398,7 @@
             }
 
         .LegendList li:before {
-            content: "◦ ";
+            content: "o ";
             position: relative;
             top: 2px;
             font-size: 20px;
@@ -403,6 +415,54 @@
     padding: 5px 10px 5px 10px;
     box-shadow: 4px 4px 12px 2px #00000040;
 }
+
+.TutorialContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: transparent;
+    z-index: 1;
+    display: none;
+    transition: opacity 500ms linear;
+    pointer-events: all;
+}
+
+.TutotialControl {
+    position: absolute;
+    left: calc(50% - 236px);
+    font-size: 16px;
+    top: 10px;
+    width: 472px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: white;
+    padding: 5px 5px 5px 7px;
+    text-align: center;
+    box-shadow: 4px 4px 12px 2px #00000040;
+    z-index: 1;
+}
+
+    .TutotialControl .TutorialLabel {
+        padding: 0px 14px 2px 14px;
+        background-color: #ddd;
+        border-radius: 20px;
+    }
+
+    .MouseCursor {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transition: all 500ms ease;
+        z-index: 0;
+    }
+
+    .MouseCursor img {
+        position: absolute;
+        left: -24px;
+    }
 
 @media print {
     body {
@@ -462,17 +522,17 @@
     width: 1030px;
 }
 
-.MobileView .ResumeViewerBody { /* Supplementing CSS Class MainContent */
-    position: static;
-    padding: 10px 0px 20px 20px;
-    width: 1000px;
-    left: 0px;
-    border: none;
-    box-shadow: none;
-    overflow: visible;
-}
+    .MobileView .ResumeViewerBody { /* Supplementing CSS Class MainContent */
+        position: static;
+        padding: 10px 0px 20px 20px;
+        width: 1000px;
+        left: 0px;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
 
-.MobileView .TopFadeout, 
-.MobileView .BottomFadeout {
-    display: none;
-}
+    .MobileView .TopFadeout,
+    .MobileView .BottomFadeout {
+        display: none;
+    }

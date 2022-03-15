@@ -58,3 +58,5 @@ export function LoadQueryParameters() {
     }
     return queryParameters;
 }
+
+export function NOP() { }
