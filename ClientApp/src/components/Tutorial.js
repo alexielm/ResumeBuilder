@@ -1,10 +1,15 @@
 import { Component } from 'react';
 import { Button, Checkbox } from 'antd';
+import moment from 'moment';
 
 import MouseCursor from './images/cursor.png';
-import { IconSpacer } from '../generalUtils/Utils';
+import { IconSpacer } from '../generalUtils/GeneralUtils';
+
+const expiresInDayds = 5;
 
 export class Tutorial extends Component {
+
+
     static displayName = Tutorial.name;
 
     constructor(props) {
@@ -21,8 +26,12 @@ export class Tutorial extends Component {
 
     componentDidMount() {
         this.initializeAnaimation();
-        if (!window.MobileView && !window.localStorage.tutorialDone) {
-            this.startAnaimation();
+
+        if (!window.MobileView) {
+            let whenPlayNext = moment(parseInt(window.localStorage.tutorialDoneExpiration ?? 0));
+            if (moment().isAfter(whenPlayNext)) {
+                this.startAnaimation();
+            }
         }
     }
 
@@ -59,32 +68,33 @@ export class Tutorial extends Component {
     }
 
     startAnaimation() {
-        this.tutorialContainer.style.opacity = 1;
         this.tutorialContainer.style.display = "block";
 
-            this.wait(1000)
-                .then(_ => this.moveCursorTo(this.experienceSwitch))
-                .then(_ => this.wait(500))
-                .then(_ => this.moveCursorTo(this.chartIcon))
-                .then(_ => this.wait(500))
-                .then(_ => this.scrollTo(this.workExperienceDropDown))
-                .then(_ => this.moveCursorTo(this.workExperienceDropDown))
-                .then(_ => this.wait(500))
-                //.then(_ => this.scrollTo(this.hobbiesSwitch))
-                //.then(_ => this.moveCursorTo(this.hobbiesSwitch))
-                //.then(_ => this.wait(500))
-                //.then(_ => this.scrollTo(this.personTitleDropDown))
-                //.then(_ => this.moveCursorTo(this.personTitleDropDown))
-                //.then(_ => this.wait(500))
-                .then(_ => this.scrollTo(this.printIcon))
-                .then(_ => this.moveCursorTo(this.printIcon))
-                .then(_ => this.wait(2000))
-                .finally(_ => this.endAnimation())
-                .catch(error => {
-                    if (error) {
-                        console.log(error);
-                    }
-                });
+        this.wait(500)
+            .then(_ => { this.tutorialContainer.style.opacity = 1; })
+            .then(_ => this.wait(1000))
+            .then(_ => this.moveCursorTo(this.experienceSwitch))
+            .then(_ => this.wait(500))
+            .then(_ => this.moveCursorTo(this.chartIcon))
+            .then(_ => this.wait(500))
+            .then(_ => this.scrollTo(this.workExperienceDropDown))
+            .then(_ => this.moveCursorTo(this.workExperienceDropDown))
+            .then(_ => this.wait(500))
+            //.then(_ => this.scrollTo(this.hobbiesSwitch))
+            //.then(_ => this.moveCursorTo(this.hobbiesSwitch))
+            //.then(_ => this.wait(500))
+            //.then(_ => this.scrollTo(this.personTitleDropDown))
+            //.then(_ => this.moveCursorTo(this.personTitleDropDown))
+            //.then(_ => this.wait(500))
+            .then(_ => this.scrollTo(this.printIcon))
+            .then(_ => this.moveCursorTo(this.printIcon))
+            .then(_ => this.wait(2000))
+            .finally(_ => this.endAnimation())
+            .catch(error => {
+                if (error) {
+                    console.log(error);
+                }
+            });
     }
 
     scrollTo(value) {
@@ -110,10 +120,10 @@ export class Tutorial extends Component {
         this.tutorialContainer.style.opacity = 0;
         this.wait(500).then(_ => this.tutorialContainer.style.display = "none");
         if (this.dontShowAgain) {
-            window.localStorage.setItem("tutorialDone", "done");
+            window.localStorage.tutorialDoneExpiration = moment().add(expiresInDayds, "days").valueOf();
         }
         else {
-            window.localStorage.removeItem("tutorialDone");
+            window.localStorage.removeItem("tutorialDoneExpiration");
         }
     }
 

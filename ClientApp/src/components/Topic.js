@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ClassNames } from '../generalUtils/Utils';
+import { ClassNames } from '../generalUtils/GeneralUtils';
 
 export class Topic extends Component {
     static displayName = Topic.name;

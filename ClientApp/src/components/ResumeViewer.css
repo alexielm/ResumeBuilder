@@ -1,9 +1,4 @@
-﻿.UpAlignedIcon {
-    position: relative;
-    top: -2px;
-}
-
-.Loading {
+﻿.Loading {
     position: absolute;
     top: 200px;
     left: calc(50% - 160px);
@@ -79,10 +74,10 @@
         cursor: pointer;
     }
 
-    .SmallIcon {
-        width: 15px;
-        height: 15px;
-    }
+.SmallIcon {
+    width: 15px;
+    height: 15px;
+}
 
 .PrintIcon {
     margin: -12px 0px 0px 12px;
@@ -398,11 +393,11 @@
             }
 
         .LegendList li:before {
-            content: "o ";
+            content: "o";
             position: relative;
-            top: 2px;
-            font-size: 20px;
-            line-height: 18px;
+            top: -1px;
+            font-size: 12px;
+            padding-right: 6px;
         }
 
 .ChartPanel {
@@ -425,6 +420,7 @@
     background-color: transparent;
     z-index: 1;
     display: none;
+    opacity: 0;
     transition: opacity 500ms linear;
     pointer-events: all;
 }
@@ -451,13 +447,13 @@
         border-radius: 20px;
     }
 
-    .MouseCursor {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        transition: all 500ms ease;
-        z-index: 0;
-    }
+.MouseCursor {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: all 500ms ease;
+    z-index: 0;
+}
 
     .MouseCursor img {
         position: absolute;

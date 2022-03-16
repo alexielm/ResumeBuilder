@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { notification, Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
 import { DownOutlined, CheckOutlined } from '@ant-design/icons';
-import { ExportAsImage } from '../generalUtils/Utils';
+import { ExportAsImage } from '../generalUtils/GeneralUtils';
 
 import "./ResumeViewer.css";
 
@@ -11,7 +11,8 @@ import PrintIcon from './images/print.svg';
 import ChartIcon from './images/chart.svg';
 
 import App from '../App';
-import { ClassNames, HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/Utils';
+import { VerticalAlignment, ClassNames, HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/GeneralUtils';
+import { LoadResumeData, ClearResumeData } from '../generalUtils/DataUtils';
 import { ViewControl } from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
 import { Topic } from './Topic';
@@ -55,14 +56,8 @@ export class ResumeViewer extends Component {
         }
     }
 
-    componentDidMount() {
-        this.populateResumeData();
-    }
-
-    async populateResumeData() {
-        const response = await fetch("api/resumeData");
-        let resumeData = await response.json();
-        App.ResumeData = resumeData;
+    async componentDidMount() {
+        let resumeData = await LoadResumeData();
         this.updatePersonTitle(resumeData);
     }
 
@@ -92,10 +87,10 @@ export class ResumeViewer extends Component {
 
     async refreshPage(event) {
         if (event.altKey && event.ctrlKey && event.shiftKey) {
-            window.localStorage.removeItem("tutorialDone");
+            window.localStorage.removeItem("tutorialDoneExpiration");
         }
         document.title = "Resume Viewer";
-        App.ResumeData = null;
+        ClearResumeData();
         await fetch("api/refreshResumeData");
         document.location.reload();
     }
@@ -273,7 +268,7 @@ export class ResumeViewer extends Component {
                                             <span>
                                                 {this.state.personTitle}
                                                 <HorizontalSpacer />
-                                                <DownOutlined className="PersonTitleDropDown UpAlignedIcon" />
+                                                <DownOutlined className="PersonTitleDropDown" style={VerticalAlignment(-2)} />
                                             </span>
                                         </Dropdown>
                                     </Popover>
@@ -298,7 +293,7 @@ export class ResumeViewer extends Component {
                             title={<>
                                 TECHNICAL SKILLS
                                 <ViewControl visible={App.FrontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
-                                    <Popover placement="right" content="Click to view skill's historical thrend chart">
+                                    <Popover placement="right" content="Click to view skill's historical trend chart">
                                         <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
                                     </Popover>
                                 </ViewControl>
@@ -320,7 +315,7 @@ export class ResumeViewer extends Component {
                                             MOST RELEVANT WORK EXPERIENCES
                                             <this.workExperienceViewTypeDescriptor />
                                             <HorizontalSpacer />
-                                            <DownOutlined className="WorkExperienceDropDown UpAlignedIcon" />
+                                            <DownOutlined className="WorkExperienceDropDown" style={VerticalAlignment(-2)} />
                                         </a>
                                     </Dropdown>
                                 </Popover>

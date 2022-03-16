@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { RemoveHttp, Period } from '../generalUtils/Utils';
+import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 
 import App from '../App';
-import { HorizontalSpacer } from '../generalUtils/Utils';
+import { HorizontalSpacer } from '../generalUtils/GeneralUtils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
 

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { ZoomInOutlined } from '@ant-design/icons';
 import Enumerable from 'linq';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { VerticalAlignment, HorizontalSpacer } from '../generalUtils/GeneralUtils';
+import { ViewControl } from '../generalUtils/ViewControl';
 
 export class SkillsChart extends Component {
     static displayName = SkillsChart.name;
 
-    static Title = "Most Relevant Technical Skills - Historical Thrend";
+    static Title = "Most Relevant Technical Skills - Historical Trend";
 
     constructor(props) {
         super(props);
@@ -114,7 +117,17 @@ export class SkillsChart extends Component {
         return (
             <div id="ChartModalContent" className="ChartModalContent">
                 <div className="ant-modal-header">
-                    <div className="ant-modal-title" id="rcDialogTitle1">{SkillsChart.Title}</div>
+                    <div className="ant-modal-title" id="rcDialogTitle1">
+                        {
+                            SkillsChart.Title
+                        }
+                        <ViewControl visible={!this.props.standAlong}>
+                            <HorizontalSpacer />
+                            <a href="?page=skillsChart" target="_blank">
+                                <ZoomInOutlined style={VerticalAlignment(-3)} />
+                            </a>
+                        </ViewControl>
+                    </div>
                 </div>
                 <div className="ChartContainer">
                     <div className="LegendPanel">

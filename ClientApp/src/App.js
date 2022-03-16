@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+
 import './custom.css'
 
-import { LoadQueryParameters } from './generalUtils/Utils';
+import { LoadQueryParameters } from './generalUtils/GeneralUtils';
 import { ViewControl } from './generalUtils/ViewControl';
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
-
+import { SkillsChartPage } from './components/SkillsChartPage';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -34,19 +35,28 @@ export default class App extends Component {
     }
 
     render() {
-        return (
-            <div className="MainContainer">
-                {
-                    App.FrontEndParameters === null ?
-                        (<div className="Loading">
-                            Loading application configuration...
-                        </div>) :
-                        <ResumeViewer />
-                }
-                <ViewControl visible={!window.MobileView}>
-                    <MainBackground />
-                </ViewControl>
-            </div>
-        );
+        switch (App.QueryParameters.page) {
+            case "skillsChart": {
+                return (
+                    <div>
+                        <SkillsChartPage />
+                    </div>
+                );
+            }
+            default: return (
+                <div className="MainContainer">
+                    {
+                        App.FrontEndParameters === null ?
+                            (<div className="Loading">
+                                Loading application configuration...
+                            </div>) :
+                            <ResumeViewer />
+                    }
+                    <ViewControl visible={!window.MobileView}>
+                        <MainBackground />
+                    </ViewControl>
+                </div>
+            );
+        }
     }
 }

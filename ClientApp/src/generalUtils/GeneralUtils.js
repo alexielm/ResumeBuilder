@@ -59,4 +59,9 @@ export function LoadQueryParameters() {
     return queryParameters;
 }
 
-export function NOP() { }
+export function VerticalAlignment(top) {
+    return {
+        position: "relative",
+        top: top + "px"
+    }
+}
