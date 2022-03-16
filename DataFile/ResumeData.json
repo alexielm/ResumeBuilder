@@ -68,7 +68,8 @@
       "Web Services": 95,
       "C++": 60,
       "AWS": 40,
-      "jQuery": 87
+      "jQuery": 87,
+      "Python": 0
     },
     {
       "year": 2020,
@@ -81,7 +82,8 @@
       "Web Services": 95,
       "C++": 60,
       "AWS": 50,
-      "jQuery": 85
+      "jQuery": 85,
+      "Python": 10
     },
     {
       "year": 2022,
@@ -94,7 +96,8 @@
       "Web Services": 100,
       "C++": 60,
       "AWS": 60,
-      "jQuery": 84
+      "jQuery": 84,
+      "Python": 30
     }
   ],
   "timeLine": [
