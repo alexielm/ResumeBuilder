@@ -119,7 +119,8 @@ export class TechnicalSkillsList extends Component {
                             let startYear = disciplinesWithStartYear[skill];
                             if (startYear > 0) {
                                 let endYear = disciplinesWithEndYear[skill] ?? currentYear;
-                                return `${skill} (${endYear - startYear}+)`;
+                                let years = endYear - startYear;
+                                return `${skill} (${years}+ year${years > 1 ? "s" : ""})`;
                             }
                         }
                         return skill;

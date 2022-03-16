@@ -11,9 +11,9 @@
     }
   },
   "remarks": [
-    "Full stack senior software developer with many years of experience, working from down in the trenches to cutting-edge technologies, building products from scratch to production level",
-    "With a wide range of applications and tools under my belt, I've built professional software applications that has helped grow a startup company into a multi-billion dollar enterprise",
-    "If humans were able to crack the secrets of the DNA, you'll find the Engineering and Software Development gene in mine",
+    "Full stack senior software developer with many years of experience. Working hands-on, from traditional to cutting-edge technologies, building professional products from scratch to production level",
+    "With a wide range of applications and tools under my belt, I've built professional software applications that have helped a start-up grown into a multi-billion dollar enterprise",
+    "At the core of my DNA you'll find genes associated with engineering and software development",
     "In my spare time, I write code to automate tasks at home, from the alarm system to data analytics for my drone flights",
     "Also love photography and building stuff with my hands"
   ],
@@ -111,7 +111,7 @@
           "title": "Software Developer",
           "responsibilities": [
             {
-              "description": "Worked on Forms and on the Info center for the Risk Module and Feedback Module",
+              "description": "Worked on Forms and Info center for the Risk Module and Feedback Module",
               "disciplines": [ "Delphi", "Interbase", "Microsoft SQL" ]
             },
             {
@@ -143,7 +143,7 @@
           "title": "Senior Software Developer",
           "responsibilities": [
             {
-              "description": "Worked on RL6, the company's full web-based application that replaced its desktop client version",
+              "description": "Worked on RL6, the company's fully web-based application that replaced its desktop client version",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML", "SOAP API" ]
             },
             {
@@ -151,7 +151,7 @@
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SOAP API" ]
             },
             {
-              "description": "Worked on the Alers system [](^sred_irap)",
+              "description": "Worked on the Alerts system [](^sred_irap)",
               "disciplines": [ "C#", "Microsoft SQL", "Windows Services", "XML", "JSON" ]
             },
             {
@@ -171,11 +171,11 @@
           "title": "Software Architect",
           "responsibilities": [
             {
-              "description": "Worked on the GOV version of the application, used across government agencies in Denmark",
+              "description": "Worked on the GOV version of the application, used across the country of Denmark by the general public and in all hospitals",
               "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
-              "description": "Worked on the Pharma version of the application, implemented at all CVS and Walmart pharmacies in the US",
+              "description": "Worked on the Pharma version of the application, implemented at all CVS and Walmart pharmacies in the United States",
               "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
@@ -195,7 +195,7 @@
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
             },
             {
-              "description": "Worked on the ETL Module and customizations to export data to PSRS, NDNQI and others",
+              "description": "Worked on a module to facilitate the transfer of data from the RLDatix platform to external Patient Safety Organizations and customizations to export data to PSRS, NDNQI and others",
               "disciplines": [ "C#", "ASP.NET", "Microsoft SQL", "Windows Services", "XML", "JSON", "RESTful API" ]
             }
           ],
@@ -221,7 +221,7 @@
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
-              "description": "Time Series - An AI module that adds a time dimention to report, allowing users visualize thrends [](^sred_irap)",
+              "description": "Time Series - An AI module that adds a time dimention to report, allowing users visualize trends [](^sred_irap)",
               "specialLinks": [
                 {
                   "source": "YouTube Video",
@@ -241,11 +241,11 @@
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
             },
             {
-              "description": "Worked on Containarization of the RL6 Web App and the Dashboard",
+              "description": "Worked on Containarization of the Lead North American platform for Patient Safety, Patient Experience and Risk Management Web App and the Dashboard",
               "disciplines": [ "C#", "JavaScript/TypeScript", "Microsoft SQL", "ASP.NET", ".NET Core", "CSS/CSS3/SCSS/LESS", "Docker", "Kubernetes" ]
             },
             {
-              "description": "Upgraded services to .NET Core and to run in Containers - AWS and AZURE",
+              "description": "Upgraded services to .NET Core to run in Containers - AWS and AZURE",
               "disciplines": [ "C#", "Microsoft SQL", ".NET Core", "SQLite", "OrmLite", "Windows Services", "Docker", "Kubernetes", "Kafka/KafkaStream", "Dapr", "Azure DevOps", "AWS", "AZURE" ]
             }
           ],
