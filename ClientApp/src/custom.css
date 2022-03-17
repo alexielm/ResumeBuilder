@@ -1,11 +1,3 @@
-* {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: -moz-none;
-    -o-user-select: none;
-    user-select: none;
-}
-
 body {
     position: absolute;
     left: 0px;
@@ -14,6 +6,15 @@ body {
     bottom: 0px;
     overflow: hidden;
 }
+.LockedView * {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
 
 html {
     font-family: Arial;

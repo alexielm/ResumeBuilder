@@ -2,7 +2,20 @@ export const Data = {
     QueryParameters: null,
     FrontEndParameters: null,
     ResumeData: null,
-    SpecialView: false
+    _specialView: false,
+    get SpecialView() {
+        return this._specialView;
+    },
+    set SpecialView(value) {
+        if (value) {
+            document.body.classList.remove("LockedView");
+            this._specialView = true;
+        }
+        else {
+            document.body.classList.add("LockedView");
+            this._specialView = false;
+        }
+    }
 }
 
 export function LoadFrontEndParameters() {
