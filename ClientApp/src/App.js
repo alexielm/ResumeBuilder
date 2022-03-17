@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './custom.css'
 
 import { LoadQueryParameters } from './generalUtils/GeneralUtils';
+import { Data, LoadFrontEndParameters, LoadResumeData } from './generalUtils/DataUtils';
+import { ViewSwitch, ViewCase } from './generalUtils/ViewSwitch';
 import { ViewControl } from './generalUtils/ViewControl';
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
@@ -14,28 +16,18 @@ export default class App extends Component {
     constructor(props) {
         super(props);
 
-        App.QueryParameters = LoadQueryParameters();
-
-        App.SpecialView = App.QueryParameters.BoolValueOrDefault("specialView", false);
+        Data.QueryParameters = LoadQueryParameters();
+        Data.SpecialView = Data.QueryParameters.BoolValueOrDefault("specialView", false);
     }
-
-    static QueryParameters = null;
-    static FrontEndParameters = null;
-    static ResumeData = null;
-    static SpecialView;
 
     componentDidMount() {
-        this.populateFrontEndParameters();
-    }
-
-    async populateFrontEndParameters() {
-        const response = await fetch("api/frontEndParameters");
-        App.FrontEndParameters = await response.json();
-        this.forceUpdate();
+        LoadFrontEndParameters()
+            .then(LoadResumeData)
+            .then(_ => this.forceUpdate());
     }
 
     render() {
-        switch (App.QueryParameters.page) {
+        switch (Data.QueryParameters.page) {
             case "skillsChart": {
                 return (
                     <div>
@@ -45,13 +37,16 @@ export default class App extends Component {
             }
             default: return (
                 <div className="MainContainer">
-                    {
-                        App.FrontEndParameters === null ?
-                            (<div className="Loading">
+                    <ViewSwitch value={(Data.FrontEndParameters === null) || (Data.ResumeData === null)}>
+                        <ViewCase case={true}>
+                            <div className="Loading">
                                 Loading application configuration...
-                            </div>) :
+                            </div>
+                        </ViewCase>
+                        <ViewCase case={false}>
                             <ResumeViewer />
-                    }
+                        </ViewCase>
+                    </ViewSwitch>
                     <ViewControl visible={!window.MobileView}>
                         <MainBackground />
                     </ViewControl>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown'
 import { Popover } from 'antd';
-import App from '../App';
+import { Data } from '../generalUtils/DataUtils';
 
 export class MarkDown extends Component {
     static displayName = MarkDown.name;
@@ -29,7 +29,7 @@ export class MarkDown extends Component {
                 }}>{props.children}</a>
             );
             case "^": {
-                let reference = App.ResumeData?.references[parameter.substring(1)];
+                let reference = Data.ResumeData?.references[parameter.substring(1)];
                 let popOverContent = reference.content.map((line, lineIndex) => <MarkDown key={lineIndex}>{line}</MarkDown>)
 
                 return (

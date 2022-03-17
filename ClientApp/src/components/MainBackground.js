@@ -67,7 +67,7 @@ export class MainBackground extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this, this.intervalHandler);
+        clearInterval(this.intervalHandler);
     }
 
     moveNodes() {

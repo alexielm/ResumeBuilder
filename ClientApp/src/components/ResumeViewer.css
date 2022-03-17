@@ -352,6 +352,10 @@
     display: none;
 }
 
+.ChartModalContent.Downloading .ZoomInOutButton {
+    display: none;
+}
+
 .ChartContainer {
     padding: 10px;
     width: 100%;

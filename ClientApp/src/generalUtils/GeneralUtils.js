@@ -15,12 +15,6 @@ export function Period(event) {
 }
 
 
-export function ClassNames(classNames) {
-    return classNames
-        .filter(className => className)
-        .join(" ");
-}
-
 export function HorizontalSpacer() {
     return <span className="HorizontalSpacer">&nbsp;</span>;
 }

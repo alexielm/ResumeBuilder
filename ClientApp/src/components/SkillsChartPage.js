@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import App from '../App';
-import { LoadResumeData } from '../generalUtils/DataUtils';
+import { Data } from '../generalUtils/DataUtils';
 import { SkillsChart } from './SkillsChart';
 
 export class SkillsChartPage extends Component {
@@ -12,15 +11,8 @@ export class SkillsChartPage extends Component {
         document.title = SkillsChart.Title + " - Resume Viewer";
     }
 
-    async componentDidMount() {
-        await LoadResumeData();
-        this.forceUpdate();
-    }
-
-
-
     render() {
-        let resumeData = App.ResumeData;
+        let resumeData = Data.ResumeData;
         if (resumeData === null) {
             return (<div className="Loading">
                 Loading resume data...

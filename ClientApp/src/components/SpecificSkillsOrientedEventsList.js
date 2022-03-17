@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 
-import App from '../App';
+import { Data } from '../generalUtils/DataUtils';
 import { HorizontalSpacer } from '../generalUtils/GeneralUtils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
@@ -10,7 +10,7 @@ export class SpecificSkillsOrientedEventsList extends Component {
     static displayName = SpecificSkillsOrientedEventsList.name;
 
     specialLinks(specialLinks) {
-        if (!specialLinks?.length || !App.SpecialView) {
+        if (!specialLinks?.length || !Data.SpecialView) {
             return null;
         }
         return <span className="SpecialLinks">[
@@ -22,7 +22,7 @@ export class SpecificSkillsOrientedEventsList extends Component {
     }
 
     render() {
-        let skillTypes = App.FrontEndParameters.skillTypes;
+        let skillTypes = Data.FrontEndParameters.skillTypes;
 
         let skillSetType = this.props.skillSetType;
         let skillSet = skillTypes.find(skillType => skillType.name === skillSetType)?.members ?? [];

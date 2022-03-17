@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
-import App from '../App';
+import { Data } from '../generalUtils/DataUtils';
 
 export class JobsOrientedEventsList extends Component {
     static displayName = JobsOrientedEventsList.name;
@@ -22,7 +22,7 @@ export class JobsOrientedEventsList extends Component {
     }
 
     specialLinks(specialLinks) {
-        if (!specialLinks?.length || !App.SpecialView) {
+        if (!specialLinks?.length || !Data.SpecialView) {
             return null;
         }
         return <span className="SpecialLinks">[

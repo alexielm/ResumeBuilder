@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import CurlyBracketLeft from './images/curly_bracket_left.svg';
 import moment from 'moment';
-import App from '../App';
+import { Data } from '../generalUtils/DataUtils';
 
 export class TechnicalSkillsList extends Component {
     static displayName = TechnicalSkillsList.name;
 
     prepareSkillsSet() {
-        let skillTypes = App.FrontEndParameters.skillTypes;
+        let skillTypes = Data.FrontEndParameters.skillTypes;
 
         let jobEventTypes = this.props.timeLine.filter(event => event.eventType === "Job");
         let hobbyEventTypes = this.props.timeLine.filter(event => event.eventType === "Hobby");

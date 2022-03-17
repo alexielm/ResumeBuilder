@@ -123,7 +123,7 @@ export class SkillsChart extends Component {
                         }
                         <ViewControl visible={!this.props.standAlong}>
                             <HorizontalSpacer />
-                            <a href="?page=skillsChart" target="_blank">
+                            <a className="ZoomInOutButton" href="?page=skillsChart" target="_blank">
                                 <ZoomInOutlined style={VerticalAlignment(-3)} />
                             </a>
                         </ViewControl>
