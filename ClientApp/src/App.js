@@ -4,7 +4,7 @@ import './custom.css'
 
 import { LoadQueryParameters } from './generalUtils/GeneralUtils';
 import { Data, LoadFrontEndParameters, LoadResumeData } from './generalUtils/DataUtils';
-import { ViewSwitch, ViewCase } from './generalUtils/ViewSwitch';
+import { ViewSwitch, Then, Else } from './generalUtils/ViewSwitch';
 import { ViewControl } from './generalUtils/ViewControl';
 import { MainBackground } from './components/MainBackground';
 import { ResumeViewer } from './components/ResumeViewer';
@@ -38,14 +38,14 @@ export default class App extends Component {
             default: return (
                 <div className="MainContainer">
                     <ViewSwitch value={(Data.FrontEndParameters === null) || (Data.ResumeData === null)}>
-                        <ViewCase case={true}>
+                        <Then>
                             <div className="Loading">
                                 Loading application configuration...
                             </div>
-                        </ViewCase>
-                        <ViewCase case={false}>
+                        </Then>
+                        <Else>
                             <ResumeViewer />
-                        </ViewCase>
+                        </Else>
                     </ViewSwitch>
                     <ViewControl visible={!window.MobileView}>
                         <MainBackground />
