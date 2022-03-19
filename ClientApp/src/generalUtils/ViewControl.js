@@ -1,8 +1,8 @@
-export function ViewControl(props) {
+export function ViewControl({ visible, children }) {
 
-    if (!props.visible) {
+    if (!visible) {
         return null;
     }
 
-    return <>{props.children}</>;
+    return <>{children}</>;
 }

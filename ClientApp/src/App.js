@@ -20,10 +20,10 @@ export default class App extends Component {
         Data.SpecialView = Data.QueryParameters.BoolValueOrDefault("specialView", false);
     }
 
-    componentDidMount() {
-        LoadFrontEndParameters()
-            .then(LoadResumeData)
-            .then(_ => this.forceUpdate());
+    async componentDidMount() {
+        await LoadFrontEndParameters();
+        await LoadResumeData();
+        this.forceUpdate();
     }
 
     render() {

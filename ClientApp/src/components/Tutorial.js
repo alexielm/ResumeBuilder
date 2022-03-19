@@ -56,34 +56,40 @@ export class Tutorial extends Component {
         this.hobbiesSwitch = document.querySelector(".HobbiesSwitch");
     }
 
-    startAnaimation() {
+    async startAnaimation() {
         this.tutorialContainer.style.display = "block";
 
-        this.wait(500)
-            .then(_ => { this.tutorialContainer.style.opacity = 1; })
-            .then(_ => this.wait(1000))
-            .then(_ => this.moveCursorTo(this.experienceSwitch))
-            .then(_ => this.wait(500))
-            .then(_ => this.moveCursorTo(this.chartIcon))
-            .then(_ => this.wait(500))
-            .then(_ => this.scrollTo(this.workExperienceDropDown))
-            .then(_ => this.moveCursorTo(this.workExperienceDropDown))
-            .then(_ => this.wait(500))
-            //.then(_ => this.scrollTo(this.hobbiesSwitch))
-            //.then(_ => this.moveCursorTo(this.hobbiesSwitch))
-            //.then(_ => this.wait(500))
-            //.then(_ => this.scrollTo(this.personTitleDropDown))
-            //.then(_ => this.moveCursorTo(this.personTitleDropDown))
-            //.then(_ => this.wait(500))
-            .then(_ => this.scrollTo(this.printIcon))
-            .then(_ => this.moveCursorTo(this.printIcon))
-            .then(_ => this.wait(2000))
-            .finally(_ => this.endAnimation())
-            .catch(error => {
-                if (error) {
-                    console.log(error);
-                }
-            });
+        try {
+            await this.wait(500);
+            this.tutorialContainer.style.opacity = 1;
+            await this.wait(1000);
+            await this.moveCursorTo(this.experienceSwitch);
+            await this.wait(500);
+            await this.moveCursorTo(this.chartIcon);
+            await this.wait(500);
+            await this.scrollTo(this.workExperienceDropDown);
+            await this.moveCursorTo(this.workExperienceDropDown);
+            await this.wait(500);
+
+            //await this.scrollTo(this.hobbiesSwitch);
+            //await this.moveCursorTo(this.hobbiesSwitch);
+            //await this.wait(500);
+            //await this.scrollTo(this.personTitleDropDown);
+            //await this.moveCursorTo(this.personTitleDropDown);
+            //await this.wait(500);
+
+            await this.scrollTo(this.printIcon);
+            await this.moveCursorTo(this.printIcon);
+            await this.wait(2000);
+        }
+        catch (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
+        finally {
+            this.endAnimation();
+        }
     }
 
     scrollTo(value) {
