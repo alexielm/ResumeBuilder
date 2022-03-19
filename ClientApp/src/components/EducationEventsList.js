@@ -5,14 +5,11 @@ import { MarkDown } from './MarkDown';
 export class EducationEventsList extends Component {
     static displayName = EducationEventsList.name;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            events: this.props.timeLine
-                .filter(event => event.eventType === "Education")
-                .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
-        };
-    }
+    state = {
+        events: this.props.timeLine
+            .filter(event => event.eventType === "Education")
+            .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+    };
 
     render() {
         return this.state.events.map((event, eventIndex) => {

@@ -5,11 +5,8 @@ import { ViewControl } from '../generalUtils/ViewControl';
 export class HobbyEventsList extends Component {
     static displayName = HobbyEventsList.name;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            events: this.props.timeLine.filter(event => event.eventType === "Hobby")
-        };
+    state = {
+        events: this.props.timeLine.filter(event => event.eventType === "Hobby")
     }
 
     render() {

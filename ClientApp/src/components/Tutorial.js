@@ -8,21 +8,10 @@ import { IconSpacer } from '../generalUtils/GeneralUtils';
 const expiresInDayds = 5;
 
 export class Tutorial extends Component {
-
-
     static displayName = Tutorial.name;
 
-    constructor(props) {
-        super(props);
-
-        this.moveCursorTo = this.moveCursorTo.bind(this);
-        this.endAnimation = this.endAnimation.bind(this);
-        this.dontShowAgainChanged = this.dontShowAgainChanged.bind(this);
-
-        this.stopAnimation = this.endAnimation;
-
-        this.dontShowAgain = true;
-    }
+    stopAnimation = this.endAnimation;
+    dontShowAgain = true;
 
     componentDidMount() {
         this.initializeAnaimation();
@@ -109,14 +98,14 @@ export class Tutorial extends Component {
         return this.wait(1000);
     }
 
-    moveCursorTo(element) {
+    moveCursorTo = (element) => {
         let rect = element.getBoundingClientRect();
         this.mouseCursor.style.left = (rect.left) + "px";
         this.mouseCursor.style.top = (rect.top + rect.height - 4) + "px";
         return this.wait(500);
     }
 
-    endAnimation() {
+    endAnimation = () => {
         this.tutorialContainer.style.opacity = 0;
         this.wait(500).then(_ => this.tutorialContainer.style.display = "none");
         if (this.dontShowAgain) {
@@ -127,7 +116,7 @@ export class Tutorial extends Component {
         }
     }
 
-    dontShowAgainChanged(event) {
+    dontShowAgainChanged = (event) => {
         this.dontShowAgain = event.target.checked;
     }
 

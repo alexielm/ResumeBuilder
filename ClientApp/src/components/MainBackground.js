@@ -19,8 +19,6 @@ export class MainBackground extends Component {
     constructor(props) {
         super(props);
 
-        this.moveNodes = this.moveNodes.bind(this);
-
         this.nodes = this.generateNodes();
     }
 
@@ -70,7 +68,7 @@ export class MainBackground extends Component {
         clearInterval(this.intervalHandler);
     }
 
-    moveNodes() {
+    moveNodes = () => {
         this.nodes.forEach(node => {
             if ((node.position.cx >= maxX) || (node.position.cx < minX)) {
                 node.speed.x = node.speed.x * -1;

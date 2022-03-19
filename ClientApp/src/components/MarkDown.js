@@ -6,18 +6,7 @@ import { Data } from '../generalUtils/DataUtils';
 export class MarkDown extends Component {
     static displayName = MarkDown.name;
 
-    constructor(props) {
-        super(props);
-
-        this.referenceComponents = this.referenceComponents.bind(this);
-        this.linkComponent = this.linkComponent.bind(this);
-    }
-
-
-    referenceComponents(referenceName) {
-    }
-
-    linkComponent({ node, ...props }) {
+    linkComponent = ({ node, ...props }) => {
         let href = props.href;
         let parameter = decodeURIComponent(href);
         switch (parameter.charAt(0)) {

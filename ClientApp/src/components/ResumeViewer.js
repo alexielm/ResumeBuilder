@@ -30,30 +30,13 @@ const { SubMenu } = Menu;
 export class ResumeViewer extends Component {
     static displayName = ResumeViewer.name;
 
-    constructor(props) {
-        super(props);
-
-        this.refreshPage = this.refreshPage.bind(this);
-        this.printPage = this.printPage.bind(this);
-        this.updatePageTitle = this.updatePageTitle.bind(this);
-        this.workExperienceViewTypeDescriptor = this.workExperienceViewTypeDescriptor.bind(this);
-        this.openSkillsChart = this.openSkillsChart.bind(this);
-        this.closeSkillsChart = this.closeSkillsChart.bind(this);
-        this.toggleYearsOfExperienceView = this.toggleYearsOfExperienceView.bind(this);
-        this.togglePrintHobbiesSection = this.togglePrintHobbiesSection.bind(this);
-        this.setWorkExperienceViewType = this.setWorkExperienceViewType.bind(this);
-        this.workExperienceViewerTypeMenu = this.workExperienceViewerTypeMenu.bind(this);
-        this.downloadSkillsChart = this.downloadSkillsChart.bind(this);
-        this.tryToUnlock = this.tryToUnlock.bind(this);
-
-        this.state = {
-            showYearsOfExperience: Data.FrontEndParameters.showYearsOfExperience,
-            experienceViewerType: this.getExperienceViewerType(Data.FrontEndParameters.workExperienceViewType),
-            printHobbiesSection: true,
-            skillsChartVisible: false,
-            personTitle: null,
-            personTitleOptions: null
-        }
+    state = {
+        showYearsOfExperience: Data.FrontEndParameters.showYearsOfExperience,
+        experienceViewerType: this.getExperienceViewerType(Data.FrontEndParameters.workExperienceViewType),
+        printHobbiesSection: true,
+        skillsChartVisible: false,
+        personTitle: null,
+        personTitleOptions: null
     }
 
     async componentDidMount() {
@@ -84,7 +67,7 @@ export class ResumeViewer extends Component {
         );
     }
 
-    async refreshPage(event) {
+    refreshPage = async (event) => {
         if (event.altKey && event.ctrlKey && event.shiftKey) {
             window.localStorage.removeItem("tutorialDoneExpiration");
         }
@@ -94,29 +77,29 @@ export class ResumeViewer extends Component {
         document.location.reload();
     }
 
-    printPage(event) {
+    printPage = (event) => {
         window.print();
     }
 
-    openSkillsChart() {
+    openSkillsChart = () => {
         this.setState({
             skillsChartVisible: true
         });
     }
 
-    closeSkillsChart() {
+    closeSkillsChart = () => {
         this.setState({
             skillsChartVisible: false
         });
     }
 
-    toggleYearsOfExperienceView() {
+    toggleYearsOfExperienceView = () => {
         this.setState({
             showYearsOfExperience: !this.state.showYearsOfExperience
         });
     }
 
-    togglePrintHobbiesSection() {
+    togglePrintHobbiesSection = () => {
         this.setState({
             printHobbiesSection: !this.state.printHobbiesSection
         });
@@ -147,7 +130,7 @@ export class ResumeViewer extends Component {
         }
     }
 
-    setWorkExperienceViewType(type, parameter) {
+    setWorkExperienceViewType = (type, parameter) => {
         this.setState(
             {
                 experienceViewerType: {
@@ -160,7 +143,7 @@ export class ResumeViewer extends Component {
     }
 
 
-    updatePageTitle() {
+    updatePageTitle = () => {
         let resumeData = Data.ResumeData;
         document.title = `${resumeData.firstName} ${resumeData.lastName} Resume - ${this.state.personTitle}${(() => {
             let experienceViewerType = this.state.experienceViewerType;
@@ -174,7 +157,7 @@ export class ResumeViewer extends Component {
 
     }
 
-    workExperienceViewTypeDescriptor() {
+    workExperienceViewTypeDescriptor = () => {
         let experienceViewerType = this.state.experienceViewerType;
         switch (experienceViewerType.type) {
             case "Jobs": return "";
@@ -196,7 +179,7 @@ export class ResumeViewer extends Component {
         return <IconSpacer />;
     }
 
-    workExperienceViewerTypeMenu() {
+    workExperienceViewerTypeMenu = () => {
         let skillTypes = Data.FrontEndParameters.skillTypes;
 
         return <Menu>
@@ -222,7 +205,7 @@ export class ResumeViewer extends Component {
         return Data.ResumeData.firstName + " " + Data.ResumeData.lastName;
     }
 
-    async downloadSkillsChart() {
+    downloadSkillsChart = async () => {
         let chartModalContent = document.getElementById("ChartModalContent");
         let previousClassName = chartModalContent.className;
         chartModalContent.className = previousClassName + " Downloading";
@@ -230,7 +213,7 @@ export class ResumeViewer extends Component {
         chartModalContent.className = previousClassName;
     }
 
-    tryToUnlock(event) {
+    tryToUnlock = (event) => {
         event.preventDefault();
         if (event.altKey && event.ctrlKey && event.shiftKey) {
             Data.SpecialView = !Data.SpecialView;

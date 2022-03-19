@@ -14,9 +14,6 @@ export class SkillsChart extends Component {
     constructor(props) {
         super(props);
 
-        this.chartYAxisFormatter = this.chartYAxisFormatter.bind(this);
-        this.chartTooltipBuilder = this.chartTooltipBuilder.bind(this);
-
         this.data = props.skillsLevelTimeProgress;
 
         this.state = {
@@ -82,7 +79,7 @@ export class SkillsChart extends Component {
     colors = ["#ff8c00", "#e81123", "#ec008c", "#68217a", "#00188f", "#00bcf2", "#00b294", "#009e49", "#bad80a", "#fff100"];
 
 
-    chartYAxisFormatter(tickValue) {
+    chartYAxisFormatter = (tickValue) => {
         if (tickValue < 12.5) return "Novice";
         if (tickValue < 37.5) return "Advanced Beginner";
         if (tickValue <= 62.5) return "Competent";
@@ -90,7 +87,7 @@ export class SkillsChart extends Component {
         return "Expert";
     }
 
-    chartTooltipBuilder(tooltipElement) {
+    chartTooltipBuilder = (tooltipElement) => {
         if (!tooltipElement.payload) {
             return null;
         }

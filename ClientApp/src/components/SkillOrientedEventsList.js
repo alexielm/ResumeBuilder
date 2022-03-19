@@ -7,18 +7,15 @@ import { Data } from '../generalUtils/DataUtils';
 export class SkillOrientedEventsList extends Component {
     static displayName = SkillOrientedEventsList.name;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            events: this.props.timeLine
-                .filter(event => event.eventType === "Job")
-                .map(event => ({
-                    startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
-                    event
-                }))
-                .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
-                .map(event => event.event)
-        };
+    state = {
+        events: this.props.timeLine
+            .filter(event => event.eventType === "Job")
+            .map(event => ({
+                startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
+                event
+            }))
+            .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+            .map(event => event.event)
     }
 
     specialLinks(specialLinks) {
