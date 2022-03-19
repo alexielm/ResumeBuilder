@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
-export class Topic extends Component {
-    static displayName = Topic.name;
+export const Topic = ({ title, className, children }) => {
 
-    render() {
-        return (
-            <div id={this.props.title} className={classNames("Topic", this.props.className)}>
-                <div className="TopicHeader">{this.props.title}</div>
-                <div className="TopicContent">
-                    {this.props.children}
-                </div>
+    return (
+        <div id={title} className={classNames("Topic", className)}>
+            <div className="TopicHeader">{title}</div>
+            <div className="TopicContent">
+                {children}
             </div>
-        );
-    }
+        </div>
+    );
 }

@@ -77,33 +77,23 @@ export class ResumeViewer extends Component {
         document.location.reload();
     }
 
-    printPage = (event) => {
-        window.print();
-    }
+    printPage = (event) => window.print();
 
-    openSkillsChart = () => {
-        this.setState({
-            skillsChartVisible: true
-        });
-    }
+    openSkillsChart = () => this.setState({
+        skillsChartVisible: true
+    });
 
-    closeSkillsChart = () => {
-        this.setState({
-            skillsChartVisible: false
-        });
-    }
+    closeSkillsChart = () => this.setState({
+        skillsChartVisible: false
+    });
 
-    toggleYearsOfExperienceView = () => {
-        this.setState({
-            showYearsOfExperience: !this.state.showYearsOfExperience
-        });
-    }
+    toggleYearsOfExperienceView = () => this.setState({
+        showYearsOfExperience: !this.state.showYearsOfExperience
+    });
 
-    togglePrintHobbiesSection = () => {
-        this.setState({
-            printHobbiesSection: !this.state.printHobbiesSection
-        });
-    }
+    togglePrintHobbiesSection = () => this.setState({
+        printHobbiesSection: !this.state.printHobbiesSection
+    });
 
 
     getExperienceViewerType(workExperienceViewType) {

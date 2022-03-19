@@ -1,16 +1,24 @@
-import { Component } from 'react';
 import CurlyBracketLeft from './images/curly_bracket_left.svg';
 import moment from 'moment';
 import { Data } from '../generalUtils/DataUtils';
 
-export class TechnicalSkillsList extends Component {
-    static displayName = TechnicalSkillsList.name;
+export const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExperience }) => {
 
-    prepareSkillsSet() {
+    const skillList = (rows) => {
+        return (
+            <table className="SkillsList">
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        );
+    }
+
+    const prepareSkillsSet = () => {
         let skillTypes = Data.FrontEndParameters.skillTypes;
 
-        let jobEventTypes = this.props.timeLine.filter(event => event.eventType === "Job");
-        let hobbyEventTypes = this.props.timeLine.filter(event => event.eventType === "Hobby");
+        let jobEventTypes = timeLine.filter(event => event.eventType === "Job");
+        let hobbyEventTypes = timeLine.filter(event => event.eventType === "Hobby");
 
         let disciplinesPerYearAA = jobEventTypes
             .map(job => job
@@ -38,7 +46,7 @@ export class TechnicalSkillsList extends Component {
                 endYear: 0
             })
             .concat(
-                this.props.skillsLevelTimeProgress
+                skillsLevelTimeProgress
                     .map(event => ({
                         disciplines: Object.entries(event).filter(([key, value]) => value && (key !== "year")).map(([key, value]) => key),
                         startYear: event.year,
@@ -115,7 +123,7 @@ export class TechnicalSkillsList extends Component {
                     .value
                     .sort()
                     .map(skill => {
-                        if (this.props.showYearsOfExperience) {
+                        if (showYearsOfExperience) {
                             let startYear = disciplinesWithStartYear[skill];
                             if (startYear > 0) {
                                 let endYear = disciplinesWithEndYear[skill] ?? currentYear;
@@ -133,36 +141,25 @@ export class TechnicalSkillsList extends Component {
         let half = (skills.length / 2) + 0.5;
 
         return {
-            leftSkillsColumn: this.skillList(skills.slice(0, half)),
-            rightSkillsColumn: this.skillList(skills.slice(half))
+            leftSkillsColumn: skillList(skills.slice(0, half)),
+            rightSkillsColumn: skillList(skills.slice(half))
         }
     }
 
-    skillList(rows) {
-        return (
-            <table className="SkillsList">
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        );
-    }
+    let skillsSet = prepareSkillsSet();
 
-    render() {
-       let skillsSet = this.prepareSkillsSet();
-        return (
-            <table className="SkillsColumns">
-                <tbody>
-                    <tr>
-                        <td className="LeftSkillsColumn">
-                            {skillsSet.leftSkillsColumn}
-                        </td>
-                        <td className="RightSkillsColumn">
-                            {skillsSet.rightSkillsColumn}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        );
-    }
+    return (
+        <table className="SkillsColumns">
+            <tbody>
+                <tr>
+                    <td className="LeftSkillsColumn">
+                        {skillsSet.leftSkillsColumn}
+                    </td>
+                    <td className="RightSkillsColumn">
+                        {skillsSet.rightSkillsColumn}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    );
 }

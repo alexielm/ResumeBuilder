@@ -24,6 +24,10 @@ export class Tutorial extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.startAnaimation();
+    }
+
     wait(timeOut) {
         return new Promise((done, cancelled) => {
             this.stopAnimation = () => {
@@ -58,6 +62,7 @@ export class Tutorial extends Component {
 
     async startAnaimation() {
         this.tutorialContainer.style.display = "block";
+        this.scrollTo(0);
 
         try {
             await this.wait(500);

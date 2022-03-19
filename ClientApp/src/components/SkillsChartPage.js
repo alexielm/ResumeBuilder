@@ -1,25 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Data } from '../generalUtils/DataUtils';
 import { SkillsChart } from './SkillsChart';
 
-export class SkillsChartPage extends Component {
-    static displayName = SkillsChartPage.name;
+export const SkillsChartPage = () => {
+    document.title = SkillsChart.Title + " - Resume Viewer";
 
-    constructor(props) {
-        super(props);
-
-        document.title = SkillsChart.Title + " - Resume Viewer";
+    let resumeData = Data.ResumeData;
+    if (resumeData === null) {
+        return (<div className="Loading">
+            Loading resume data...
+        </div>);
     }
-
-    render() {
-        let resumeData = Data.ResumeData;
-        if (resumeData === null) {
-            return (<div className="Loading">
-                Loading resume data...
-            </div>);
-        }
-        return (
-            <SkillsChart standAlong={true} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
-        );
-    }
+    return (
+        <SkillsChart standAlong={true} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
+    );
 }

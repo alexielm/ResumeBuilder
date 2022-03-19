@@ -16,11 +16,7 @@ const maxY = 2000;
 export class MainBackground extends Component {
     static displayName = MainBackground.name;
 
-    constructor(props) {
-        super(props);
-
-        this.nodes = this.generateNodes();
-    }
+    nodes = this.generateNodes();
 
     generateNodes() {
         let nodes = Enumerable

@@ -1,59 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 
 import { Data } from '../generalUtils/DataUtils';
 import { HorizontalSpacer } from '../generalUtils/GeneralUtils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
+import { SpecialLinks } from './WorkSperiencespecialLinks';
 
-export class SpecificSkillsOrientedEventsList extends Component {
-    static displayName = SpecificSkillsOrientedEventsList.name;
+export const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
 
-    specialLinks(specialLinks) {
-        if (!specialLinks?.length || !Data.SpecialView) {
-            return null;
-        }
-        return <span className="SpecialLinks">[
+    let skillTypes = Data.FrontEndParameters.skillTypes;
+    let skillSet = skillTypes.find(skillType => skillType.name === skillSetType)?.members ?? [];
 
-            {
-                specialLinks.map((specialLink, specialLinkIndex) => <a key={specialLinkIndex} href={specialLink.link} rel="noreferrer" target="_blank">{specialLink.source}</a>)
-            }
-            ]</span>;
-    }
-
-    render() {
-        let skillTypes = Data.FrontEndParameters.skillTypes;
-
-        let skillSetType = this.props.skillSetType;
-        let skillSet = skillTypes.find(skillType => skillType.name === skillSetType)?.members ?? [];
-
-        let events =
-            this.props.timeLine
-                .filter(event => event.eventType === "Job")
-                .map(event => {
-                    let { career, ...newEvent } = event;
-                    newEvent.career = career
-                        .map(career => {
-                            let { responsibilities, ...newCareer } = career;
-                            newCareer.responsibilities = responsibilities
-                                .map(responsibility => {
-                                    let { disciplines, ...newResponsibility } = responsibility;
-                                    newResponsibility.disciplines = disciplines.filter(discipline => skillSet.some(skill => skill === discipline));
-                                    newResponsibility.otherDisciplines = disciplines.filter(discipline => !skillSet.some(skill => skill === discipline))
-                                    return newResponsibility;
-                                });
-                            return newCareer;
+    return timeLine
+        .filter(event => event.eventType === "Job")
+        .map(event => {
+            let { career, ...newEvent } = event;
+            newEvent.career = career
+                .map(career => {
+                    let { responsibilities, ...newCareer } = career;
+                    newCareer.responsibilities = responsibilities
+                        .map(responsibility => {
+                            let { disciplines, ...newResponsibility } = responsibility;
+                            newResponsibility.disciplines = disciplines.filter(discipline => skillSet.some(skill => skill === discipline));
+                            newResponsibility.otherDisciplines = disciplines.filter(discipline => !skillSet.some(skill => skill === discipline))
+                            return newResponsibility;
                         });
-                    return newEvent;
-                })
-                .map(event => ({
-                    startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
-                    event
-                }))
-                .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
-                .map(event => event.event);
-
-        return events.map((event, eventIndex) => {
+                    return newCareer;
+                });
+            return newEvent;
+        })
+        .map(event => ({
+            startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
+            event
+        }))
+        .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+        .map(event => event.event)
+        .map((event, eventIndex) => {
             return (
                 <div key={eventIndex} className="JobTimeLineEvent">
                     <div className="JobTimeLineHeader KeepTogether">
@@ -97,7 +80,7 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                         <ul className="Responsibilities">
                                             {
                                                 career.responsibilities.map((responsibility, responsibilityIndex) => {
-                                                    return <li key={responsibilityIndex} className={responsibility.disciplines.length > 0 ? "HighlightedResponsibility" : "" }>
+                                                    return <li key={responsibilityIndex} className={responsibility.disciplines.length > 0 ? "HighlightedResponsibility" : ""}>
                                                         <MarkDown className="JobDescription">
                                                             {
                                                                 responsibility.description
@@ -122,7 +105,7 @@ export class SpecificSkillsOrientedEventsList extends Component {
                                                                         }.
                                                                     </ViewControl>
                                                                     {
-                                                                        this.specialLinks(responsibility.specialLinks)
+                                                                        SpecialLinks(responsibility.specialLinks)
                                                                     }
                                                                 </>;
                                                             }))()
@@ -138,5 +121,4 @@ export class SpecificSkillsOrientedEventsList extends Component {
                 </div>
             );
         });
-    }
 }

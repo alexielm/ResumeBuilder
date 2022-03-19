@@ -1,37 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 import { MarkDown } from './MarkDown';
 import { ViewControl } from '../generalUtils/ViewControl';
-import { Data } from '../generalUtils/DataUtils';
+import { SpecialLinks } from './WorkSperiencespecialLinks';
 
-export class SkillOrientedEventsList extends Component {
-    static displayName = SkillOrientedEventsList.name;
+export const SkillOrientedEventsList = ({ timeLine }) =>
 
-    state = {
-        events: this.props.timeLine
-            .filter(event => event.eventType === "Job")
-            .map(event => ({
-                startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
-                event
-            }))
-            .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
-            .map(event => event.event)
-    }
-
-    specialLinks(specialLinks) {
-        if (!specialLinks?.length || !Data.SpecialView) {
-            return null;
-        }
-        return <span className="SpecialLinks">[
-
-            {
-                specialLinks.map((specialLink, specialLinkIndex) => <a key={specialLinkIndex} href={specialLink.link} rel="noreferrer" target="_blank">{specialLink.source}</a>)
-            }
-            ]</span>;
-    }
-
-    render() {
-        return this.state.events.map((event, eventIndex) => {
+    timeLine
+        .filter(event => event.eventType === "Job")
+        .map(event => ({
+            startDate: Math.min(...event.career.map(career => Date.parse(career.startDate))),
+            event
+        }))
+        .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
+        .map(event => event.event)
+        .map((event, eventIndex) => {
             return (
                 <div key={eventIndex} className="JobTimeLineEvent">
                     <div className="JobTimeLineHeader KeepTogether">
@@ -98,7 +81,7 @@ export class SkillOrientedEventsList extends Component {
                                                             }
                                                         </MarkDown>.
                                                         {
-                                                            this.specialLinks(responsibility.specialLinks)
+                                                            SpecialLinks(responsibility.specialLinks)
                                                         }
                                                     </li>;
                                                 })
@@ -109,7 +92,5 @@ export class SkillOrientedEventsList extends Component {
                             })
                     }
                 </div>
-            );
+            )
         });
-    }
-}
