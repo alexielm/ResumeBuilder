@@ -2,10 +2,10 @@ export function ViewSwitch({ value, children }) {
 
     return <>{
         children.filter(child => {
-            switch (child.type.name) {
-                case ViewCase.prototype.constructor.name: return child.props.case === value;
-                case Then.prototype.constructor.name: return value;
-                case Else.prototype.constructor.name: return !value;
+            switch (child.type.prototype) {
+                case ViewCase.prototype: return child.props.case === value;
+                case Then.prototype: return value;
+                case Else.prototype: return !value;
                 default: return false;
             }
         })
