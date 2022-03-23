@@ -324,6 +324,15 @@
     },
     {
       "eventType": "Hobby",
+      "title": "Reactor Demo",
+      "remarks": [
+        "Showcase the \"reactor\" class for automatically re-render components based on the data they use.: <http://nexus-solutions.org/reactorDemo/>\"",
+        "Source code available on GitHub: <https://github.com/alexielm/reactor-demo>"
+      ],
+      "disciplines": [ "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "ANTD" ]
+    },
+    {
+      "eventType": "Hobby",
       "title": "DJI Drones Flight Log Viewer",
       "remarks": [
         "Shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
