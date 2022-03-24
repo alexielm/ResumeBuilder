@@ -1,4 +1,4 @@
-export function ViewControl({ visible, children }) {
+const ViewerControl = ({ visible, children }) => {
 
     if (!visible) {
         return null;
@@ -6,3 +6,5 @@ export function ViewControl({ visible, children }) {
 
     return <>{children}</>;
 }
+
+export default ViewerControl;

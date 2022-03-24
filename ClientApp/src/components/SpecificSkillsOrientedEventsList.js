@@ -1,15 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 
-import { Data } from '../generalUtils/DataUtils';
 import { HorizontalSpacer } from '../generalUtils/GeneralUtils';
-import { MarkDown } from './MarkDown';
-import { ViewControl } from '../generalUtils/ViewControl';
-import { SpecialLinks } from './WorkSperiencespecialLinks';
+import MarkDown from './MarkDown';
+import ViewControl from '../generalUtils/ViewControl';
+import { SpecialLinks } from './SpecialLinks';
 
-export const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
+const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
 
-    let skillTypes = Data.FrontEndParameters.skillTypes;
+    let skillTypes = this.props.frontEndParameters.skillTypes;
     let skillSet = skillTypes.find(skillType => skillType.name === skillSetType)?.members ?? [];
 
     return timeLine
@@ -122,3 +122,6 @@ export const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => 
             );
         });
 }
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps)(SpecificSkillsOrientedEventsList);

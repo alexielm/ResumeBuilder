@@ -1,8 +1,8 @@
 import React from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
-import { MarkDown } from './MarkDown';
+import MarkDown from './MarkDown';
 
-export const EducationEventsList = ({ timeLine }) =>
+const EducationEventsList = ({ timeLine }) =>
     timeLine
         .filter(event => event.eventType === "Education")
         .sort((left, right) => left.startDate === right.startDate ? 0 : (left.startDate < right.startDate ? 1 : -1))
@@ -37,3 +37,5 @@ export const EducationEventsList = ({ timeLine }) =>
                 </div>
             </div>
         ))
+
+export default EducationEventsList;

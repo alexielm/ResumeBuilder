@@ -1,8 +1,8 @@
-import { ViewControl } from '../generalUtils/ViewControl';
-import { Data } from '../generalUtils/DataUtils';
+import ViewControl from '../generalUtils/ViewControl';
+import { viewerMode } from '../generalUtils/ViewerMode';
 
 export const SpecialLinks = (specialLinks) =>
-    <ViewControl visible={specialLinks?.length && Data.SpecialView}>
+    <ViewControl visible={specialLinks?.length && viewerMode.specialView}>
         <span className="SpecialLinks">
             [{specialLinks.map((specialLink, specialLinkIndex) => <a key={specialLinkIndex} href={specialLink.link} rel="noreferrer" target="_blank">{specialLink.source}</a>)}]
         </span>

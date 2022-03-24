@@ -40,17 +40,20 @@ export async function ExportAsImage(element, imageFileName) {
     fakeLink.remove();
 }
 
-export function LoadQueryParameters() {
-    let queryParameters = queryString.parse(document.location.search);
-
-    queryParameters.BoolValueOrDefault = (valueName, defaultValue) => {
-        let value = queryParameters[valueName];
-        if (value) {
-            return JSON.parse(value);
-        }
-        return defaultValue;
+function parseValue([key, value]) {
+    try {
+        return [key.trim(), JSON.parse(value)];
     }
-    return queryParameters;
+    catch {
+        return [key.trim(), value?.trim()];
+    }
+}
+
+export function LoadQueryParameters() {
+    return Object.fromEntries(
+        Object.entries(queryString.parse(document.location.search))
+            .map(parseValue)
+    );
 }
 
 export function VerticalAlignment(top) {

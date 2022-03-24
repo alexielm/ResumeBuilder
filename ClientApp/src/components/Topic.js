@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export const Topic = ({ title, className, children }) => {
+const Topic = ({ title, className, children }) => {
 
     return (
         <div id={title} className={classNames("Topic", className)}>
@@ -12,3 +12,5 @@ export const Topic = ({ title, className, children }) => {
         </div>
     );
 }
+
+export default Topic;

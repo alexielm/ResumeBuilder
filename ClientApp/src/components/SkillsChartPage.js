@@ -1,11 +1,11 @@
 import React from 'react';
-import { Data } from '../generalUtils/DataUtils';
-import { SkillsChart } from './SkillsChart';
+import { connect } from 'react-redux';
+import SkillsChart from './SkillsChart';
 
-export const SkillsChartPage = () => {
+const SkillsChartPage = () => {
     document.title = SkillsChart.Title + " - Resume Viewer";
 
-    let resumeData = Data.ResumeData;
+    let resumeData = this.props.resumeData;
     if (resumeData === null) {
         return (<div className="Loading">
             Loading resume data...
@@ -15,3 +15,6 @@ export const SkillsChartPage = () => {
         <SkillsChart standAlong={true} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
     );
 }
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps)(SkillsChartPage);

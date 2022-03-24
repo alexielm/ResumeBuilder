@@ -1,8 +1,8 @@
 import React from 'react';
-import { MarkDown } from './MarkDown';
-import { ViewControl } from '../generalUtils/ViewControl';
+import MarkDown from './MarkDown';
+import ViewControl from '../generalUtils/ViewControl';
 
-export const HobbyEventsList = ({ timeLine }) =>
+const HobbyEventsList = ({ timeLine }) =>
     timeLine
         .filter(event => event.eventType === "Hobby")
         .map((event, eventIndex) => (
@@ -26,3 +26,5 @@ export const HobbyEventsList = ({ timeLine }) =>
                 </div>
             </div>
         ))
+
+export default HobbyEventsList;

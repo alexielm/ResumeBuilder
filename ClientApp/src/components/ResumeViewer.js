@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { refreshResumeData } from '../action';
+
 import classNames from 'classnames';
 import { notification, Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
 import { DownOutlined, CheckOutlined } from '@ant-design/icons';
@@ -12,35 +15,45 @@ import PrintIcon from './images/print.svg';
 import ChartIcon from './images/chart.svg';
 
 import { VerticalAlignment, HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/GeneralUtils';
-import { Data, ClearResumeData } from '../generalUtils/DataUtils';
-import { ViewControl } from '../generalUtils/ViewControl';
+import ViewControl from '../generalUtils/ViewControl';
 import { PersonalRemarks } from './PersonalRemarks';
-import { Topic } from './Topic';
-import { TechnicalSkillsList } from './TechnicalSkillsList';
-import { JobsOrientedEventsList } from './JobsOrientedEventsList';
-import { SkillOrientedEventsList } from './SkillOrientedEventsList';
-import { SpecificSkillsOrientedEventsList } from './SpecificSkillsOrientedEventsList';
-import { HobbyEventsList } from './HobbyEventsList';
-import { EducationEventsList } from './EducationEventsList';
-import { SkillsChart } from './SkillsChart';
-import { Tutorial } from './Tutorial';
+import Topic from './Topic';
+import TechnicalSkillsList from './TechnicalSkillsList';
+import JobsOrientedEventsList from './JobsOrientedEventsList';
+import SkillOrientedEventsList from './SkillOrientedEventsList';
+import SpecificSkillsOrientedEventsList from './SpecificSkillsOrientedEventsList';
+import HobbyEventsList from './HobbyEventsList';
+import EducationEventsList from './EducationEventsList';
+import SkillsChart from './SkillsChart';
+import Tutorial from './Tutorial';
+
+import { viewerMode } from '../generalUtils/ViewerMode';
 
 const { SubMenu } = Menu;
 
-export class ResumeViewer extends Component {
-    static displayName = ResumeViewer.name;
+class ResumeViewer extends Component {
 
-    state = {
-        showYearsOfExperience: Data.FrontEndParameters.showYearsOfExperience,
-        experienceViewerType: this.getExperienceViewerType(Data.FrontEndParameters.workExperienceViewType),
-        printHobbiesSection: true,
-        skillsChartVisible: false,
-        personTitle: null,
-        personTitleOptions: null
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showYearsOfExperience: this.props.frontEndParameters.showYearsOfExperience,
+            experienceViewerType: this.getExperienceViewerType(this.props.frontEndParameters.workExperienceViewType),
+            printHobbiesSection: true,
+            skillsChartVisible: false,
+            personTitle: null,
+            personTitleOptions: null
+        }
+
+        console.log(props.queryParameters);
+        console.log(props.queryParameters.specialView);
+
+        viewerMode.specialView = props.queryParameters.specialView;
+        console.log(viewerMode.specialView)
     }
 
     async componentDidMount() {
-        this.updatePersonTitle(Data.ResumeData);
+        this.updatePersonTitle(this.props.resumeData);
     }
 
     updatePersonTitle(resumeData) {
@@ -72,9 +85,7 @@ export class ResumeViewer extends Component {
             window.localStorage.removeItem("tutorialDoneExpiration");
         }
         document.title = "Resume Viewer";
-        ClearResumeData();
-        await fetch("api/refreshResumeData");
-        document.location.reload();
+        this.props.refreshResumeData();
     }
 
     printPage = (event) => window.print();
@@ -134,7 +145,7 @@ export class ResumeViewer extends Component {
 
 
     updatePageTitle = () => {
-        let resumeData = Data.ResumeData;
+        let resumeData = this.props.resumeData;
         document.title = `${resumeData.firstName} ${resumeData.lastName} Resume - ${this.state.personTitle}${(() => {
             let experienceViewerType = this.state.experienceViewerType;
             switch (experienceViewerType.type) {
@@ -170,7 +181,7 @@ export class ResumeViewer extends Component {
     }
 
     workExperienceViewerTypeMenu = () => {
-        let skillTypes = Data.FrontEndParameters.skillTypes;
+        let skillTypes = this.props.frontEndParameters.skillTypes;
 
         return <Menu>
             <Menu.Item key="skillsOriented" icon={this.workExperienceMenuIcon("Skills")} onClick={() => this.setWorkExperienceViewType("Skills")}>
@@ -192,7 +203,7 @@ export class ResumeViewer extends Component {
     }
 
     fullName() {
-        return Data.ResumeData.firstName + " " + Data.ResumeData.lastName;
+        return this.props.resumeData.firstName + " " + this.props.resumeData.lastName;
     }
 
     downloadSkillsChart = async () => {
@@ -206,9 +217,9 @@ export class ResumeViewer extends Component {
     tryToUnlock = (event) => {
         event.preventDefault();
         if (event.altKey && event.ctrlKey && event.shiftKey) {
-            Data.SpecialView = !Data.SpecialView;
+            viewerMode.specialView = !viewerMode.specialView;
             notification.open({
-                description: <div style={{ textAlign: "center" }}>Special Links {Data.SpecialView ? "Enabled" : "Disabled"}</div>,
+                description: <div style={{ textAlign: "center" }}>Special Links {viewerMode.specialView ? "Enabled" : "Disabled"}</div>,
                 duration: 1
             });
             this.forceUpdate();
@@ -216,7 +227,7 @@ export class ResumeViewer extends Component {
     }
 
     render() {
-        let resumeData = Data.ResumeData;
+        let resumeData = this.props.resumeData;
         if (resumeData === null) {
             return (<div className="Loading">
                 Loading resume data...
@@ -264,7 +275,7 @@ export class ResumeViewer extends Component {
                         <Topic
                             title={<>
                                 TECHNICAL SKILLS
-                                <ViewControl visible={Data.FrontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
+                                <ViewControl visible={this.props.frontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
                                     <Popover placement="right" content="Click to view skill's historical trend chart">
                                         <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
                                     </Popover>
@@ -352,3 +363,6 @@ export class ResumeViewer extends Component {
         );
     }
 }
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, { refreshResumeData })(ResumeViewer);

@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchAll, parseQueryParamter } from './action';
 
 import './custom.css'
 
-import { LoadQueryParameters } from './generalUtils/GeneralUtils';
-import { Data, LoadFrontEndParameters, LoadResumeData } from './generalUtils/DataUtils';
 import { ViewSwitch, Then, Else } from './generalUtils/ViewSwitch';
-import { ViewControl } from './generalUtils/ViewControl';
-import { MainBackground } from './components/MainBackground';
-import { ResumeViewer } from './components/ResumeViewer';
-import { SkillsChartPage } from './components/SkillsChartPage';
+import ViewControl from './generalUtils/ViewControl';
+import MainBackground from './components/MainBackground';
+import ResumeViewer from './components/ResumeViewer';
+import SkillsChartPage from './components/SkillsChartPage';
 
-export default class App extends Component {
+class App extends Component {
     static displayName = App.name;
 
     constructor(props) {
         super(props);
 
-        Data.QueryParameters = LoadQueryParameters();
-        Data.SpecialView = Data.QueryParameters.BoolValueOrDefault("specialView", false);
+        props.parseQueryParamter();
     }
 
-    async componentDidMount() {
-        await LoadFrontEndParameters();
-        await LoadResumeData();
-        this.forceUpdate();
+    componentDidMount() {
+        this.props.fetchAll();
     }
 
     render() {
-        switch (Data.QueryParameters.page) {
+        switch (this.props.queryParameters?.page) {
             case "skillsChart": {
                 return (
                     <div>
@@ -37,7 +34,7 @@ export default class App extends Component {
             }
             default: return (
                 <div className="MainContainer">
-                    <ViewSwitch value={(Data.FrontEndParameters === null) || (Data.ResumeData === null)}>
+                    <ViewSwitch value={((this.props.frontEndParameters === null) || (this.props.resumeData === null))}>
                         <Then>
                             <div className="Loading">
                                 Loading application configuration...
@@ -55,3 +52,6 @@ export default class App extends Component {
         }
     }
 }
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, { fetchAll, parseQueryParamter })(App);

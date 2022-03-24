@@ -7,7 +7,7 @@ import { IconSpacer } from '../generalUtils/GeneralUtils';
 
 const expiresInDayds = 5;
 
-export class Tutorial extends Component {
+class Tutorial extends Component {
     static displayName = Tutorial.name;
 
     stopAnimation = this.endAnimation;
@@ -148,3 +148,5 @@ export class Tutorial extends Component {
         );
     }
 }
+
+export default Tutorial;

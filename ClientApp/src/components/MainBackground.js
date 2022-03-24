@@ -13,7 +13,7 @@ const maxX = 2000;
 const minY = -200;
 const maxY = 2000;
 
-export class MainBackground extends Component {
+class MainBackground extends Component {
     static displayName = MainBackground.name;
 
     nodes = this.generateNodes();
@@ -96,3 +96,5 @@ export class MainBackground extends Component {
         );
     }
 }
+
+export default MainBackground;

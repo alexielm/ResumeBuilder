@@ -4,9 +4,9 @@ import Enumerable from 'linq';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { VerticalAlignment, HorizontalSpacer } from '../generalUtils/GeneralUtils';
-import { ViewControl } from '../generalUtils/ViewControl';
+import ViewControl from '../generalUtils/ViewControl';
 
-export class SkillsChart extends Component {
+class SkillsChart extends Component {
     static displayName = SkillsChart.name;
 
     static Title = "Most Relevant Technical Skills - Historical Trend";
@@ -162,3 +162,5 @@ export class SkillsChart extends Component {
         );
     }
 }
+
+export default SkillsChart;

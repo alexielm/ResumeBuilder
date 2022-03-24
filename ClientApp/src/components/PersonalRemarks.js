@@ -1,4 +1,4 @@
-import { MarkDown } from './MarkDown';
+import MarkDown from './MarkDown';
 
 export const PersonalRemarks = ({ remarks }) => (
     <ul>

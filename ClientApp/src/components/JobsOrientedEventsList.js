@@ -1,10 +1,10 @@
 import React from 'react';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
-import { MarkDown } from './MarkDown';
-import { ViewControl } from '../generalUtils/ViewControl';
-import { SpecialLinks } from './WorkSperiencespecialLinks';
+import MarkDown from './MarkDown';
+import ViewControl from '../generalUtils/ViewControl';
+import { SpecialLinks } from './SpecialLinks';
 
-export const JobsOrientedEventsList = ({ timeLine }) =>
+const JobsOrientedEventsList = ({ timeLine }) =>
     timeLine
         .filter(event => event.eventType === "Job")
         .map(event => ({
@@ -81,3 +81,5 @@ export const JobsOrientedEventsList = ({ timeLine }) =>
                 }
             </div>
         ))
+
+export default JobsOrientedEventsList;
