@@ -12,8 +12,8 @@
   },
   "remarks": [
     "Full stack senior software developer with many years of experience. Working hands-on, from traditional to cutting-edge technologies, building professional products from scratch to production level",
-    "With a wide range of applications and tools under my belt, I've built professional software applications that have helped a start-up grown into a multi-billion dollar enterprise",
-    "At the core of my DNA you'll find genes associated with engineering and software development",
+    "With a wide range of applications and tools under my belt, I've built professional software applications that have helped a start-up grown into a multi-billion-dollar enterprise",
+    "At the core of my DNA, you'll find genes associated with engineering and software development",
     "In my spare time, I write code to automate tasks at home, from the alarm system to data analytics for my drone flights",
     "Also love photography and building stuff with my hands"
   ],
@@ -194,7 +194,7 @@
           "title": "Development Team Leader",
           "responsibilities": [
             {
-              "description": "Worked on the Reports Dashboard Client Side Editor",
+              "description": "Worked on the Reports Dashboard Client-Side Editor",
               "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
             },
             {
@@ -224,7 +224,7 @@
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
-              "description": "Time Series - An AI module that adds a time dimention to report, allowing users visualize trends [](^sred_irap)",
+              "description": "Time Series - An AI module that adds a time dimension to report, allowing users visualize trends [](^sred_irap)",
               "specialLinks": [
                 {
                   "source": "YouTube Video",
@@ -244,7 +244,7 @@
               "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
             },
             {
-              "description": "Worked on Containarization of the Lead North American platform for Patient Safety, Patient Experience and Risk Management Web App and the Dashboard",
+              "description": "Worked on Containerization of the Lead North American platform for Patient Safety, Patient Experience and Risk Management Web App and the Dashboard",
               "disciplines": [ "C#", "JavaScript/TypeScript", "Microsoft SQL", "ASP.NET", ".NET Core", "CSS/CSS3/SCSS/LESS", "Docker", "Kubernetes" ]
             },
             {
@@ -291,7 +291,7 @@
               "disciplines": [ "Delphi", "XML", "Microsoft SQL", "Serial Communication", "TCP/IP" ]
             },
             {
-              "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Panamerican Games (1995), El Salvador Central-American and Caribbean Games (1993) as well as many others similar sporting events in Cuba",
+              "description": "Development and installation of software needed to collect, redistribute and display sports scores and medals records for journalist in Peru Bolivarian Games (1997), Arngentina Pan-American Games (1995), El Salvador Central-American and Caribbean Games (1993) as well as many others similar sporting events in Cuba",
               "disciplines": [ "Delphi", "XML", "Serial Communication", "TCP/IP" ]
             },
             {
@@ -326,7 +326,7 @@
       "eventType": "Hobby",
       "title": "Reactor Demo",
       "remarks": [
-        "Showcase the \"reactor\" class for automatically re-render components based on the data they use.: <http://nexus-solutions.org/reactorDemo/>\"",
+        "**reactor** is a very small entity that helps keep components up to date with the changes done on a global data set they register to: <http://nexus-solutions.org/reactorDemo/>\"",
         "Source code available on GitHub: <https://github.com/alexielm/reactor-demo>"
       ],
       "disciplines": [ "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "ANTD" ]
@@ -353,7 +353,7 @@
       "eventType": "Hobby",
       "title": "RV Level",
       "remarks": [
-        "Software and hardware to help leveling an RV (Recreational Vehicle). The device is accessed from an Android or Apple phone via WiFi and Web App so leveling process can be monitored from the driver's seat"
+        "Software and hardware to help leveling an RV (Recreational Vehicle). The device is accessed from an Android or Apple phone via Wi-Fi and Web App so leveling process can be monitored from the driver's seat"
       ],
       "disciplines": [ "C#", "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "Adobe Photoshop" ]
     },
@@ -361,9 +361,9 @@
       "eventType": "Hobby",
       "title": "Home Alarm System",
       "remarks": [
-        "Software and hardware that monitors doors and windows to send issue and activity notifications and integrates with Alexa and Google Home"
+        "Software and hardware that monitors doors and windows to send issue and activity notifications and integrates with Amazon Alexa"
       ],
-      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
+      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC", "Arduino" ]
     },
     {
       "eventType": "Education",
