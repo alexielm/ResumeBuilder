@@ -1,5 +1,5 @@
 import ViewControl from '../generalUtils/ViewControl';
-import { viewerMode } from '../generalUtils/ViewerMode';
+import { viewerMode } from '../generalUtils/GlobalStore';
 
 export const SpecialLinks = (specialLinks) =>
     <ViewControl visible={specialLinks?.length && viewerMode.specialView}>

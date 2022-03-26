@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchAll, parseQueryParamter } from './action';
-
 import './custom.css'
 
+import { LoadQueryParameters } from './generalUtils/GeneralUtils';
 import { ViewSwitch, Then, Else } from './generalUtils/ViewSwitch';
 import ViewControl from './generalUtils/ViewControl';
 import MainBackground from './components/MainBackground';
@@ -13,18 +11,45 @@ import SkillsChartPage from './components/SkillsChartPage';
 class App extends Component {
     static displayName = App.name;
 
-    constructor(props) {
-        super(props);
+    static store = {
+        frontEndParameters: null,
+        resumeData: null,
+        queryParameters: null,
 
-        props.parseQueryParamter();
+        fetchAll: async () => {
+            App.store.parseQueryParamter();
+            await App.store.fetchParamaters();
+            await App.store.fetchResumeData();
+        },
+
+        fetchParamaters: async () => {
+            const response = await fetch("api/frontEndParameters");
+            App.store.frontEndParameters = await response.json();
+        },
+
+        fetchResumeData: async () => {
+            const response = await fetch("api/resumeData");
+            App.store.resumeData = await response.json();
+        },
+
+        refreshResumeData: async () => {
+            const response = await fetch("api/refreshResumeData");
+            await response.text();
+            document.location.reload();
+        },
+
+        parseQueryParamter: () => {
+            App.store.queryParameters = LoadQueryParameters();
+        }
     }
 
-    componentDidMount() {
-        this.props.fetchAll();
+    async componentDidMount() {
+        await App.store.fetchAll();
+        this.forceUpdate();
     }
 
     render() {
-        switch (this.props.queryParameters?.page) {
+        switch (App.store.queryParameters?.page) {
             case "skillsChart": {
                 return (
                     <div>
@@ -34,7 +59,7 @@ class App extends Component {
             }
             default: return (
                 <div className="MainContainer">
-                    <ViewSwitch value={((this.props.frontEndParameters === null) || (this.props.resumeData === null))}>
+                    <ViewSwitch value={(App.store.frontEndParameters === null) || (App.store.resumeData === null)}>
                         <Then>
                             <div className="Loading">
                                 Loading application configuration...
@@ -53,5 +78,4 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps, { fetchAll, parseQueryParamter })(App);
+export default App;

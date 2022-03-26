@@ -1,9 +1,8 @@
-import { connect } from 'react-redux';
-
 import CurlyBracketLeft from './images/curly_bracket_left.svg';
 import moment from 'moment';
+import App from '../App';
 
-const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExperience, frontEndParameters }) => {
+const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExperience }) => {
 
     const skillList = (rows) => {
         return (
@@ -16,7 +15,7 @@ const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExp
     }
 
     const prepareSkillsSet = () => {
-        let skillTypes = frontEndParameters.skillTypes;
+        let skillTypes = App.store.frontEndParameters.skillTypes;
 
         let jobEventTypes = timeLine.filter(event => event.eventType === "Job");
         let hobbyEventTypes = timeLine.filter(event => event.eventType === "Hobby");
@@ -165,5 +164,4 @@ const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExp
     );
 }
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(TechnicalSkillsList);
+export default TechnicalSkillsList;

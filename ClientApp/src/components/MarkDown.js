@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown'
 import { Popover } from 'antd';
+import App from '../App';
 
-
-const MarkDown = ({ children, resumeData }) => {
+const MarkDown = ({ children }) => {
 
     let linkComponent = ({ node, href, children }) => {
         let parameter = decodeURIComponent(href);
@@ -17,7 +16,7 @@ const MarkDown = ({ children, resumeData }) => {
                 }}>{children}</a>
             );
             case "^": {
-                let reference = resumeData?.references[parameter.substring(1)];
+                let reference = App.store.resumeData?.references[parameter.substring(1)];
                 let popOverContent = reference.content.map((line, lineIndex) => <MarkDown key={lineIndex}>{line}</MarkDown>)
 
                 return (
@@ -52,7 +51,7 @@ const MarkDown = ({ children, resumeData }) => {
     }
 
     return <ReactMarkdown
-        resumeData={resumeData}
+        resumeData={App.store.resumeData}
         components={{
             a: linkComponent,
             p: ({ node, ...props }) => <span className={props.className}>{props.children}</span>
@@ -62,5 +61,4 @@ const MarkDown = ({ children, resumeData }) => {
     </ReactMarkdown>
 }
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(MarkDown);
+export default MarkDown;

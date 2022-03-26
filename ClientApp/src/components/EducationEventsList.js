@@ -10,7 +10,7 @@ const EducationEventsList = ({ timeLine }) =>
             <div key={eventIndex} className="EducationTimeLineEvent">
                 <div className="EducationHeader">
                     <span className="Program">{event.program}</span>
-                    <span className="Period">{Period(event)}</span>
+                    {Period(event)}
                 </div>
                 <div className="InstitutionHeader">
                     <span className="Institution">{event.institution}</span>

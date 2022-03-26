@@ -10,7 +10,7 @@ export function RemoveHttp(url) {
 export function Period(event) {
     let startDate = Moment(event.startDate).format("MMM yyyy");
     let endDate = event.endDate ? Moment(event.endDate).format("MMM yyyy") : "Present";
-    return <>&nbsp;{startDate} - {endDate}</>;
+    return <span className="Period">&nbsp;{startDate} - {endDate}</span>;
 }
 
 

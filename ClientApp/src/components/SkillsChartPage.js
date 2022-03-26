@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import SkillsChart from './SkillsChart';
 
 const SkillsChartPage = () => {
@@ -16,5 +15,4 @@ const SkillsChartPage = () => {
     );
 }
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(SkillsChartPage);
+export default SkillsChartPage;

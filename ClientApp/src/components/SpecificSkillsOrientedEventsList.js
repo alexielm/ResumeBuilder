@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { RemoveHttp, Period } from '../generalUtils/GeneralUtils';
 
 import { HorizontalSpacer } from '../generalUtils/GeneralUtils';
@@ -7,9 +6,11 @@ import MarkDown from './MarkDown';
 import ViewControl from '../generalUtils/ViewControl';
 import { SpecialLinks } from './SpecialLinks';
 
+import App from '../App';
+
 const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
 
-    let skillTypes = this.props.frontEndParameters.skillTypes;
+    let skillTypes = App.store.frontEndParameters.skillTypes;
     let skillSet = skillTypes.find(skillType => skillType.name === skillSetType)?.members ?? [];
 
     return timeLine
@@ -75,7 +76,7 @@ const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
                                     <div key={careerIndex} className="Career">
                                         <div className="CareerHeader KeepTogether">
                                             <span className="Title">{career.title}</span>
-                                            <span className="Period">{Period(career)}</span>
+                                            {Period(event)}
                                         </div>
                                         <ul className="Responsibilities">
                                             {
@@ -123,5 +124,4 @@ const SpecificSkillsOrientedEventsList = ({ timeLine, skillSetType }) => {
         });
 }
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(SpecificSkillsOrientedEventsList);
+export default SpecificSkillsOrientedEventsList;

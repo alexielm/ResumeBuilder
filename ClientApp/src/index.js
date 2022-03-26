@@ -2,28 +2,20 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'antd/dist/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
-import reducers from './reducers';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 
-const store = createStore(reducers, applyMiddleware(thunk));
-
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter basename={baseUrl}>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+    <BrowserRouter basename={baseUrl}>
+        <App />
+    </BrowserRouter>,
     rootElement);
 
 // If you want your app to work offline and load faster, you can change

@@ -52,7 +52,7 @@ const JobsOrientedEventsList = ({ timeLine }) =>
                                 <div key={careerIndex} className="Career">
                                     <div className="CareerHeader KeepTogether">
                                         <span className="Title">{career.title}</span>
-                                        <span className="Period">{Period(career)}</span>
+                                        {Period(event)}
                                     </div>
                                     <ul className="Responsibilities">
                                         {
