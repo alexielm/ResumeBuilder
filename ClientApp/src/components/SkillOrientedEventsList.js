@@ -53,7 +53,7 @@ const SkillOrientedEventsList = ({ timeLine }) =>
                                     <div key={careerIndex} className="Career">
                                         <div className="CareerHeader KeepTogether">
                                             <span className="Title">{career.title}</span>
-                                            {Period(event)}
+                                            {Period(career)}
                                         </div>
                                         <div className="KeyEnvironment">
                                             <span className="EnvironmentLabel">Environment: </span>

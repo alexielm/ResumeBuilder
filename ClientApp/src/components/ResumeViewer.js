@@ -1,19 +1,18 @@
 import React, { Component, Fragment } from 'react';
 
 import classNames from 'classnames';
-import { notification, Switch, Menu, Dropdown, Popover, Modal, Button } from 'antd';
-import { DownOutlined, CheckOutlined } from '@ant-design/icons';
-import { ExportAsImage } from '../generalUtils/GeneralUtils';
+import { notification, Switch, Menu, Dropdown, Popover } from 'antd';
+import { ZoomInOutlined, DownOutlined, CheckOutlined } from '@ant-design/icons';
 
 import "./ResumeViewer.css";
 
 import PhoneIcon from './images/phone.svg';
 import EmailIcon from './images/email.svg';
 import PrintIcon from './images/print.svg';
-import ChartIcon from './images/chart.svg';
 
 import { VerticalAlignment, HorizontalSpacer, IconSpacer, RemoveHttp } from '../generalUtils/GeneralUtils';
 import ViewControl from '../generalUtils/ViewControl';
+import { ViewSwitch, Then, Else } from '../generalUtils/ViewSwitch';
 import { PersonalRemarks } from './PersonalRemarks';
 import Topic from './Topic';
 import TechnicalSkillsList from './TechnicalSkillsList';
@@ -38,9 +37,10 @@ class ResumeViewer extends Component {
             showYearsOfExperience: App.store.frontEndParameters.showYearsOfExperience,
             experienceViewerType: this.getExperienceViewerType(App.store.frontEndParameters.workExperienceViewType),
             printHobbiesSection: true,
-            skillsChartVisible: false,
+            printChartSection: true,
             personTitle: null,
-            personTitleOptions: null
+            personTitleOptions: null,
+            highlightedSkill: null
         }
 
         viewerMode.specialView = App.store.queryParameters.specialView;
@@ -84,22 +84,13 @@ class ResumeViewer extends Component {
 
     printPage = (event) => window.print();
 
-    openSkillsChart = () => this.setState({
-        skillsChartVisible: true
-    });
-
-    closeSkillsChart = () => this.setState({
-        skillsChartVisible: false
-    });
-
     toggleYearsOfExperienceView = () => this.setState({
         showYearsOfExperience: !this.state.showYearsOfExperience
     });
 
-    togglePrintHobbiesSection = () => this.setState({
-        printHobbiesSection: !this.state.printHobbiesSection
-    });
+    togglePrintHobbiesSection = (printHobbiesSection) => this.setState({ printHobbiesSection });
 
+    togglePrintChartSection = (printChartSection) => this.setState({ printChartSection });
 
     getExperienceViewerType(workExperienceViewType) {
         let viewTypeDividerIndex = workExperienceViewType.indexOf("|");
@@ -196,18 +187,6 @@ class ResumeViewer extends Component {
         </Menu>
     }
 
-    fullName() {
-        return App.store.resumeData.firstName + " " + App.store.resumeData.lastName;
-    }
-
-    downloadSkillsChart = async () => {
-        let chartModalContent = document.getElementById("ChartModalContent");
-        let previousClassName = chartModalContent.className;
-        chartModalContent.className = previousClassName + " Downloading";
-        await ExportAsImage(chartModalContent, this.fullName() + " - " + SkillsChart.Title);
-        chartModalContent.className = previousClassName;
-    }
-
     tryToUnlock = (event) => {
         event.preventDefault();
         if (event.altKey && event.ctrlKey && event.shiftKey) {
@@ -235,7 +214,7 @@ class ResumeViewer extends Component {
                     <div>
                         <div className="AboutPerson KeepTogether">
                             <div className="Personal">
-                                <span className="FullName" onDoubleClick={this.tryToUnlock}>{this.fullName()}</span>
+                                <span className="FullName" onDoubleClick={this.tryToUnlock}>{App.fullName()}</span>
                                 <Popover placement="right" content="Click to print">
                                     <img src={PrintIcon} className="PrintIcon" alt="print" onClick={this.printPage} />
                                 </Popover>
@@ -266,23 +245,47 @@ class ResumeViewer extends Component {
                         <Topic title="REMARKS" className="KeepTogether">
                             <PersonalRemarks remarks={resumeData.remarks} />
                         </Topic>
+
+                        <Topic
+                            title={<>
+                                {SkillsChart.Title}
+                                <ViewSwitch value={this.state.printChartSection}>
+                                    <Then>
+                                        <Popover placement="right" content="Include this section when printing or not">
+                                            <HorizontalSpacer />
+                                            <a className="ZoomInOutButton" href="?page=skillsChart" target="_blank">
+                                                <ZoomInOutlined className="ZoomInOutlinedIcon" />
+                                            </a>
+                                        </Popover>
+                                    </Then>
+                                    <Else>
+                                        <HorizontalSpacer />
+                                        (This section is not going to be printed)
+                                    </Else>
+                                </ViewSwitch>
+                                <div className="TopicRightControl">
+                                    <Popover placement="left" content="Include this section when printing or not">
+                                        <span className="PrintableLabel">Printable:</span>
+                                        <Switch className="ChartSwitch" size="small" defaultChecked={this.state.printChartSection} onClick={this.togglePrintChartSection} />
+                                    </Popover>
+                                </div>
+                            </>}
+                            className={classNames("ChartTopic KeepTogether", { "HiddenTopic": !this.state.printChartSection })}>
+                            <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} onHighlightSkill={highlightedSkill => this.setState({ highlightedSkill })} />
+                        </Topic>
                         <Topic
                             title={<>
                                 TECHNICAL SKILLS
-                                <ViewControl visible={App.store.frontEndParameters.skillTrend && resumeData.skillsLevelTimeProgress?.length}>
-                                    <Popover placement="right" content="Click to view skill's historical trend chart">
-                                        <img src={ChartIcon} className="ChartIcon" alt="chart" onClick={this.openSkillsChart} />
-                                    </Popover>
-                                </ViewControl>
                                 <div className="TopicRightControl">
                                     <Popover placement="left" content="Show or hide years of experience">
+                                        <span className="PrintableLabel">Years:</span>
                                         <Switch className="ExperienceSwitch" size="small" defaultChecked={this.state.showYearsOfExperience} onClick={this.toggleYearsOfExperienceView} />
                                     </Popover>
                                 </div>
                             </>}
                             className="KeepTogether"
                         >
-                            <TechnicalSkillsList showYearsOfExperience={this.state.showYearsOfExperience} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} timeLine={resumeData.timeLine} />
+                            <TechnicalSkillsList showYearsOfExperience={this.state.showYearsOfExperience} skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} timeLine={resumeData.timeLine} highlightedSkill={this.state.highlightedSkill} />
                         </Topic>
                         <Topic
                             title={<>
@@ -309,6 +312,7 @@ class ResumeViewer extends Component {
                                     </ViewControl>
                                     <div className="TopicRightControl">
                                         <Popover placement="left" content="Include this section when printing or not">
+                                            <span className="PrintableLabel">Printable:</span>
                                             <Switch className="HobbiesSwitch" size="small" defaultChecked={this.state.printHobbiesSection} onClick={this.togglePrintHobbiesSection} />
                                         </Popover>
                                     </div>
@@ -325,33 +329,6 @@ class ResumeViewer extends Component {
                     </div>
                     <div className="BottomFadeout"></div>
                 </div>
-                <ViewControl visible={this.state.skillsChartVisible}>
-                    <Modal
-                        className="ChartDialog"
-                        visible={true}
-                        width={1400}
-                        okButtonProps={{
-                            style: {
-                                display: "none"
-                            }
-                        }}
-                        onCancel={this.closeSkillsChart}
-                        cancelText="Close"
-                        cancelButtonProps={{
-                            type: "default"
-                        }}
-                        footer={[
-                            <Button key="back" onClick={() => this.downloadSkillsChart()}>
-                                Download
-                            </Button>,
-                            <Button key="submit" type="primary" onClick={this.closeSkillsChart}>
-                                Close
-                            </Button>,
-                        ]}
-                    >
-                        <SkillsChart skillsLevelTimeProgress={resumeData.skillsLevelTimeProgress} />
-                    </Modal>
-                </ViewControl>
                 <Tutorial />
             </Fragment >
         );

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { ZoomInOutlined } from '@ant-design/icons';
 import Enumerable from 'linq';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { VerticalAlignment, HorizontalSpacer } from '../generalUtils/GeneralUtils';
-import ViewControl from '../generalUtils/ViewControl';
 
 class SkillsChart extends Component {
     static displayName = SkillsChart.name;
@@ -13,6 +10,8 @@ class SkillsChart extends Component {
 
     constructor(props) {
         super(props);
+
+        this.onHighlightSkill = props.onHighlightSkill || (() => { });
 
         this.data = props.skillsLevelTimeProgress;
 
@@ -76,7 +75,7 @@ class SkillsChart extends Component {
     }
 
     //From: https://coolors.co/gradient-palette/ffa600-003f5c?number=12
-    colors = ["#ff8c00", "#e81123", "#ec008c", "#68217a", "#00188f", "#00bcf2", "#00b294", "#009e49", "#bad80a", "#fff100"];
+    colors = ["#ff8c00", "#e81123", "#ec008c", "#68217a", "#00188f", "#00bcf2", "#00b294", "#fff100", "#009e49", "#bad80a", "#458ec4"];
 
 
     chartYAxisFormatter = (tickValue) => {
@@ -104,7 +103,8 @@ class SkillsChart extends Component {
         </div>
     }
 
-    highlistLine(highlightedSkill) {
+    highlightSkill(highlightedSkill) {
+        this.onHighlightSkill(highlightedSkill);
         this.setState({
             highlightedSkill
         });
@@ -112,51 +112,36 @@ class SkillsChart extends Component {
 
     render() {
         return (
-            <div id="ChartModalContent" className="ChartModalContent">
-                <div className="ant-modal-header">
-                    <div className="ant-modal-title" id="rcDialogTitle1">
+            <div id="ChartContainer" className="ChartContainer">
+                <div className="LegendPanel">
+                    <div className="LegendTitle" >
+                        Legend
+                    </div>
+                    <ul className="LegendList">
                         {
-                            SkillsChart.Title
+                            this.topSkills.map((tick, tickIndex) =>
+                                <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlightSkill(this.topSkills[tickIndex])} onMouseLeave={() => this.highlightSkill(null)}>
+                                    <span>{this.topSkills[tickIndex]}</span>
+                                </li>
+                            )
                         }
-                        <ViewControl visible={!this.props.standAlong}>
-                            <HorizontalSpacer />
-                            <a className="ZoomInOutButton" href="?page=skillsChart" target="_blank">
-                                <ZoomInOutlined style={VerticalAlignment(-3)} />
-                            </a>
-                        </ViewControl>
-                    </div>
+                    </ul>
                 </div>
-                <div className="ChartContainer">
-                    <div className="LegendPanel">
-                        <div className="LegendTitle" >
-                            Legend
-                        </div>
-                        <ul className="LegendList">
+                <div className="ChartPanel">
+                    <ResponsiveContainer width="100%" height={270}>
+                        <LineChart
+                            className="ChartPanel"
+                            data={this.data}
+                        >
+                            <XAxis dataKey="year" type="number" ticks={this.xTicks} domain={this.xDomain} />
+                            <YAxis tickFormatter={this.chartYAxisFormatter} ticks={this.yTicks} domain={[0, 100]} width={80} />
+                            <Tooltip content={this.chartTooltipBuilder} />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             {
-                                this.topSkills.map((tick, tickIndex) =>
-                                    <li key={tick} style={{ color: this.colors[tickIndex] }} onMouseEnter={() => this.highlistLine(this.topSkills[tickIndex])} onMouseLeave={() => this.highlistLine(null)}>
-                                        <span>{this.topSkills[tickIndex]}</span>
-                                    </li>
-                                )
+                                this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
                             }
-                        </ul>
-                    </div>
-                    <div className="ChartPanel">
-                        <ResponsiveContainer width="100%" height={275}>
-                            <LineChart
-                                className="ChartPanel"
-                                data={this.data}
-                            >
-                                <XAxis dataKey="year" type="number" ticks={this.xTicks} domain={this.xDomain} />
-                                <YAxis tickFormatter={this.chartYAxisFormatter} ticks={this.yTicks} domain={[0, 100]} width={80} />
-                                <Tooltip content={this.chartTooltipBuilder} />
-                                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                                {
-                                    this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
-                                }
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         );

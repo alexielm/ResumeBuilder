@@ -8,7 +8,7 @@ const halfSpeed = speed / 2;
 
 
 const minX = -200;
-const maxX = 2000;
+const maxX = 3000;
 
 const minY = -200;
 const maxY = 2000;

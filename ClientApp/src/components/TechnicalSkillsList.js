@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import CurlyBracketLeft from './images/curly_bracket_left.svg';
 import moment from 'moment';
 import App from '../App';
 
-const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExperience }) => {
+const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExperience, highlightedSkill }) => {
 
     const skillList = (rows) => {
         return (
@@ -119,22 +120,27 @@ const TechnicalSkillsList = ({ timeLine, skillsLevelTimeProgress, showYearsOfExp
                 <td className="SkillConnector">
                     <img src={CurlyBracketLeft} className="CurlyBracketLeft" alt="CurlyBracketLeft" />
                 </td>
-                <td className="SkillMembers">{skill
-                    .value
-                    .sort()
-                    .map(skill => {
-                        if (showYearsOfExperience) {
-                            let startYear = disciplinesWithStartYear[skill];
-                            if (startYear > 0) {
-                                let endYear = disciplinesWithEndYear[skill] ?? currentYear;
-                                let years = endYear - startYear;
-                                return `${skill} (${years}+ year${years > 1 ? "s" : ""})`;
-                            }
-                        }
-                        return skill;
-                    })
-
-                    .map(string => string.replace(/ /g, "\u00a0")).join(", ")}</td>
+                <td className="SkillMembers">
+                    {
+                        skill
+                            .value
+                            .sort()
+                            .map(skill => {
+                                let yearsLabel = (() => {
+                                    if (showYearsOfExperience) {
+                                        let startYear = disciplinesWithStartYear[skill];
+                                        if (startYear > 0) {
+                                            let endYear = disciplinesWithEndYear[skill] ?? currentYear;
+                                            let years = endYear - startYear;
+                                            return ` (${years}+ year${years > 1 ? "s" : ""})`;
+                                        }
+                                    }
+                                })();
+                                return <span key={skill} className={classNames("SingleSkill", skill === highlightedSkill ? "HighlightedSkill" : "")}>{skill}{yearsLabel}</span>;
+                            })
+                            .reduce((prev, curr) => [prev, ', ', curr])
+                    }
+                </td>
             </tr>
         );
 

@@ -24,7 +24,7 @@
       "Delphi": 80,
       "Microsoft SQL": 20,
       "Web Services": 50,
-      "C++": 65
+      "C++": 80
     },
     {
       "year": 2000,
@@ -33,7 +33,7 @@
       "Delphi": 95,
       "Microsoft SQL": 50,
       "Web Services": 40,
-      "C++": 60
+      "C++": 75
     },
     {
       "year": 2005,
@@ -42,31 +42,31 @@
       "Delphi": 100,
       "Microsoft SQL": 70,
       "Web Services": 50,
-      "C++": 55,
+      "C++": 45,
       "AWS": 0,
       "jQuery": 0
     },
     {
       "year": 2010,
-      "C#": 70,
-      "JavaScript/TypeScript": 95,
-      "Delphi": 90,
-      "Microsoft SQL": 80,
-      "Web Services": 85,
-      "C++": 50,
+      "C#": 85,
+      "JavaScript/TypeScript": 92,
+      "Delphi": 70,
+      "Microsoft SQL": 75,
+      "Web Services": 82,
+      "C++": 35,
       "AWS": 20,
-      "jQuery": 75
+      "jQuery": 79
     },
     {
       "year": 2015,
-      "C#": 95,
-      "JavaScript/TypeScript": 100,
+      "C#": 100,
+      "JavaScript/TypeScript": 97,
       "React": 5,
-      "Delphi": 85,
-      "Microsoft SQL": 78,
+      "Delphi": 75,
+      "Microsoft SQL": 75,
       "Docker": 10,
-      "Web Services": 95,
-      "C++": 60,
+      "Web Services": 92,
+      "C++": 50,
       "AWS": 40,
       "jQuery": 87,
       "Python": 0
@@ -76,13 +76,13 @@
       "C#": 100,
       "JavaScript/TypeScript": 100,
       "React": 95,
-      "Delphi": 65,
+      "Delphi": 40,
       "Microsoft SQL": 80,
       "Docker": 60,
       "Web Services": 95,
-      "C++": 60,
+      "C++": 55,
       "AWS": 50,
-      "jQuery": 85,
+      "jQuery": 70,
       "Python": 10
     },
     {
@@ -90,14 +90,14 @@
       "C#": 100,
       "JavaScript/TypeScript": 100,
       "React": 100,
-      "Delphi": 62,
+      "Delphi": 30,
       "Microsoft SQL": 80,
       "Docker": 75,
       "Web Services": 100,
-      "C++": 60,
+      "C++": 55,
       "AWS": 60,
-      "jQuery": 84,
-      "Python": 30
+      "jQuery": 60,
+      "Python": 26
     }
   ],
   "timeLine": [

@@ -43,6 +43,10 @@ class App extends Component {
         }
     }
 
+    static fullName = () => {
+        return App.store.resumeData.firstName + " " + App.store.resumeData.lastName;
+    }
+
     async componentDidMount() {
         await App.store.fetchAll();
         this.forceUpdate();
