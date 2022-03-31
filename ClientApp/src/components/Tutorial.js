@@ -16,12 +16,13 @@ class Tutorial extends Component {
     componentDidMount() {
         this.initializeAnaimation();
 
-        if (!window.MobileView) {
-            let whenPlayNext = moment(parseInt(window.localStorage.tutorialDoneExpiration ?? 0));
-            if (moment().isAfter(whenPlayNext)) {
-                this.startAnaimation();
-            }
-        }
+    //    if (!window.MobileView) {
+    //        let whenPlayNext = moment(parseInt(window.localStorage.tutorialDoneExpiration ?? 0));
+    //        if (moment().isAfter(whenPlayNext)) {
+    //            this.startAnaimation();
+    //        }
+    //    }
+        this.startAnaimation();
     }
 
     componentWillUnmount() {
@@ -52,12 +53,10 @@ class Tutorial extends Component {
         let resumeViewerBodyRect = this.resumeViewerBody.getBoundingClientRect();
         this.scrollOffset = resumeViewerBodyRect.height / 3;
 
-        this.printIcon = document.querySelector(".PrintIcon");
-        this.personTitleDropDown = document.querySelector(".PersonTitleDropDown");
+        this.chartSwitch = document.querySelector(".ChartSwitch ");
         this.experienceSwitch = document.querySelector(".ExperienceSwitch");
         this.workExperienceDropDown = document.querySelector(".WorkExperienceDropDown");
-        this.chartIcon = document.querySelector(".ChartIcon");
-        this.hobbiesSwitch = document.querySelector(".HobbiesSwitch");
+        this.printIcon = document.querySelector(".PrintIcon");
     }
 
     async startAnaimation() {
@@ -68,20 +67,13 @@ class Tutorial extends Component {
             await this.wait(500);
             this.tutorialContainer.style.opacity = 1;
             await this.wait(1000);
-            await this.moveCursorTo(this.experienceSwitch);
+            await this.moveCursorTo(this.chartSwitch);
             await this.wait(500);
-            await this.moveCursorTo(this.chartIcon);
+            await this.moveCursorTo(this.experienceSwitch);
             await this.wait(500);
             await this.scrollTo(this.workExperienceDropDown);
             await this.moveCursorTo(this.workExperienceDropDown);
             await this.wait(500);
-
-            //await this.scrollTo(this.hobbiesSwitch);
-            //await this.moveCursorTo(this.hobbiesSwitch);
-            //await this.wait(500);
-            //await this.scrollTo(this.personTitleDropDown);
-            //await this.moveCursorTo(this.personTitleDropDown);
-            //await this.wait(500);
 
             await this.scrollTo(this.printIcon);
             await this.moveCursorTo(this.printIcon);
