@@ -11,6 +11,8 @@ class SkillsChart extends Component {
     constructor(props) {
         super(props);
 
+        this.isAnimationActive = this.props.isAnimationActive === undefined ? true : this.props.isAnimationActive;
+
         this.onHighlightSkill = props.onHighlightSkill || (() => { });
 
         this.data = props.skillsLevelTimeProgress;
@@ -112,7 +114,7 @@ class SkillsChart extends Component {
 
     render() {
         return (
-            <div id="ChartContainer" className="ChartContainer">
+            <div className="ChartContainer">
                 <div className="LegendPanel">
                     <div className="LegendTitle" >
                         Legend
@@ -128,7 +130,7 @@ class SkillsChart extends Component {
                     </ul>
                 </div>
                 <div className="ChartPanel">
-                    <ResponsiveContainer width="100%" height={270}>
+                    <ResponsiveContainer width="100%" height={237}>
                         <LineChart
                             className="ChartPanel"
                             data={this.data}
@@ -138,7 +140,7 @@ class SkillsChart extends Component {
                             <Tooltip content={this.chartTooltipBuilder} />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             {
-                                this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={true} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
+                                this.topSkills.map((skill, skillIndex) => <Line key={skill} connectNulls={true} isAnimationActive={this.isAnimationActive} type="monotone" dataKey={skill} stroke={this.colors[skillIndex]} strokeWidth={skill === this.state.highlightedSkill ? 3 : undefined} />)
                             }
                         </LineChart>
                     </ResponsiveContainer>

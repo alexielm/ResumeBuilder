@@ -383,6 +383,19 @@
     font-weight: bold;
 }
 
+.ChartLink {
+    padding-left: 10px;
+    position: relative;
+    top: -2px;
+    color: cornflowerblue;
+    font-size: 80%;
+    visibility: hidden;
+}
+
+.Downloading .ChartLink {
+    visibility: visible !important;
+}
+
 .ChartPage .ChartContainer {
     padding: 20px 20px 10px 20px;
     width: 100%;
