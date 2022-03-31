@@ -16,13 +16,12 @@ class Tutorial extends Component {
     componentDidMount() {
         this.initializeAnaimation();
 
-    //    if (!window.MobileView) {
-    //        let whenPlayNext = moment(parseInt(window.localStorage.tutorialDoneExpiration ?? 0));
-    //        if (moment().isAfter(whenPlayNext)) {
-    //            this.startAnaimation();
-    //        }
-    //    }
-        this.startAnaimation();
+        if (!window.MobileView) {
+            let whenPlayNext = moment(parseInt(window.localStorage.tutorialDoneExpiration ?? 0));
+            if (moment().isAfter(whenPlayNext)) {
+                this.startAnaimation();
+            }
+        }
     }
 
     componentWillUnmount() {

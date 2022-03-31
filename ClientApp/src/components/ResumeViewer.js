@@ -251,7 +251,7 @@ class ResumeViewer extends Component {
                                 {SkillsChart.Title}
                                 <ViewSwitch value={this.state.printChartSection}>
                                     <Then>
-                                        <Popover placement="right" content="Include this section when printing or not">
+                                        <Popover placement="right" content="Open chart page for LinkedIn background image download">
                                             <HorizontalSpacer />
                                             <a className="ZoomInOutButton" href="?page=skillsChart" target="_blank">
                                                 <ZoomInOutlined className="ZoomInOutlinedIcon" />
