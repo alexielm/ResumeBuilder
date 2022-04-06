@@ -20,7 +20,7 @@
   "skillsLevelTimeProgress": [
     {
       "year": 1995,
-      "JavaScript/TypeScript": 20,
+      "JavaScript": 20,
       "Delphi": 80,
       "Microsoft SQL": 20,
       "Web Services": 50,
@@ -29,7 +29,7 @@
     {
       "year": 2000,
       "C#": 0,
-      "JavaScript/TypeScript": 30,
+      "JavaScript": 30,
       "Delphi": 95,
       "Microsoft SQL": 50,
       "Web Services": 40,
@@ -38,7 +38,7 @@
     {
       "year": 2005,
       "C#": 40,
-      "JavaScript/TypeScript": 80,
+      "JavaScript": 80,
       "Delphi": 100,
       "Microsoft SQL": 70,
       "Web Services": 50,
@@ -49,7 +49,7 @@
     {
       "year": 2010,
       "C#": 85,
-      "JavaScript/TypeScript": 92,
+      "JavaScript": 92,
       "Delphi": 70,
       "Microsoft SQL": 75,
       "Web Services": 82,
@@ -60,7 +60,7 @@
     {
       "year": 2015,
       "C#": 100,
-      "JavaScript/TypeScript": 97,
+      "JavaScript": 97,
       "React": 5,
       "Delphi": 75,
       "Microsoft SQL": 75,
@@ -74,7 +74,7 @@
     {
       "year": 2020,
       "C#": 100,
-      "JavaScript/TypeScript": 100,
+      "JavaScript": 100,
       "React": 95,
       "Delphi": 40,
       "Microsoft SQL": 80,
@@ -88,7 +88,7 @@
     {
       "year": 2022,
       "C#": 100,
-      "JavaScript/TypeScript": 100,
+      "JavaScript": 100,
       "React": 100,
       "Delphi": 30,
       "Microsoft SQL": 80,
@@ -101,6 +101,26 @@
     }
   ],
   "timeLine": [
+    {
+      "eventType": "Job",
+      "institution": "Hilo Labs",
+      "location": "Canada - Remote",
+      "web": "https://www.hilolabs.com/",
+      "career": [
+        {
+          "title": "Senior Full Stack Engineer",
+          "responsibilities": [
+            {
+              "description": "Working on Land Survey Records Project",
+              "disciplines": [ "C#", "Microsoft SQL", "Azure DevOps", "JavaScript", "Bootstrap" ]
+            }
+          ],
+          "startDate": "2022-04-04T00:00:00",
+          "endDate": null,
+          "otherDisciplines": []
+        }
+      ]
+    },
     {
       "eventType": "Job",
       "institution": "RLDatix (Previously known as RL Solutions and Radicalogic, Inc.)",
@@ -127,7 +147,7 @@
             },
             {
               "description": "Worked on the first Web version of the application",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL" ]
+              "disciplines": [ "Delphi", "JavaScript", "Interbase", "Microsoft SQL" ]
             },
             {
               "description": "Build the first HL7 message listener",
@@ -135,7 +155,7 @@
             },
             {
               "description": "Built the first reports web viewer",
-              "disciplines": [ "Delphi", "JavaScript/TypeScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
+              "disciplines": [ "Delphi", "JavaScript", "Interbase", "Microsoft SQL", "TeeChart", "ReportBuilder" ]
             }
           ],
           "startDate": "2001-04-09T00:00:00",
@@ -147,11 +167,11 @@
           "responsibilities": [
             {
               "description": "Worked on RL6, the company's fully web-based application that replaced its desktop client version",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML", "SOAP API" ]
+              "disciplines": [ "JavaScript", "C#", "ASP.NET", "Microsoft SQL", "CSS/CSS3/SCSS/LESS", "XML", "SOAP API" ]
             },
             {
               "description": "Built the web-based reports application. [](^sred_irap)",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SOAP API" ]
+              "disciplines": [ "JavaScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SOAP API" ]
             },
             {
               "description": "Worked on the Alerts system [](^sred_irap)",
@@ -163,7 +183,7 @@
             },
             {
               "description": "Built the Reports Dashboard Viewer",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+              "disciplines": [ "JavaScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             }
           ],
           "startDate": "2008-05-01T00:00:00",
@@ -175,15 +195,15 @@
           "responsibilities": [
             {
               "description": "Worked on the GOV version of the application, used across the country of Denmark by the general public and in all hospitals",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+              "disciplines": [ "C#", "JavaScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
               "description": "Worked on the Pharma version of the application, implemented at all CVS and Walmart pharmacies in the United States",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
+              "disciplines": [ "C#", "JavaScript", "ASP.NET", "Microsoft SQL", "Windows Services", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON" ]
             },
             {
               "description": "Built the Federated Authentication module",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "ASP.NET", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SAML 2.0", "JWT", "OAuth 2.0", "Windows Active Directory" ]
+              "disciplines": [ "C#", "JavaScript", "ASP.NET", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "SAML 2.0", "JWT", "OAuth 2.0", "Windows Active Directory" ]
             }
           ],
           "startDate": "2013-08-01T00:00:00",
@@ -195,7 +215,7 @@
           "responsibilities": [
             {
               "description": "Worked on the Reports Dashboard Client-Side Editor",
-              "disciplines": [ "JavaScript/TypeScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
+              "disciplines": [ "JavaScript", "C#", "ASP.NET", "Microsoft SQL", "DevExpress", "jQuery", "CSS/CSS3/SCSS/LESS", "XML", "JSON", "RESTful API", "React", "Redux" ]
             },
             {
               "description": "Worked on a module to facilitate the transfer of data from the RLDatix platform to external Patient Safety Organizations and customizations to export data to PSRS, NDNQI and others",
@@ -211,7 +231,7 @@
           "responsibilities": [
             {
               "description": "Connected Platform Portal - A module to seamlessly integrate all applications from various acquired companies",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD", "RESTful API", "JWT", "SAML 2.0", "Auth0", "OAuth 2.0" ]
+              "disciplines": [ "C#", "JavaScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "Bootstrap", "ANTD", "RESTful API", "JWT", "SAML 2.0", "Auth0", "OAuth 2.0" ]
             },
             {
               "description": "Machine Learning Assistant - A module that allows end-user access to AI analytics tools. [](^sred_irap)",
@@ -221,7 +241,7 @@
                   "link": "https://www.youtube.com/watch?v=KFRL2Y1UDrY"
                 }
               ],
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
+              "disciplines": [ "C#", "JavaScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
               "description": "Time Series - An AI module that adds a time dimension to report, allowing users visualize trends [](^sred_irap)",
@@ -231,7 +251,7 @@
                   "link": "https://www.youtube.com/watch?v=K3YaUL5hwFc"
                 }
               ],
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
+              "disciplines": [ "C#", "JavaScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "Docker", "RabitMQ", "ReChart", "RESTful API" ]
             },
             {
               "description": "NLP - An AI module to automatically fill up values on a form based on the text description of the event. [](^sred_irap)",
@@ -241,11 +261,11 @@
                   "link": "https://www.youtube.com/watch?v=fs0gQkiL520&list=PLtQw3CfhE5x0raPBPLi3WDzBRzRcT-ZhP"
                 }
               ],
-              "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
+              "disciplines": [ "C#", "JavaScript", "React", "NodeJS", "Microsoft SQL", "ASP.NET", ".NET Core", "Redux", "CSS/CSS3/SCSS/LESS", "ANTD", "Python", "SQLite", "OrmLite", "Docker", "Dapr", "RESTful API", "SpaCy" ]
             },
             {
               "description": "Worked on Containerization of the Lead North American platform for Patient Safety, Patient Experience and Risk Management Web App and the Dashboard",
-              "disciplines": [ "C#", "JavaScript/TypeScript", "Microsoft SQL", "ASP.NET", ".NET Core", "CSS/CSS3/SCSS/LESS", "Docker", "Kubernetes" ]
+              "disciplines": [ "C#", "JavaScript", "Microsoft SQL", "ASP.NET", ".NET Core", "CSS/CSS3/SCSS/LESS", "Docker", "Kubernetes" ]
             },
             {
               "description": "Upgraded services to .NET Core to run in Containers - AWS and AZURE",
@@ -320,7 +340,7 @@
         "Generates personal resumes allowing for dynamic changes for different view styles: <http://nexus-solutions.org/resume/>",
         "Source code available on GitHub: <https://github.com/alexielm/ResumeBuilder>"
       ],
-      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API" ]
+      "disciplines": [ "C#", "JavaScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API" ]
     },
     {
       "eventType": "Hobby",
@@ -329,7 +349,7 @@
         "**reactor** is a very small entity that helps keep components up to date with the changes done on a global data set they register to: <http://nexus-solutions.org/reactorDemo/>\"",
         "Source code available on GitHub: <https://github.com/alexielm/reactor-demo>"
       ],
-      "disciplines": [ "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "ANTD" ]
+      "disciplines": [ "JavaScript", "React", "CSS/CSS3/SCSS/LESS", "ANTD" ]
     },
     {
       "eventType": "Hobby",
@@ -338,7 +358,7 @@
         "Shows DJI drones flight log on a Google map: <http://www.nexus-solutions.org/dji/>",
         "Download example DJI drone log file for testing: <http://www.nexus-solutions.org/DJI_Logs/DJIFlightRecord_2017-08-14_[14-58-22].txt>"
       ],
-      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
+      "disciplines": [ "C#", "JavaScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC" ]
     },
     {
       "eventType": "Hobby",
@@ -347,7 +367,7 @@
         "Source code available on GitHub: <https://github.com/alexielm/Html360Viewer>",
         "Demo version: <http://www.nexus-solutions.org/Html360Viewer/Pano.html?http://www.nexus-solutions.org/Html360Viewer/VR/Photo360.JPG>"
       ],
-      "disciplines": [ "JavaScript/TypeScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js" ]
+      "disciplines": [ "JavaScript", "CSS/CSS3/SCSS/LESS", "RESTful API", "D3.js" ]
     },
     {
       "eventType": "Hobby",
@@ -355,7 +375,7 @@
       "remarks": [
         "Software and hardware to help leveling an RV (Recreational Vehicle). The device is accessed from an Android or Apple phone via Wi-Fi and Web App so leveling process can be monitored from the driver's seat"
       ],
-      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "CSS/CSS3/SCSS/LESS", "Adobe Photoshop" ]
+      "disciplines": [ "C#", "JavaScript", "React", "CSS/CSS3/SCSS/LESS", "Adobe Photoshop" ]
     },
     {
       "eventType": "Hobby",
@@ -363,7 +383,7 @@
       "remarks": [
         "Software and hardware that monitors doors and windows to send issue and activity notifications and integrates with Amazon Alexa"
       ],
-      "disciplines": [ "C#", "JavaScript/TypeScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC", "Arduino" ]
+      "disciplines": [ "C#", "JavaScript", "React", "NodeJS", ".NET Core", "CSS/CSS3/SCSS/LESS", "ANTD", "RESTful API", "gRPC", "Arduino" ]
     },
     {
       "eventType": "Education",
